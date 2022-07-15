@@ -4,4 +4,4 @@
 [![Download](https://img.shields.io/github/v/release/IsayIsee/TVBoxOSC-Build?color=orange&logoColor=orange&label=Download&logo=DocuSign)](https://github.com/IsayIsee/TVBoxOSC-Build/releases/latest) 
 [![Total](https://shields.io/github/downloads/IsayIsee/TVBoxOSC-Build/total?logo=Bookmeter&label=Counts&logoColor=yellow&color=yellow)](https://github.com/IsayIsee/TVBoxOSC-Build/releases)
 
-+ Updated Commit: 7ad3ac9d06512807f292f40d16c4a46cf984cdec
++ Updated Commit: 862b7663fb78a9bbd52c17d5c2749a3d2e25811f
