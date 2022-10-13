@@ -42,8 +42,8 @@ jobs:
           signingConfigs="$(echo "$signingConfigs" |base64 -d )"
           signingConfig="$(echo "$signingConfig" |base64 -d )"
           sed -i -e "/defaultConfig {/i\\$signingConfigs " -e "/debug {/a\\$signingConfig " -e "/release {/a\\$signingConfig " app/build.gradle
-          cp -f ${{ github.workspace }}/.github/workflows/TVBoxOS.jks app/TVBoxOS.jks
-          sed -i '$a\RELEASE_STORE_FILE=./TVBoxOS.jks'     ./gradle.properties
+          cp -f ${{ github.workspace }}/.github/workflows/TVBoxOSC.jks app/TVBoxOSC.jks
+          sed -i '$a\RELEASE_STORE_FILE=./TVBoxOSC.jks'     ./gradle.properties
           sed -i '$a\RELEASE_KEY_ALIAS=TVBoxOS'            ./gradle.properties
           sed -i '$a\RELEASE_STORE_PASSWORD=TVBoxOS'       ./gradle.properties
           sed -i '$a\RELEASE_KEY_PASSWORD=TVBoxOS'         ./gradle.properties
