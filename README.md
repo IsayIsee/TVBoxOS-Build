@@ -5,4 +5,4 @@
 [![Total](https://shields.io/github/downloads/IsayIsee/TVBoxOSC-Build/total?logo=Bookmeter&label=Counts&logoColor=yellow&color=yellow)](https://github.com/IsayIsee/TVBoxOSC-Build/releases)
 
 - [IsayIsee/TVBoxOS](https://github.com/IsayIsee/TVBoxOS) (Updated: 704cd2658fbcaf38551228cb90bd9f766a0c9e72)
-- [IsayIsee/FongMi](https://github.com/IsayIsee/FongMi) (Updated: 704cd2658fbcaf38551228cb90bd9f766a0c9e72)
+- [IsayIsee/FongMi](https://github.com/IsayIsee/FongMi) (Updated: bd2446403af1f76e9b29fc6a6daba834bec71427)
