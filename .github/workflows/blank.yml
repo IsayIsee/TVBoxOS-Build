@@ -1,0 +1,456 @@
+name: Build-APK
+
+on:
+  schedule:
+    - cron: 0 0 1 * *
+  workflow_dispatch:
+    inputs:
+      rebuild:
+        description: '忽略构建记录以重新构建'
+        required: false
+        type: boolean
+      donotpublish:
+        description: '构建后不提交发布新版'
+        required: false
+        type: boolean
+
+jobs:
+  # 任务 1：先编译工具（添加了缓存以防重复编译）
+  telegram-bot-api:
+    name: Telegram Bot API
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get Tool SHA
+        id: tool-sha
+        run: echo "sha=$(git ls-remote https://github.com/tdlib/telegram-bot-api.git HEAD | awk '{print $1}')" >> $GITHUB_OUTPUT
+
+      - name: Cache Binary
+        id: cache-bin
+        uses: actions/cache@v4
+        with:
+          path: telegram-bot-api-binary
+          key: tg-api-${{ steps.tool-sha.outputs.sha }}
+
+      - name: Compile Telegram Bot API
+        if: steps.cache-bin.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update
+          sudo apt-get install make git zlib1g-dev libssl-dev gperf cmake g++ -y
+          git clone --recursive https://github.com/tdlib/telegram-bot-api.git
+          cd telegram-bot-api && mkdir build && cd build
+          cmake -DCMAKE_BUILD_TYPE=Release ..
+          cmake --build . --target install -j$(nproc)
+          cd ../..
+          find telegram-bot-api -name "telegram-bot-api" -type f -executable -exec cp {} ./telegram-bot-api-binary \;
+
+      - name: Upload Binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: telegram-bot-api-binary
+          path: telegram-bot-api-binary
+
+  # 任务 2：主构建（保留原始所有步骤，仅修复路径）
+  build:
+    runs-on: ubuntu-latest
+    needs: telegram-bot-api # 解决下载报错的关键：确保先编译
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - userName: IsayIsee
+            repoName: TVBoxOS
+            branchName: main
+            developer: q215613905
+          - userName: IsayIsee
+            repoName: Takagen-Box
+            branchName: main
+            java_ver: 17
+            developer: takagen99
+          - userName: IsayIsee
+            repoName: FongMI
+            branchName: my_release
+            java_ver: 17
+            developer: FongMI
+          - userName: IsayIsee
+            repoName: FongMI
+            branchName: my_dev
+            java_ver: 21
+            developer: FongMI
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check New Commit
+        run: |
+          upStream=https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}
+          echo "upStream=$upStream" >> $GITHUB_ENV
+          commit=$(curl -sL $upStream/commits/${{ matrix.branchName }} | grep -o "/${{ matrix.userName }}/${{ matrix.repoName }}/commit/[a-z0-9]\+" | head -1 | cut -d\/ -f5)
+          if [[ -z "${commit}" ]]; then
+            commit=$(curl -s "https://api.github.com/repos/${{ matrix.userName }}/${{ matrix.repoName }}/commits/${{ matrix.branchName }}?per_page=1" | jq -r '.sha' )
+          fi
+          if ! grep -q "$commit" README.md || [ "${{ inputs.rebuild }}" == "true" ]; then
+            echo "commit=$commit" >> $GITHUB_ENV
+            echo "commitS=${commit:0:7}" >> $GITHUB_ENV
+          fi
+
+      - name: Checkout Source Code
+        if: ${{ env.commit }}
+        run: |
+          git clone ${{ env.upStream }} TVBoxOSC
+          cd TVBoxOSC
+          git checkout ${{ env.commit }}
+          echo "tag=$(git log --date=format:'%y%m%d-%H' --pretty=format:%cd ${{ env.commitS }} -1)" >> $GITHUB_ENV
+
+      - name: Extra Modify
+        if: ${{ env.commit }}
+        working-directory: TVBoxOSC
+        run: |
+          if [ "${{ matrix.developer }}" == "takagen99" ]; then
+            sed -i 's/\.concat(buildTime())/ +\"${{ env.tag }}\"/g' app/build.gradle 
+            sed -i "/android:text=/s#=\"#=\"${{ env.tag }}\\\\n\\\\n#" app/src/main/res/layout/dialog_about.xml
+          else
+            # 提取原始 versionName
+            if [ -f app/build.gradle ]; then
+              ORIG_VERSION=$(grep 'versionName' app/build.gradle | grep -o '[0-9a-zA-Z_.\"-]*$' | tr -d "'" | head -1)
+              echo "origVersionName=$ORIG_VERSION" >> $GITHUB_ENV
+              echo "Original versionName: $ORIG_VERSION"
+            fi
+            VERSION_CODE=$(echo "${{ env.tag }}" | tr -dc '0-9' | cut -c1-9)
+            VERSION_NAME=$(echo "${{ env.tag }}-${{ matrix.branchName }}" | sed 's/my_//')    
+            echo "VERSION_NAME: $VERSION_NAME"
+            [ -f app/build.gradle ] && sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'$VERSION_NAME\'#" app/build.gradle
+            [ -f app/src/main/res/layout/dialog_about.xml ] && sed -i "/android:text=/s#=\"#=\"${{ env.tag }}\\\\n\\\\n#" app/src/main/res/layout/dialog_about.xml
+            [ -f app/build.gradle ] && sed -i "/versionCode/s#versionCode.*#versionCode $VERSION_CODE#" app/build.gradle
+          fi 
+          if grep -q 'crosswalk' build.gradle; then
+            sed -i "/crosswalk/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" build.gradle
+          else
+            sed -i "/jitpack.io/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" build.gradle
+          fi
+          
+          # 更新不同分支的升级检查路径
+          GITHUB_JAVA_FILE="app/src/main/java/com/fongmi/android/tv/utils/Github.java"
+
+          if [ -f "$GITHUB_JAVA_FILE" ]; then
+            sed -i "s#\"/apk/\"#\"/apk/${{ matrix.branchName }}/\"#g" "$GITHUB_JAVA_FILE"
+          
+            echo "Successfully updated Github.java for branch: ${{ matrix.branchName }}"
+          
+            echo "--- Changes in $GITHUB_JAVA_FILE ---"
+            git diff "$GITHUB_JAVA_FILE"
+          else
+            echo "Error: Github.java not found at $GITHUB_JAVA_FILE"
+          fi
+      - name: Compress Source Code
+        if: ${{ env.commit }}
+        working-directory: TVBoxOSC
+        run: tar -cJf sourceCode-${{ env.commitS }}.tar.xz --exclude=.git --exclude=.github *
+
+      - name: Setup Python
+        if: ${{ env.commit }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Python dependencies
+        if: ${{ env.commit }}
+        run: |
+          python -m pip install --upgrade pip
+          pip install lxml ujson pyquery requests jsonpath cachetools pycryptodome beautifulsoup4
+
+      - name: Setup local.properties
+        if: ${{ env.commit }}
+        working-directory: TVBoxOSC
+        run: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+          if [ -d "pyramid" ]; then
+            sed -i '/buildPython.*python.exe/d' pyramid/build.gradle || true
+            cp local.properties pyramid/
+          fi
+
+      - name: Setup Project Properties
+        if: ${{ env.commit }}
+        env:
+          SIGNING_STORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          SIGNING_KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          SIGNING_KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          ENCODED_STRING: ${{ secrets.KEYSTORE_BASE64 }}
+        working-directory: TVBoxOSC
+        run: |
+          # 创建 keystore 文件
+          echo $ENCODED_STRING | base64 -d > ${{ github.workspace }}/release.jks
+          
+          ROOT_DIR=$(pwd)
+          mkdir -p app
+          cp -f ${{ github.workspace }}/release.jks app/TVBoxOSC.jks
+          
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
+
+          if [ "${{ matrix.developer }}" == "FongMI" ]; then
+            PYTHON_PATH=$(which python3)
+            {
+              echo "storeFile=$ROOT_DIR/app/TVBoxOSC.jks"
+              echo "keyAlias=$SIGNING_KEY_ALIAS"
+              echo "storePassword=$SIGNING_STORE_PASSWORD"
+              echo "keyPassword=$SIGNING_STORE_PASSWORD"
+              echo "chaquopy.python=$PYTHON_PATH"
+            } >> local.properties
+          
+            # 清理 Windows 硬编码
+            find . -name "build.gradle" -exec sed -i 's/python.exe//g' {} +
+          fi
+
+          [ -f ./gradle.properties ] && echo -e "\n" >> ./gradle.properties || touch ./gradle.properties
+          {
+            echo "storeFile=$ROOT_DIR/app/TVBoxOSC.jks"
+            echo "keyAlias=$SIGNING_KEY_ALIAS"
+            echo "storePassword=$SIGNING_STORE_PASSWORD"
+            echo "keyPassword=$SIGNING_STORE_PASSWORD"
+          } >> ./gradle.properties
+
+          if [ -d "pyramid" ]; then
+            cp local.properties pyramid/
+          fi
+
+      - name: Setup Java
+        if: ${{ matrix.java_ver }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ matrix.java_ver }}
+
+      - name: Setup Gradle
+        if: ${{ env.commit }}
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build With Gradle
+        if: ${{ env.commit }}
+        working-directory: TVBoxOSC
+        run: |
+          chmod +x gradlew
+          
+          # 初始构建参数
+          BUILD_ARGS="assemblerelease --build-cache --parallel --daemon"
+          
+          if [ "${{ matrix.developer }}" == "FongMI" ]; then
+            echo "Applying Python 3.10 path enforcement for FongMi..."
+            PYTHON_310_EXE=$(which python3.10 || which python3)
+            echo "Python 3.10 path is: $PYTHON_310_EXE"
+            sudo ln -sf "$PYTHON_310_EXE" /usr/bin/python
+            BUILD_ARGS="$BUILD_ARGS -Pchaquopy.python=$PYTHON_310_EXE"
+          fi
+
+          # 执行编译
+          ./gradlew $BUILD_ARGS
+
+      - name: Prepare App
+        if: ${{ env.commit }}
+        working-directory: TVBoxOSC
+        run: |
+          rm -rf apk/ && mkdir -p apk/
+          for file in $(find . -name "*.apk" \
+                          -not -path "*/debug/*" \
+                          -not -path "./apk/*" \
+                          -not -path "./Release/*" \
+                          -print); do
+            base=$(basename "$file")
+            new_base="TVBox_${{ matrix.developer }}_${{ env.tag }}_${base}"
+            echo "Moving $file -> apk/$new_base"
+            cp "$file" "apk/$new_base"
+          done
+          mv sourceCode-${{ env.commitS }}.* apk/
+
+      - name: Release Note
+        if: ${{ env.commit }}
+        working-directory: TVBoxOSC
+        run: |
+          lastCommit=$(grep "${{ matrix.repoName }}\/${{ matrix.branchName }}" ${{ github.workspace }}/README.md | grep -o '[a-z0-9]\{40\}' || echo "")
+          {
+            echo "Credit: ${{ matrix.developer }}"
+            echo "Commit: ${{ env.commit }}"
+
+            if [ "${{ matrix.developer }}" == "FongMI" ] && [ -n "${{ env.origVersionName }}" ]; then
+              echo "Version: ${{ env.origVersionName }} → ${{ env.tag }}-${{ matrix.branchName }}"
+            fi
+            echo "Changelog:"
+            echo '```'
+          } > apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+          
+          THREE_MONTHS_AGO=$(date -d '3 months ago' '+%Y-%m-%d')
+          
+          if [ -n "$lastCommit" ]; then
+            LOG=$(git log --pretty=format:'%ad %s' \
+                  --date=format:'%y/%m/%d' \
+                  --after="$THREE_MONTHS_AGO" \
+                  ${lastCommit:0:7}..${{ env.commitS }} \
+              | sed -e "s# \{2,\}#\n#g" \
+                    -e "/^Merge \(pull\|branch\|remote\)/d" \
+                    -e '/^$/d' \
+              | cat -n | sort -k2,2 -k1,1n | uniq -f1 | sort -k1,1n | cut -f2-)
+            if [ -z "$LOG" ]; then
+              LOG=$(git log --pretty=format:'%ad %s' \
+                  --date=format:'%y/%m/%d' \
+                ${{ env.commitS }} -10 \
+                | sed -e "s# \{2,\}#\n#g" \
+                      -e "/^Merge \(pull\|branch\|remote\)/d" \
+                      -e '/^$/d' \
+                | cat -n | sort -k2,2 -k1,1n | uniq -f1 | sort -k1,1n | cut -f2-)
+            fi
+          else
+            LOG=$(git log --pretty=format:'%ad %s' \
+                  --date=format:'%y/%m/%d' \
+              ${{ env.commitS }} -10 \
+              | sed -e "s# \{2,\}#\n#g" \
+                    -e "/^Merge \(pull\|branch\|remote\)/d" \
+                    -e '/^$/d')
+          fi
+          echo "$LOG" >> apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+          echo -e '\n```' >> apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        if: ${{ env.commit }}
+        with:
+          name: ${{ matrix.userName }}-${{ matrix.repoName }}-${{ matrix.branchName }}
+          path: TVBoxOSC/apk/*
+
+      - name: Release and Upload
+        uses: ncipollo/release-action@v1
+        if: ${{ env.commit }}
+        with:
+          name: ${{ env.tag }}
+          tag: ${{ env.tag }}
+          bodyFile: TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+          allowUpdates: true
+          artifacts: |
+            TVBoxOSC/apk/*.apk
+            TVBoxOSC/apk/sourceCode-${{ env.commitS }}.*
+
+      - name: Update FongMI APK To Repo
+        if: ${{ env.commit && matrix.developer == 'FongMI' }}
+        run: |
+          SRC_DIR="${{ github.workspace }}/TVBoxOSC/apk"
+          APK_DIR="${{ github.workspace }}/apk/${{ matrix.branchName }}"
+          mkdir -p "$APK_DIR"
+
+          # 按关键词分类，还原去掉 TVBox_FongMI_<tag>_ 前缀后的原始文件名
+          for APK in $(find "$SRC_DIR" -name "*.apk" | sort); do
+            BASE=$(basename "$APK")
+            CLEAN=$(echo "$BASE" | sed 's/^TVBox_[^_]*_[^_]*_//')
+            case "$BASE" in
+              *mobile*)
+                cp "$APK" "$APK_DIR/$CLEAN" && echo "Copied mobile:   $CLEAN" ;;
+              *leanback*)
+                cp "$APK" "$APK_DIR/$CLEAN" && echo "Copied leanback: $CLEAN" ;;
+              *)
+                echo "Skipped: $BASE" ;;
+            esac
+          done
+
+          CODE=$(echo "${{ env.tag }}" | tr -d '-')
+
+          lastCommit=$(grep "${{ matrix.repoName }}\/${{ matrix.branchName }}" \
+                        "${{ github.workspace }}/README.md" \
+                        | grep -o '[a-z0-9]\{40\}' || echo "")
+
+          THREE_MONTHS_AGO=$(date -d '3 months ago' '+%Y-%m-%d')
+          
+          if [ -n "$lastCommit" ]; then
+            RAW_LOG=$(cd "${{ github.workspace }}/TVBoxOSC" && \
+              git log --pretty=format:'%ad %s' \
+                  --date=format:'%y/%m/%d' \
+                --after="$THREE_MONTHS_AGO" \
+                ${lastCommit:0:7}..${{ env.commitS }} 2>/dev/null \
+              | grep -v "^Merge " | grep -v "^$" || echo "")
+
+            if [ -z "$RAW_LOG" ]; then
+              RAW_LOG=$(cd "${{ github.workspace }}/TVBoxOSC" && \
+                git log --pretty=format:'%ad %s' \
+                  --date=format:'%y/%m/%d' \
+                  ${{ env.commitS }} -10 2>/dev/null \
+                | grep -v "^Merge " | grep -v "^$" || echo "")
+            fi
+          else
+            RAW_LOG=$(cd "${{ github.workspace }}/TVBoxOSC" && \
+              git log --pretty=format:'%ad %s' \
+                  --date=format:'%y/%m/%d' \
+                ${{ env.commitS }} -10 2>/dev/null \
+              | grep -v "^Merge " | grep -v "^$" || echo "")
+          fi
+          
+          # 在 RAW_LOG 开头附加原始 versionName 信息
+          if [ -n "${{ env.origVersionName }}" ]; then
+            VERSION_LINE="版本: ${{ env.origVersionName }} → ${{ env.tag }}-${{ matrix.branchName }}"
+            RAW_LOG=$(printf '%s\n%s' "$VERSION_LINE" "$RAW_LOG")
+          fi
+          
+          [ -z "$RAW_LOG" ] && RAW_LOG="${{ env.tag }}"
+
+          # 把变量写入环境文件，再由 Python 读取
+          echo "$CODE"     > /tmp/fongmi_code.txt
+          VERSION_NAME=$(echo "${{ env.tag }}-${{ matrix.branchName }}" | sed 's/my_//') 
+          echo "$VERSION_NAME" > /tmp/fongmi_name.txt
+          echo "${{ matrix.branchName }}" > /tmp/fongmi_branch.txt
+          printf '%s' "$RAW_LOG" > /tmp/fongmi_raw.txt
+          echo "$APK_DIR"  > /tmp/fongmi_dir.txt
+
+          python3 ${{ github.workspace }}/.github/scripts/update_apk_json.py
+
+      - name: Download TG Tool
+        if: ${{ env.commit }}
+        uses: actions/download-artifact@v4
+        with:
+          name: telegram-bot-api-binary
+          path: TVBoxOSC
+
+      - name: Post To Telegram
+        if: ${{ env.commit }}
+        working-directory: TVBoxOSC
+        env:
+          CHAT_ID: -1001734684817
+          TELEGRAM_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: |
+          if [ -n "${{ secrets.BOT_TOKEN }}" ]; then
+            sed -i -e '1s/\[\(.*\)\].*/#\1/' -e 's#\([&"\/]\)#\\\1#g' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+            mv -f apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log caption.txt
+            chmod +x telegram-bot-api-binary
+            ./telegram-bot-api-binary --api-id=21724 --api-hash=3e0cb5efcd52300aec5994fdfc5bdc16 --local 2>&1 > /dev/null &
+            [ -f ../.github/scripts/upload.py ] && mv ../.github/scripts/upload.py ./ && python upload.py
+          fi
+
+      - name: Push to master
+        if: ${{ env.commit }}
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase --autostash origin master
+          if grep -q "${{ matrix.repoName }}\/${{ matrix.branchName }}" README.md; then
+            sed -i "/${{ matrix.repoName }}\/${{ matrix.branchName }}/s#Updated: [a-zA-Z0-9]*#Updated: ${{ env.commit }}#" README.md
+          else
+            echo "- [${{ matrix.repoName }}/${{ matrix.branchName }}](https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}/tree/${{ matrix.branchName }}) (Updated: ${{ env.commit }})" >> README.md
+          fi
+          git add README.md
+          # FongMI：额外提交 apk/ 根目录下的 APK 和 JSON
+          if [ "${{ matrix.developer }}" == "FongMI" ]; then
+            git add apk/ || true
+          fi
+          git commit -m "Update ${{ matrix.repoName }} to ${{ env.tag }}" || exit 0
+          git push origin master
+
+  clean:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete older runs
+        uses: Mattraks/delete-workflow-runs@main
+        with:
+          token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          retain_days: 7
+          keep_minimum_runs: 5
