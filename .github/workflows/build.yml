@@ -2,7 +2,7 @@ name: Build-APK
 
 on:
   schedule:
-    - cron: 0 0 1 * *
+    - cron: 30 2 1 * *
   workflow_dispatch:
     inputs:
       rebuild:
@@ -13,6 +13,8 @@ on:
         description: '构建后不提交发布新版'
         required: false
         type: boolean
+permissions:
+  contents: write
 
 jobs:
   # 任务 1：先编译工具（添加了缓存以防重复编译）
@@ -184,7 +186,7 @@ jobs:
         working-directory: TVBoxOSC
         run: |
           # 创建 keystore 文件
-          echo $ENCODED_STRING | base64 -d > ${{ github.workspace }}/release.jks
+          echo "$ENCODED_STRING" | tr -d '\n\r ' | base64 -d > ${{ github.workspace }}/release.jks
           
           ROOT_DIR=$(pwd)
           mkdir -p app
@@ -198,7 +200,7 @@ jobs:
               echo "storeFile=$ROOT_DIR/app/TVBoxOSC.jks"
               echo "keyAlias=$SIGNING_KEY_ALIAS"
               echo "storePassword=$SIGNING_STORE_PASSWORD"
-              echo "keyPassword=$SIGNING_STORE_PASSWORD"
+              echo "keyPassword=$SIGNING_KEY_PASSWORD"
               echo "chaquopy.python=$PYTHON_PATH"
             } >> local.properties
           
@@ -211,7 +213,7 @@ jobs:
             echo "storeFile=$ROOT_DIR/app/TVBoxOSC.jks"
             echo "keyAlias=$SIGNING_KEY_ALIAS"
             echo "storePassword=$SIGNING_STORE_PASSWORD"
-            echo "keyPassword=$SIGNING_STORE_PASSWORD"
+            echo "keyPassword=$SIGNING_KEY_PASSWORD"
           } >> ./gradle.properties
 
           if [ -d "pyramid" ]; then
@@ -219,7 +221,7 @@ jobs:
           fi
 
       - name: Setup Java
-        if: ${{ matrix.java_ver }}
+        if: ${{ env.commit && matrix.java_ver }}
         uses: actions/setup-java@v4
         with:
           distribution: temurin
@@ -446,9 +448,12 @@ jobs:
   clean:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      actions: write
+      contents: read
     steps:
       - name: Delete older runs
-        uses: Mattraks/delete-workflow-runs@main
+        uses: Mattraks/delete-workflow-runs@v2
         with:
           token: ${{ github.token }}
           repository: ${{ github.repository }}
