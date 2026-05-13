@@ -1,0 +1,5 @@
+{
+  "code": 26051314,
+  "name": "260513-14-release",
+  "desc": "* 版本: 5.4.1 → 260513-14-my_release\n* 26/05/13 优化新版本检查提示\n* 26/05/13 Fix\n* 26/05/13 升级前显示当前版本\n* 26/05/13 更新升级路径\n* 26/04/20 Fix build\n* 26/04/20 Merge branch 'fongmi' into release\n* 26/04/19 Update build.gradle\n* 26/04/19 Clean code\n* 26/04/19 Clean code\n* 26/04/19 Fix track select"
+}
