@@ -8,6 +8,7 @@
 # 注意
 - **为避免与原版本混淆，本仓库编译的 APK 证书使用的证书与原始仓库不相同**
 - **版本号会根据源代码更新时间生成，避免和原版本混淆**
+- **本项目编译的 FongMi 版升级检查为本仓库内 apk 目录下对应的版本**
 
 # 编译代码来自以下仓库
 - [TVBoxOS/main](https://github.com/IsayIsee/TVBoxOS/tree/main) (Updated: 704cd2658fbcaf38551228cb90bd9f766a0c9e72)
@@ -17,7 +18,7 @@
 
 
 # 感谢
-- [huxubo/TVBoxOSC-Build](https://github.com/huxubo/TVBoxOSC-Build) 
+- [j4Uq/TVBoxOSC-Build](https://github.com/j4Uq/TVBoxOSC) 
 - [q215613905/TVBoxOS](https://github.com/q215613905/TVBoxOS)
 - [takagen99/Box](https://github.com/takagen99/Box)
 - [FongMi/TV](https://github.com/FongMi/TV)
