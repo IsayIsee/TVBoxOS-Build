@@ -19,6 +19,7 @@
 
 # 感谢
 - [j4Uq/TVBoxOSC-Build](https://github.com/j4Uq/TVBoxOSC) 
+- [tdlib/telegram-bot-api](https://github.com/tdlib/telegram-bot-api)
 - [q215613905/TVBoxOS](https://github.com/q215613905/TVBoxOS)
 - [takagen99/Box](https://github.com/takagen99/Box)
 - [FongMi/TV](https://github.com/FongMi/TV)
