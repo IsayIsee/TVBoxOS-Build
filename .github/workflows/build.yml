@@ -236,7 +236,6 @@ jobs:
         run: |
           chmod +x gradlew
           
-          # 初始构建参数
           BUILD_ARGS="assemblerelease --build-cache --parallel --daemon"
           
           if [ "${{ matrix.developer }}" == "FongMI" ]; then
@@ -247,7 +246,6 @@ jobs:
             BUILD_ARGS="$BUILD_ARGS -Pchaquopy.python=$PYTHON_310_EXE"
           fi
 
-          # 执行编译
           ./gradlew $BUILD_ARGS
 
       - name: Prepare App
@@ -322,7 +320,6 @@ jobs:
           APK_DIR="${{ github.workspace }}/apk/${{ matrix.branchName }}"
           mkdir -p "$APK_DIR"
 
-          # 按关键词分类，还原去掉 TVBox_FongMI_<tag>_ 前缀后的原始文件名
           for APK in $(find "$SRC_DIR" -name "*.apk" | sort); do
             BASE=$(basename "$APK")
             CLEAN=$(echo "$BASE" | sed 's/^TVBox_[^_]*_[^_]*_//')
@@ -367,7 +364,6 @@ jobs:
               | grep -v "^Merge " | grep -v "^$" || echo "")
           fi
           
-          # 在 RAW_LOG 开头附加原始 versionName 信息
           if [ -n "${{ env.origVersionName }}" ]; then
             VERSION_LINE="版本: ${{ env.origVersionName }} → ${{ env.tag }}-${{ matrix.branchName }}"
             RAW_LOG=$(printf '%s\n%s' "$VERSION_LINE" "$RAW_LOG")
@@ -419,14 +415,14 @@ jobs:
         if: ${{ env.commit }}
         working-directory: TVBoxOSC
         env:
-          CHAT_ID: -1001734684817
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           TELEGRAM_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: |
           if [ -n "${{ secrets.BOT_TOKEN }}" ]; then
             sed -i -e '1s/\[\(.*\)\].*/#\1/' -e 's#\([&"\/]\)#\\\1#g' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
             mv -f apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log caption.txt
             chmod +x telegram-bot-api-binary
-            ./telegram-bot-api-binary --api-id=21724 --api-hash=3e0cb5efcd52300aec5994fdfc5bdc16 --local 2>&1 > /dev/null &
+            ./telegram-bot-api-binary --local 2>&1 > /dev/null &
             [ -f ../.github/scripts/upload.py ] && mv ../.github/scripts/upload.py ./ && python upload.py
           fi
 
@@ -442,11 +438,11 @@ jobs:
             echo "- [${{ matrix.repoName }}/${{ matrix.branchName }}](https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}/tree/${{ matrix.branchName }}) (Updated: ${{ env.commit }})" >> README.md
           fi
           git add README.md
-          # FongMI：额外提交 apk/ 根目录下的 APK 和 JSON
+          # FongMI 提交 APK 和 JSON 到 repo apk 目录
           if [ "${{ matrix.developer }}" == "FongMI" ]; then
             git add apk/ || true
           fi
-          git commit -m "Update ${{ matrix.repoName }} to ${{ env.tag }}" || exit 0
+          git commit -m "Update ${{ matrix.repoName }} to ${{ env.origVersionName }}" || exit 0
           git push origin master
 
   clean:
