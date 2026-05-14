@@ -406,6 +406,7 @@ jobs:
 
       - name: Post To Work Wechat
         if: ${{ env.commit }}
+        continue-on-error: true
         uses: fjogeleit/http-request-action@v1
         with:
           url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${{ secrets.WORK_WECHAT_WEBHOOK_KEY }}"
@@ -421,6 +422,7 @@ jobs:
 
       - name: Download TG Tool
         if: ${{ env.commit }}
+        continue-on-error: true
         uses: actions/download-artifact@v8
         with:
           name: telegram-bot-api-binary
@@ -428,6 +430,7 @@ jobs:
 
       - name: Post To Telegram
         if: ${{ env.commit }}
+        continue-on-error: true
         working-directory: TVBoxOSC
         env:
           CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
