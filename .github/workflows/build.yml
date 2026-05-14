@@ -135,6 +135,8 @@ jobs:
             sed -i "/jitpack.io/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" build.gradle
           fi
           
+          git diff "app/build.gradle"
+                    
           # 更新不同分支的升级检查路径
           GITHUB_JAVA_FILE="app/src/main/java/com/fongmi/android/tv/utils/Github.java"
 
@@ -148,6 +150,7 @@ jobs:
           else
             echo "Error: Github.java not found at $GITHUB_JAVA_FILE"
           fi
+
       - name: Compress Source Code
         if: ${{ env.commit }}
         working-directory: TVBoxOSC
@@ -373,7 +376,7 @@ jobs:
 
           # 把变量写入环境文件，再由 Python 读取
           echo "$CODE"     > /tmp/fongmi_code.txt
-          echo "{{ env.VERSION_NAME }}" > /tmp/fongmi_name.txt
+          echo "${{ env.VERSION_NAME }}" > /tmp/fongmi_name.txt
           echo "${{ matrix.branchName }}" > /tmp/fongmi_branch.txt
           printf '%s' "$RAW_LOG" > /tmp/fongmi_raw.txt
           echo "$APK_DIR"  > /tmp/fongmi_dir.txt
@@ -414,9 +417,9 @@ jobs:
           contentType: 'application/json'
           data: |
             {
-              "msgtype": "markdown", 
-              "markdown": {
-                "content":"### 项目构建成功！\n- **项目**: ${{ matrix.repoName }}\n- **分支**: ${{ matrix.branchName }}\n- **版本**: ${{ env.origVersionName }}"
+              "msgtype": "markdown_v2", 
+              "markdown_v2": {
+                "content":"### TVBox 项目构建成功\n- **项目**: ${{ matrix.repoName }}\n- **分支**: ${{ matrix.branchName }}\n- **版本**: ${{ env.origVersionName }}"
               }
             }
 
