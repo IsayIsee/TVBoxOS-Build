@@ -440,8 +440,9 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: |
           if [ -n "${{ secrets.BOT_TOKEN }}" ]; then
-            sed -i -e '1s/\[\(.*\)\].*/#\1/' -e 's#\([&"\/]\)#\\\1#g' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+            sed -i -e '1s/\[\(.*\)\].*/#\1/' -e 's#\([&"\/_*]\)#\\\1#g' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
             mv -f apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log caption.txt
+            cat caption.txt
             chmod +x telegram-bot-api-binary
             ./telegram-bot-api-binary --api-id=${{ secrets.TELEGRAM_API_ID }} --api-hash=${{ secrets.TELEGRAM_API_HASH }} --local 2>&1 > /dev/null &
             [ -f ../.github/scripts/upload.py ] && mv ../.github/scripts/upload.py ./ && python upload.py
