@@ -404,6 +404,15 @@ jobs:
             TVBoxOSC/apk/*.apk
             TVBoxOSC/apk/SourceCode-${{ env.tag }}.*
 
+      - name: Post To Work Wechat
+        if: ${{ env.commit }}
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${{ secrets.WORK_WECHAT_WEBHOOK_KEY }}"
+          method: 'POST'
+          contentType: 'application/json'
+          data: '{"msgtype": "markdown", "markdown": {"content":"项目构建成功！\n项目: ${{ matrix.repoName }}\分支: ${{ matrix.branchName }}\n版本: ${{ env.origVersionName }}"}}'
+
       - name: Download TG Tool
         if: ${{ env.commit }}
         uses: actions/download-artifact@v8
