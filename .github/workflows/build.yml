@@ -315,25 +315,6 @@ jobs:
           echo "$LOG" >> apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
           echo -e '\n```' >> apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v7
-        if: ${{ env.commit }}
-        with:
-          name: ${{ matrix.userName }}-${{ matrix.repoName }}-${{ matrix.branchName }}
-          path: TVBoxOSC/apk/*
-
-      - name: Release and Upload
-        uses: ncipollo/release-action@v1
-        if: ${{ env.commit }}
-        with:
-          name: ${{ env.tag }}
-          tag: ${{ env.tag }}
-          bodyFile: TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
-          allowUpdates: true
-          artifacts: |
-            TVBoxOSC/apk/*.apk
-            TVBoxOSC/apk/SourceCode-${{ env.tag }}.*
-
       - name: Update FongMI APK To Repo
         if: ${{ env.commit && matrix.developer == 'FongMI' }}
         run: |
@@ -402,6 +383,30 @@ jobs:
           echo "$APK_DIR"  > /tmp/fongmi_dir.txt
 
           python3 ${{ github.workspace }}/.github/scripts/update_apk_json.py
+
+      - name: Whether Or Not to Publish
+        if: ${{ inputs.donotpublish && env.commit }}
+        run: |
+          echo "commit=" >> $GITHUB_ENV
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v7
+        if: ${{ env.commit }}
+        with:
+          name: ${{ matrix.userName }}-${{ matrix.repoName }}-${{ matrix.branchName }}
+          path: TVBoxOSC/apk/*
+
+      - name: Release and Upload
+        uses: ncipollo/release-action@v1
+        if: ${{ env.commit }}
+        with:
+          name: ${{ env.tag }}
+          tag: ${{ env.tag }}
+          bodyFile: TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+          allowUpdates: true
+          artifacts: |
+            TVBoxOSC/apk/*.apk
+            TVBoxOSC/apk/SourceCode-${{ env.tag }}.*
 
       - name: Download TG Tool
         if: ${{ env.commit }}
