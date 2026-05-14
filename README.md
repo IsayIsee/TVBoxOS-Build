@@ -1,9 +1,9 @@
 # 自动编译视频壳子
 
-![Build](https://img.shields.io/github/actions/workflow/status/IsayIsee/TVBoxOSC-Build/new-v3.yml?branch=master&logo=github&label=Build&style=flat-square)
-[![Release](https://img.shields.io/github/v/release/IsayIsee/TVBoxOSC-Build?style=flat-square&logo=android&logoColor=white&label=Release&color=green)](https://github.com/IsayIsee/TVBoxOSC-Build/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/IsayIsee/TVBoxOSC-Build/total?style=flat-square&logo=download&label=Downloads&color=blue)](https://github.com/IsayIsee/TVBoxOSC-Build/releases)
-[![Last Commit](https://img.shields.io/github/last-commit/IsayIsee/TVBoxOSC-Build/master?style=flat-square&logo=git&logoColor=white&label=Updated&color=lightgrey)](https://github.com/IsayIsee/TVBoxOSC-Build/commits/master)
+![Build](https://img.shields.io/github/actions/workflow/status/IsayIsee/TVBoxOS-Build/build.yml?branch=master&logo=github&label=Build&style=flat-square)
+[![Release](https://img.shields.io/github/v/release/IsayIsee/TVBoxOS-Build?style=flat-square&logo=android&logoColor=white&label=Release&color=green)](https://github.com/IsayIsee/TVBoxOS-Build/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/IsayIsee/TVBoxOS-Build/total?style=flat-square&logo=download&label=Downloads&color=blue)](https://github.com/IsayIsee/TVBoxOS-Build/releases)
+[![Last Commit](https://img.shields.io/github/last-commit/IsayIsee/TVBoxOS-Build/master?style=flat-square&logo=git&logoColor=white&label=Updated&color=lightgrey)](https://github.com/IsayIsee/TVBoxOS-Build/commits/master)
 
 # 注意
 - **为避免与原版本混淆，本仓库编译的 APK 证书使用的证书与原始仓库不相同**
