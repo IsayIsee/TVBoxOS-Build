@@ -48,7 +48,7 @@ jobs:
           find telegram-bot-api -name "telegram-bot-api" -type f -executable -exec cp {} ./telegram-bot-api-binary \;
 
       - name: Upload Binary
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: telegram-bot-api-binary
           path: telegram-bot-api-binary
@@ -316,7 +316,7 @@ jobs:
           echo -e '\n```' >> apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
 
       - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: ${{ env.commit }}
         with:
           name: ${{ matrix.userName }}-${{ matrix.repoName }}-${{ matrix.branchName }}
