@@ -151,7 +151,7 @@ jobs:
       - name: Compress Source Code
         if: ${{ env.commit }}
         working-directory: TVBoxOSC
-        run: tar -cJf sourceCode-${{ env.commitS }}.tar.xz --exclude=.git --exclude=.github *
+        run: tar -cJf SourceCode-${{ env.tag }}.tar.xz --exclude=.git --exclude=.github *
 
       - name: Setup Python
         if: ${{ env.commit }}
@@ -265,7 +265,7 @@ jobs:
             echo "Moving $file -> apk/$new_base"
             cp "$file" "apk/$new_base"
           done
-          mv sourceCode-${{ env.commitS }}.* apk/
+          mv SourceCode-${{ env.tag }}.* apk/
 
       - name: Release Note
         if: ${{ env.commit }}
@@ -332,7 +332,7 @@ jobs:
           allowUpdates: true
           artifacts: |
             TVBoxOSC/apk/*.apk
-            TVBoxOSC/apk/sourceCode-${{ env.commitS }}.*
+            TVBoxOSC/apk/SourceCode-${{ env.tag }}.*
 
       - name: Update FongMI APK To Repo
         if: ${{ env.commit && matrix.developer == 'FongMI' }}
