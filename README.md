@@ -13,7 +13,7 @@
 # 编译代码来自以下仓库
 - [TVBoxOS/main](https://github.com/IsayIsee/TVBoxOS/tree/main) (Updated: 704cd2658fbcaf38551228cb90bd9f766a0c9e72)
 - [Takagen-Box/main](https://github.com/IsayIsee/Takagen-Box/tree/main) (Updated: 258a5fef61578869ae905ca230bdde9e99fc19a8)
-- [FongMI/my_release](https://github.com/IsayIsee/FongMI/tree/my_release) (Updated: 1b384ffa45f2fb50675302972fe128dd441f85ae)
+- [FongMI/my_release](https://github.com/IsayIsee/FongMI/tree/my_release) (Updated: 47635beb23e2b005041cc465f484be2d01224823)
 - ~~[FongMI/my_dev](https://github.com/IsayIsee/FongMI/tree/my_dev) (Updated: 0000000)~~ 暂时无法编译
 
 

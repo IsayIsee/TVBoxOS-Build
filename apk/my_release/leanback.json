@@ -1,5 +1,5 @@
 {
-  "code": 26051314,
+  "code": 26051416,
   "name": "{{ env.VERSION_NAME }}",
-  "desc": "* 版本: 5.4.1 → 260513-14-my_release\n* 26/05/13 优化新版本检查提示\n* 26/05/13 Fix\n* 26/05/13 升级前显示当前版本\n* 26/05/13 更新升级路径\n* 26/04/20 Fix build\n* 26/04/20 Merge branch 'fongmi' into release\n* 26/04/19 Update build.gradle\n* 26/04/19 Clean code\n* 26/04/19 Clean code\n* 26/04/19 Fix track select"
+  "desc": "* 版本: 5.4.1 → 260514-16-my_release\n* 26/05/14 设置界面增加 GitHub Acceleration\n* 26/05/14 长按版本显示 VersionCode 手工检查更新时如果当前版本已经最新显示提示\n* 26/05/14 增加 Github Acceleration 字符串"
 }
