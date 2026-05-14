@@ -422,7 +422,7 @@ jobs:
             {
               "msgtype": "markdown_v2", 
               "markdown_v2": {
-                "content":"### TVBox 项目构建成功\n- **项目**: ${{ matrix.repoName }}\n- **分支**: ${{ matrix.branchName }}\n- **版本**: ${{ env.origVersionName }}"
+                "content":"### TVBox 项目构建成功\n- **项目**: ${{ matrix.repoName }}\n- **分支**: ${{ matrix.branchName }}\n- **版本**: ${{ env.origVersionName }} || ${{ env.tag }}"
               }
             }
 
