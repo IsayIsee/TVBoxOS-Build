@@ -135,9 +135,11 @@ jobs:
             sed -i "/jitpack.io/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" build.gradle
           fi
           
+          echo "::group::build.gradle 修改详情"
           git diff "app/build.gradle"
-                    
+          echo "::endgroup::"          
           # 更新不同分支的升级检查路径
+          
           GITHUB_JAVA_FILE="app/src/main/java/com/fongmi/android/tv/utils/Github.java"
 
           if [ -f "$GITHUB_JAVA_FILE" ]; then
@@ -145,8 +147,9 @@ jobs:
           
             echo "Successfully updated Github.java for branch: ${{ matrix.branchName }}"
           
-            echo "--- Changes in $GITHUB_JAVA_FILE ---"
+            echo "::group::Github.java 修改详情"
             git diff "$GITHUB_JAVA_FILE"
+            echo "::endgroup::" 
           else
             echo "Error: Github.java not found at $GITHUB_JAVA_FILE"
           fi
@@ -440,7 +443,10 @@ jobs:
           TELEGRAM_TOKEN: ${{ secrets.BOT_TOKEN }}
         run: |
           if [ -n "${{ secrets.BOT_TOKEN }}" ]; then
-            sed -i -e '1s/\[\(.*\)\].*/#\1/' -e 's#\([&"\/_*]\)#\\\1#g' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+            sed -i '1,/[Cc][Hh][Aa][Nn][Gg][Ee][Ll][Oo][Gg]:/d' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+            sed -i '/^```/d' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+            sed -i '1i\```' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+            sed -i -e 's#\([&"_]\)#\\\1#g' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
             mv -f apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log caption.txt
             cat caption.txt
             chmod +x telegram-bot-api-binary
