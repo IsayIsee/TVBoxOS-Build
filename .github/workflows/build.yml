@@ -123,10 +123,11 @@ jobs:
             fi
             VERSION_CODE=$(echo "${{ env.tag }}" | tr -dc '0-9' | cut -c1-9)
             VERSION_NAME=$(echo "${{ env.tag }}-${{ matrix.branchName }}" | sed 's/my_//')    
-            echo "VERSION_NAME: $VERSION_NAME"
-            [ -f app/build.gradle ] && sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'$VERSION_NAME\'#" app/build.gradle
+            echo "VERSION_CODE=$VERSION_CODE" >> $GITHUB_ENV
+            echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
+            [ -f app/build.gradle ] && sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'${{ env.VERSION_NAME }}\'#" app/build.gradle
             [ -f app/src/main/res/layout/dialog_about.xml ] && sed -i "/android:text=/s#=\"#=\"${{ env.tag }}\\\\n\\\\n#" app/src/main/res/layout/dialog_about.xml
-            [ -f app/build.gradle ] && sed -i "/versionCode/s#versionCode.*#versionCode $VERSION_CODE#" app/build.gradle
+            [ -f app/build.gradle ] && sed -i "/versionCode/s#versionCode.*#versionCode ${{ env.VERSION_CODE }}#" app/build.gradle
           fi 
           if grep -q 'crosswalk' build.gradle; then
             sed -i "/crosswalk/a\        maven { url 'https://o0halflife0o.github.io/crosswalk/releases/crosswalk/android/maven2' }" build.gradle
@@ -276,7 +277,8 @@ jobs:
             echo "Commit: ${{ env.commit }}"
 
             if [ "${{ matrix.developer }}" == "FongMI" ] && [ -n "${{ env.origVersionName }}" ]; then
-              echo "Version: ${{ env.origVersionName }} → ${{ env.tag }}-${{ matrix.branchName }}"
+              echo "Original version: ${{ env.origVersionName }}"
+              echo "Compiled version: ${{ env.tag }}-${{ matrix.branchName }}"
             fi
             echo "Changelog:"
             echo '```'
@@ -394,8 +396,7 @@ jobs:
 
           # 把变量写入环境文件，再由 Python 读取
           echo "$CODE"     > /tmp/fongmi_code.txt
-          VERSION_NAME=$(echo "${{ env.tag }}-${{ matrix.branchName }}" | sed 's/my_//') 
-          echo "$VERSION_NAME" > /tmp/fongmi_name.txt
+          echo "{{ env.VERSION_NAME }}" > /tmp/fongmi_name.txt
           echo "${{ matrix.branchName }}" > /tmp/fongmi_branch.txt
           printf '%s' "$RAW_LOG" > /tmp/fongmi_raw.txt
           echo "$APK_DIR"  > /tmp/fongmi_dir.txt
