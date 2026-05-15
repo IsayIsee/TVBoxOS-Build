@@ -453,6 +453,7 @@ jobs:
             sed -i '/^```/d' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
             sed -i '1i\```' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
             sed -i -e 's#\([&"_]\)#\\\1#g' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+            echo -e '\n```' >> apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
             mv -f apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log caption.txt
             cat caption.txt
             chmod +x telegram-bot-api-binary
