@@ -74,11 +74,11 @@ jobs:
             branchName: my_release
             java_ver: 17
             developer: FongMI
-#          - userName: IsayIsee
-#            repoName: FongMI
-#            branchName: my_dev
-#            java_ver: 21
-#            developer: FongMI
+          - userName: IsayIsee
+            repoName: FongMI
+            branchName: my_dev
+            java_ver: 21
+            developer: FongMI
 
     steps:
       - name: Checkout
