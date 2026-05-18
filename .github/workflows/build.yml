@@ -452,7 +452,7 @@ jobs:
             sed -i '1,/[Cc][Hh][Aa][Nn][Gg][Ee][Ll][Oo][Gg]:/d' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
             sed -i '/^```/d' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
             sed -i '1i\```' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
-            sed -i -e 's#\([&"_]\)#\\\1#g' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+            sed -i -e 's#\([&"]\)#\\\1#g' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
             echo -e '\n```' >> apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
             mv -f apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log caption.txt
             cat caption.txt
@@ -461,18 +461,60 @@ jobs:
             [ -f ../.github/scripts/upload.py ] && mv ../.github/scripts/upload.py ./ && python upload.py
           fi
 
+      - name: Update Version History MD
+        if: ${{ env.commit && matrix.developer == 'FongMI' }}
+        run: |
+          HISTORY_FILE="${{ github.workspace }}/version_history.md"
+          touch "$HISTORY_FILE"
+          
+          # 临时创建一个存放当前分支新日志的文件
+          TEMP_LOG="/tmp/current_branch_history.md"
+          
+          # 1. 写入版本标题和时间
+          echo "### FongMi [${{ matrix.branchName }}] - 更新于 $(date '+%Y-%m-%d %H:%M')" > "$TEMP_LOG"
+          if [ -n "${{ env.origVersionName }}" ]; then
+            echo "- **原始版本**: ${{ env.origVersionName }}" >> "$TEMP_LOG"
+            echo "- **编译版本**: ${{ env.tag }}-${{ matrix.branchName }}" >> "$TEMP_LOG"
+          fi
+          echo "- **提交哈希**: [${{ env.commitS }}](https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}/commit/${{ env.commit }})" >> "$TEMP_LOG"
+          echo -e "\n**详细日志/Changelog**:\n" >> "$TEMP_LOG"
+          
+          # 2. 提取我们在前面步骤中生成好的纯文本日志（去掉前缀和未处理的markdown标记）
+          if [ -f "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" ]; then
+            # 提取 ``` 之间的日志内容，并加上引言格式
+            sed -n '/
+            ```/,/```/p' "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" | grep -v '```' | sed 's/^/> /' >> "$TEMP_LOG"
+          else
+            echo "> 暂无详细更新日志。" >> "$TEMP_LOG"
+          fi
+          echo -e "\n---\n" >> "$TEMP_LOG"
+          
+          # 3. 将新日志合并到原有历史文件（新日志置顶）
+          cat "$HISTORY_FILE" >> "$TEMP_LOG"
+          mv "$TEMP_LOG" "$HISTORY_FILE"
+          
+          echo "Successfully updated version_history.md for ${{ matrix.branchName }}"
+
       - name: Push to master
         if: ${{ env.commit }}
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git pull --rebase --autostash origin master
+          
+          # 更新 README.md
           if grep -q "${{ matrix.repoName }}\/${{ matrix.branchName }}" README.md; then
             sed -i "/${{ matrix.repoName }}\/${{ matrix.branchName }}/s#Updated: [a-zA-Z0-9]*#Updated: ${{ env.commit }}#" README.md
           else
             echo "- [${{ matrix.repoName }}/${{ matrix.branchName }}](https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}/tree/${{ matrix.branchName }}) (Updated: ${{ env.commit }})" >> README.md
           fi
           git add README.md
+          
+          # 新增：如果存在修改，则提交版本历史文件
+          if [ -f version_history.md ]; then
+            git add version_history.md
+          fi
+          
           # FongMI 提交 APK 和 JSON 到 repo apk 目录
           if [ "${{ matrix.developer }}" == "FongMI" ]; then
             git add apk/ || true
