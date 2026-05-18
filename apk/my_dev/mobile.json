@@ -1,5 +1,5 @@
 {
-  "code": 26051814,
-  "name": "260518-14-dev",
-  "desc": "* 版本: 5.4.9 → 260518-14-my_dev\n* 26/05/18 Fix Merge error\n* 26/05/18 Merge remote-tracking branch 'origin/my_dev' into my_dev\n* 26/05/18 手机版恢复全屏按钮\n* 26/05/18 Merge pull request #2 from IsayIsee/fongmi\n* 26/05/18 Merge branch 'my_dev' into fongmi\n* 26/05/15 Clean code\n* 26/05/15 Clean code\n* 26/05/15 Clean code\n* 26/05/15 Add repeat button\n* 26/05/15 Add manager and notify permission check\n* 26/05/15 Update gradle\n* 26/05/15 Update libs.versions.toml"
+  "code": 26051815,
+  "name": "260518-15-dev",
+  "desc": "* 版本: 5.4.9 → 260518-15-my_dev\n* 26/05/18 恢复 targetSdk 为 28 否则使用 Dex 方式加载的 Spider 会导致程序崩溃"
 }
