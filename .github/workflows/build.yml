@@ -419,7 +419,7 @@ jobs:
       - name: Post To Work Wechat
         if: ${{ env.commit }}
         continue-on-error: true
-        uses: fjogeleit/http-request-action@v1
+        uses: fjogeleit/http-request-action@v2
         with:
           url: "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=${{ secrets.WORK_WECHAT_WEBHOOK_KEY }}"
           method: 'POST'
