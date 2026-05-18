@@ -1,5 +1,5 @@
 {
-  "code": 26051517,
-  "name": "260515-17-dev",
-  "desc": "* 版本: 5.4.9 → 260515-17-my_dev\n* 26/05/15 Remove explicit Python executable path\n* 26/05/15 长按版本号开启 Github 加速设置,用于新版本检查 缓存清除修改为长按避免无操作\n* 26/05/15 nextlib.media3ext 库当前没有针对 1.10.1 版本的,因此使用源代码补全项目所需依赖 为通过编译添加 setAudioPrefer, setVideoPrefer 方法\n* 26/05/15 nextlib.media3ext 库当前没有针对 1.10.1 版本的,因此使用源代码补全项目所需依赖\n* 26/05/15 media3 库升级到 fongmi 分支 1.10.1\n* 26/05/15 Merge pull request #1 from IsayIsee/fongmi\n* 26/05/14 Clean code\n* 26/05/14 Update build.gradle\n* 26/05/14 Optimize color system\n* 26/05/14 Adjust site and year color"
+  "code": 26051814,
+  "name": "260518-14-dev",
+  "desc": "* 版本: 5.4.9 → 260518-14-my_dev\n* 26/05/18 Fix Merge error\n* 26/05/18 Merge remote-tracking branch 'origin/my_dev' into my_dev\n* 26/05/18 手机版恢复全屏按钮\n* 26/05/18 Merge pull request #2 from IsayIsee/fongmi\n* 26/05/18 Merge branch 'my_dev' into fongmi\n* 26/05/15 Clean code\n* 26/05/15 Clean code\n* 26/05/15 Clean code\n* 26/05/15 Add repeat button\n* 26/05/15 Add manager and notify permission check\n* 26/05/15 Update gradle\n* 26/05/15 Update libs.versions.toml"
 }
