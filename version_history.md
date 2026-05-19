@@ -1,3 +1,14 @@
+### FongMi [my_dev] - 更新于 2026-05-19 09:51
+- **原始版本**: 5.4.9
+- **编译版本**: 260519-17-my_dev
+- **提交哈希**: [9dd9968](https://github.com/IsayIsee/FongMI/commit/9dd99687362cff96056774f322cb05b0abf98d19)
+
+**详细日志/Changelog**:
+
+> 暂无详细更新日志。
+
+---
+
 ```
 26/05/18 恢复 targetSdk 为 28 否则使用 Dex 方式加载的 Spider 会导致程序崩溃
 ```
