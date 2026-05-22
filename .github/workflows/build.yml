@@ -229,6 +229,10 @@ jobs:
             echo "keyAlias=$SIGNING_KEY_ALIAS"
             echo "storePassword=$SIGNING_STORE_PASSWORD"
             echo "keyPassword=$SIGNING_KEY_PASSWORD"
+            echo "org.gradle.caching=true"
+            echo "org.gradle.parallel=true"
+            echo "org.gradle.daemon=false"
+            echo "org.gradle.jvmargs=-Xmx4g -XX:+UseParallelGC -XX:MaxMetaspaceSize=512m"
           } >> ./gradle.properties
 
           if [ -d "pyramid" ]; then
@@ -252,7 +256,7 @@ jobs:
         run: |
           chmod +x gradlew
           
-          BUILD_ARGS="assemblerelease --build-cache --parallel --daemon"
+          BUILD_ARGS="assemblerelease --build-cache --parallel"
           
           if [ "${{ matrix.developer }}" == "FongMI" ]; then
             echo "Applying Python 3.10 path enforcement for FongMi..."
@@ -436,6 +440,36 @@ jobs:
               }
             }
 
+      - name: Download TG Tool
+        if: ${{ env.commit }}
+        continue-on-error: true
+        uses: actions/download-artifact@v8
+        with:
+          name: telegram-bot-api-binary
+          path: TVBoxOSC
+
+      - name: Post To Telegram
+        if: ${{ env.commit }}
+        continue-on-error: true
+        working-directory: TVBoxOSC
+        env:
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: |
+          if [ -n "${{ secrets.BOT_TOKEN }}" ]; then
+            sed -i '1,/[Cc][Hh][Aa][Nn][Gg][Ee][Ll][Oo][Gg]:/d' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+            sed -i '/^```/d' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+            sed -i '1i\```' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+            sed -i -e 's#\([&"]\)#\\\1#g' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+            echo -e '```' >> apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
+            cp -f apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log caption.txt
+            cat caption.txt
+            chmod +x telegram-bot-api-binary
+            ./telegram-bot-api-binary --api-id=${{ secrets.TELEGRAM_API_ID }} --api-hash=${{ secrets.TELEGRAM_API_HASH }} --local 2>&1 > /dev/null &
+            timeout 30 bash -c 'until curl -s http://127.0.0.1:8081 > /dev/null 2>&1; do sleep 1; done'
+            [ -f ../.github/scripts/upload.py ] && mv ../.github/scripts/upload.py ./ && python upload.py
+          fi
+
       - name: Update Version History MD
         if: ${{ env.commit && matrix.developer == 'FongMI' }}
         run: |
@@ -469,35 +503,6 @@ jobs:
           mv "$TEMP_LOG" "$HISTORY_FILE"
           
           echo "Successfully updated version_history.md for ${{ matrix.branchName }}"
-
-      - name: Download TG Tool
-        if: ${{ env.commit }}
-        continue-on-error: true
-        uses: actions/download-artifact@v8
-        with:
-          name: telegram-bot-api-binary
-          path: TVBoxOSC
-
-      - name: Post To Telegram
-        if: ${{ env.commit }}
-        continue-on-error: true
-        working-directory: TVBoxOSC
-        env:
-          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-          TELEGRAM_TOKEN: ${{ secrets.BOT_TOKEN }}
-        run: |
-          if [ -n "${{ secrets.BOT_TOKEN }}" ]; then
-            sed -i '1,/[Cc][Hh][Aa][Nn][Gg][Ee][Ll][Oo][Gg]:/d' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
-            sed -i '/^```/d' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
-            sed -i '1i\```' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
-            sed -i -e 's#\([&"]\)#\\\1#g' apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
-            echo -e '\n```' >> apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
-            mv -f apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log caption.txt
-            cat caption.txt
-            chmod +x telegram-bot-api-binary
-            ./telegram-bot-api-binary --api-id=${{ secrets.TELEGRAM_API_ID }} --api-hash=${{ secrets.TELEGRAM_API_HASH }} --local 2>&1 > /dev/null &
-            [ -f ../.github/scripts/upload.py ] && mv ../.github/scripts/upload.py ./ && python upload.py
-          fi
 
       - name: Push to master
         if: ${{ env.commit }}
