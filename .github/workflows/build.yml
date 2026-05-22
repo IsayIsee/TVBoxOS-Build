@@ -490,9 +490,7 @@ jobs:
           
           # 2. 提取我们在前面步骤中生成好的纯文本日志（去掉前缀和未处理的markdown标记）
           if [ -f "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" ]; then
-            # 提取 ``` 之间的日志内容，并加上引言格式
-            grep -v '^```' "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" \
-              | sed 's/^/> /' >> "$TEMP_LOG"
+            cat "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" >> "$TEMP_LOG"
           else
             echo "> 暂无详细更新日志。" >> "$TEMP_LOG"
           fi

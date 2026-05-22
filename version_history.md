@@ -5,19 +5,15 @@
 
 **详细日志/Changelog**:
 
-> Credit: FongMI
-> Commit: bc5f3a9ccee3bf8a5443db1ec8bd78a783e4f5e0
-> Original version: 5.5.2
-> Compiled version: 260522-08-my_dev
-> Changelog:
-> 26/05/22 Merge branch 'fongmi' into my_dev
-> 26/05/22 Update build.gradle
-> 26/05/22 Fix offset bug
-> 26/05/22 Clean code
-> 26/05/22 Update build.gradle
-> 26/05/22 Fix load more
-> 26/05/22 Fix danmaku not release
-> 
+```
+26/05/22 Merge branch 'fongmi' into my_dev
+26/05/22 Update build.gradle
+26/05/22 Fix offset bug
+26/05/22 Clean code
+26/05/22 Update build.gradle
+26/05/22 Fix load more
+26/05/22 Fix danmaku not release
+```
 
 ---
 
