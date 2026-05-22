@@ -20,20 +20,24 @@ jobs:
   telegram-bot-api:
     name: Telegram Bot API
     runs-on: ubuntu-latest
+    outputs:
+      binary-key: ${{ steps.tool-sha.outputs.sha }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
       - name: Get Tool SHA
         id: tool-sha
         run: echo "sha=$(git ls-remote https://github.com/tdlib/telegram-bot-api.git HEAD | awk '{print $1}')" >> $GITHUB_OUTPUT
 
-      - name: Cache Binary
+      - name: Check Cache
         id: cache-bin
         uses: actions/cache@v5
         with:
           path: telegram-bot-api-binary
           key: tg-api-${{ steps.tool-sha.outputs.sha }}
+
+      # 有 cache 直接跳到 Upload，以下三步全部跳过
+      - name: Checkout
+        if: steps.cache-bin.outputs.cache-hit != 'true'
+        uses: actions/checkout@v6
 
       - name: Compile Telegram Bot API
         if: steps.cache-bin.outputs.cache-hit != 'true'
