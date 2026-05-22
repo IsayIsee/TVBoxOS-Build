@@ -432,6 +432,40 @@ jobs:
               }
             }
 
+      - name: Update Version History MD
+        if: ${{ env.commit && matrix.developer == 'FongMI' }}
+        run: |
+          HISTORY_FILE="${{ github.workspace }}/version_history.md"
+          touch "$HISTORY_FILE"
+          
+          # 临时创建一个存放当前分支新日志的文件
+          TEMP_LOG="/tmp/current_branch_history.md"
+          
+          # 1. 写入版本标题和时间
+          echo "### FongMi [${{ matrix.branchName }}] - 更新于 $(date '+%Y-%m-%d %H:%M')" > "$TEMP_LOG"
+          if [ -n "${{ env.origVersionName }}" ]; then
+            echo "- **原始版本**: ${{ env.origVersionName }}" >> "$TEMP_LOG"
+            echo "- **编译版本**: ${{ env.tag }}-${{ matrix.branchName }}" >> "$TEMP_LOG"
+          fi
+          echo "- **提交哈希**: [${{ env.commitS }}](https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}/commit/${{ env.commit }})" >> "$TEMP_LOG"
+          echo -e "\n**详细日志/Changelog**:\n" >> "$TEMP_LOG"
+          
+          # 2. 提取我们在前面步骤中生成好的纯文本日志（去掉前缀和未处理的markdown标记）
+          if [ -f "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" ]; then
+            # 提取 ``` 之间的日志内容，并加上引言格式
+            grep -v '^```' "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" \
+              | sed 's/^/> /' >> "$TEMP_LOG"
+          else
+            echo "> 暂无详细更新日志。" >> "$TEMP_LOG"
+          fi
+          echo -e "\n---\n" >> "$TEMP_LOG"
+          
+          # 3. 将新日志合并到原有历史文件（新日志置顶）
+          cat "$HISTORY_FILE" >> "$TEMP_LOG"
+          mv "$TEMP_LOG" "$HISTORY_FILE"
+          
+          echo "Successfully updated version_history.md for ${{ matrix.branchName }}"
+
       - name: Download TG Tool
         if: ${{ env.commit }}
         continue-on-error: true
@@ -460,40 +494,6 @@ jobs:
             ./telegram-bot-api-binary --api-id=${{ secrets.TELEGRAM_API_ID }} --api-hash=${{ secrets.TELEGRAM_API_HASH }} --local 2>&1 > /dev/null &
             [ -f ../.github/scripts/upload.py ] && mv ../.github/scripts/upload.py ./ && python upload.py
           fi
-
-      - name: Update Version History MD
-        if: ${{ env.commit && matrix.developer == 'FongMI' }}
-        run: |
-          HISTORY_FILE="${{ github.workspace }}/version_history.md"
-          touch "$HISTORY_FILE"
-          
-          # 临时创建一个存放当前分支新日志的文件
-          TEMP_LOG="/tmp/current_branch_history.md"
-          
-          # 1. 写入版本标题和时间
-          echo "### FongMi [${{ matrix.branchName }}] - 更新于 $(date '+%Y-%m-%d %H:%M')" > "$TEMP_LOG"
-          if [ -n "${{ env.origVersionName }}" ]; then
-            echo "- **原始版本**: ${{ env.origVersionName }}" >> "$TEMP_LOG"
-            echo "- **编译版本**: ${{ env.tag }}-${{ matrix.branchName }}" >> "$TEMP_LOG"
-          fi
-          echo "- **提交哈希**: [${{ env.commitS }}](https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}/commit/${{ env.commit }})" >> "$TEMP_LOG"
-          echo -e "\n**详细日志/Changelog**:\n" >> "$TEMP_LOG"
-          
-          # 2. 提取我们在前面步骤中生成好的纯文本日志（去掉前缀和未处理的markdown标记）
-          if [ -f "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" ]; then
-            # 提取 ``` 之间的日志内容，并加上引言格式
-            sed -n '/
-            ```/,/```/p' "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" | grep -v '```' | sed 's/^/> /' >> "$TEMP_LOG"
-          else
-            echo "> 暂无详细更新日志。" >> "$TEMP_LOG"
-          fi
-          echo -e "\n---\n" >> "$TEMP_LOG"
-          
-          # 3. 将新日志合并到原有历史文件（新日志置顶）
-          cat "$HISTORY_FILE" >> "$TEMP_LOG"
-          mv "$TEMP_LOG" "$HISTORY_FILE"
-          
-          echo "Successfully updated version_history.md for ${{ matrix.branchName }}"
 
       - name: Push to master
         if: ${{ env.commit }}

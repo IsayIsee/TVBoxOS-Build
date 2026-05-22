@@ -5,7 +5,21 @@
 
 **详细日志/Changelog**:
 
-> 暂无详细更新日志。
+```
+26/05/21 Merge branch 'refs/heads/fongmi' into my_dev
+26/05/21 Fix android 10 permission
+26/05/21 修复 Andorid 10 写入外部存储出错的问题
+26/05/21 Fix gson crash
+26/05/21 增加 FongMi media3 编译批处理
+26/05/21 更新 media3 aar 版本
+26/05/21 Merge branch 'fongmi' into my_dev
+26/05/21 Optimize offset dialog
+26/05/21 Clean code
+26/05/20 Merge branch 'fongmi' into my_dev
+26/05/20 Update build.gradle
+26/05/20 Clean code
+26/05/19 Add audio/text offset setting
+```
 
 ---
 
@@ -16,7 +30,11 @@
 
 **详细日志/Changelog**:
 
-> 暂无详细更新日志。
+```
+26/05/19 Merge branch 'fongmi' into my_dev
+26/05/19 Adjust danmaku setting reset button
+26/05/19 Fix track select
+```
 
 ---
 
