@@ -1,3 +1,26 @@
+### FongMi [webhtv-latest-target37] - 更新于 2026-06-04 10:08
+- **原始版本**: 5.5.2
+- **编译版本**: 260527-18-webhtv-latest-target37
+- **提交哈希**: [bce7de0](https://github.com/IsayIsee/webhtv/commit/bce7de0f4b364ad0609851873e675b9fcc3e4d4b)
+
+**详细日志/Changelog**:
+
+```
+26/05/27 修复5.5.2设置页与文件权限
+26/05/27 完善应用开发文档
+26/05/27 同步 5.4.9 播放修复到 target37
+26/05/26 Document clone build workflow
+26/05/26 Make target37 clone-buildable
+26/05/26 Sync WebHTV latest target37
+26/05/25 Sync WebHTV 5.4.9
+26/05/25 nostr推荐页增加最近观看,详情页剧照改为顶部轮播
+26/05/24 新增电视端适配;新增增强功能设置页，集中管理网盘检测和调试日志开关
+26/05/23 调整网盘检测缓存ttl
+
+```
+
+---
+
 ### FongMi [my_dev] - 更新于 2026-05-22 08:55
 - **原始版本**: 5.5.2
 - **编译版本**: 260522-08-my_dev
