@@ -83,7 +83,11 @@ jobs:
             branchName: my_dev
             java_ver: 21
             developer: FongMI
-
+          - userName: IsayIsee
+            repoName: webhtv
+            branchName: webhtv-latest-target37
+            java_ver: 21
+            developer: FongMI
     steps:
       - name: Checkout
         uses: actions/checkout@v6
