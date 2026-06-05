@@ -1,5 +1,5 @@
 {
   "code": 26052208,
   "name": "260522-08-dev",
-  "desc": "* 版本: 5.5.2 → 260522-08-my_dev\n* 26/05/22 Merge branch 'fongmi' into my_dev\n* 26/05/22 Update build.gradle\n* 26/05/22 Fix offset bug\n* 26/05/22 Clean code\n* 26/05/22 Update build.gradle\n* 26/05/22 Fix load more\n* 26/05/22 Fix danmaku not release"
+  "desc": "* 版本: 5.5.2 → 260522-08-my_dev\n* 26/05/22 Merge branch 'fongmi' into my_dev\n* 26/05/22 Update build.gradle\n* 26/05/22 Fix offset bug\n* 26/05/22 Clean code\n* 26/05/22 Update build.gradle\n* 26/05/22 Fix load more\n* 26/05/22 Fix danmaku not release\n* 26/05/21 Merge branch 'refs/heads/fongmi' into my_dev\n* 26/05/21 Fix android 10 permission\n* 26/05/21 修复 Andorid 10 写入外部存储出错的问题"
 }

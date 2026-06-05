@@ -1,3 +1,26 @@
+### FongMi [my_dev] - 更新于 2026-06-05 07:58
+- **原始版本**: 5.5.2
+- **编译版本**: 260522-08-my_dev
+- **提交哈希**: [bc5f3a9](https://github.com/IsayIsee/FongMI/commit/bc5f3a9ccee3bf8a5443db1ec8bd78a783e4f5e0)
+
+**详细日志/Changelog**:
+
+```
+26/05/22 Merge branch 'fongmi' into my_dev
+26/05/22 Update build.gradle
+26/05/22 Fix offset bug
+26/05/22 Clean code
+26/05/22 Update build.gradle
+26/05/22 Fix load more
+26/05/22 Fix danmaku not release
+26/05/21 Merge branch 'refs/heads/fongmi' into my_dev
+26/05/21 Fix android 10 permission
+26/05/21 修复 Andorid 10 写入外部存储出错的问题
+
+```
+
+---
+
 ### FongMi [webhtv-latest-target37] - 更新于 2026-06-04 10:08
 - **原始版本**: 5.5.2
 - **编译版本**: 260527-18-webhtv-latest-target37
