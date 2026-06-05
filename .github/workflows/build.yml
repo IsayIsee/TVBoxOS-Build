@@ -337,7 +337,7 @@ jobs:
           echo "$LOG" >> apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
           echo -e '\n```' >> apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
 
-      - name: Update FongMI APK To Repo
+      - name: Update APK To Repo
         if: ${{ env.commit && ( matrix.developer == 'FongMI' || matrix.developer == 'fish2018' ) }}
         run: |
           SRC_DIR="${{ github.workspace }}/TVBoxOSC/apk"
@@ -474,7 +474,7 @@ jobs:
             [ -f ../.github/scripts/upload.py ] && mv ../.github/scripts/upload.py ./ && python upload.py
           fi
 
-      - name: Update Version History MD
+      - name: Update FongMI Version History
         if: ${{ env.commit && matrix.developer == 'FongMI' }}
         run: |
           HISTORY_FILE="${{ github.workspace }}/version_history.md"
@@ -506,6 +506,38 @@ jobs:
           
           echo "Successfully updated version_history.md for ${{ matrix.branchName }}"
 
+      - name: Update WebHomeTV Version History
+        if: ${{ env.commit && matrix.developer == 'fish2018' }}
+        run: |
+          HISTORY_FILE="${{ github.workspace }}/version_history_webhtv.md"
+          touch "$HISTORY_FILE"
+          
+          # 临时创建一个存放当前分支新日志的文件
+          TEMP_LOG="/tmp/current_branch_history.md"
+          
+          # 1. 写入版本标题和时间
+          echo "### WebHomeTV [${{ matrix.branchName }}] - 更新于 $(date '+%Y-%m-%d %H:%M')" > "$TEMP_LOG"
+          if [ -n "${{ env.origVersionName }}" ]; then
+            echo "- **原始版本**: ${{ env.origVersionName }}" >> "$TEMP_LOG"
+            echo "- **编译版本**: ${{ env.tag }}-${{ matrix.branchName }}" >> "$TEMP_LOG"
+          fi
+          echo "- **提交哈希**: [${{ env.commitS }}](https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}/commit/${{ env.commit }})" >> "$TEMP_LOG"
+          echo -e "\n**详细日志/Changelog**:\n" >> "$TEMP_LOG"
+          
+          # 2. 提取我们在前面步骤中生成好的纯文本日志（去掉前缀和未处理的markdown标记）
+          if [ -f "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" ]; then
+            cat "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" >> "$TEMP_LOG"
+          else
+            echo "> 暂无详细更新日志。" >> "$TEMP_LOG"
+          fi
+          echo -e "\n---\n" >> "$TEMP_LOG"
+          
+          # 3. 将新日志合并到原有历史文件（新日志置顶）
+          cat "$HISTORY_FILE" >> "$TEMP_LOG"
+          mv "$TEMP_LOG" "$HISTORY_FILE"
+          
+          echo "Successfully updated version_history_webhtv.md for ${{ matrix.branchName }}"
+
       - name: Push to master
         if: ${{ env.commit }}
         run: |
@@ -526,8 +558,12 @@ jobs:
             git add version_history.md
           fi
           
+          if [ -f version_history_webhtv.md ]; then
+            git add version_history_webhtv.md
+          fi
+          
           # FongMI 提交 APK 和 JSON 到 repo apk 目录
-          if [ "${{ matrix.developer }}" == "FongMI" ]; then
+          if [ "${{ matrix.developer }}" == "FongMI" ] || [ "${{ matrix.developer }}" == "fish2018" ]; then
             git add apk/ || true
           fi
           git commit -m "Update ${{ matrix.repoName }} to ${{ env.origVersionName }}" || exit 0
