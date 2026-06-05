@@ -52,7 +52,7 @@ jobs:
           find telegram-bot-api -name "telegram-bot-api" -type f -executable -exec cp {} ./telegram-bot-api-binary \;
 
       - name: Upload Binary
-        uses: actions/upload-artifact@v8
+        uses: actions/upload-artifact@v7
         with:
           name: telegram-bot-api-binary
           path: telegram-bot-api-binary
