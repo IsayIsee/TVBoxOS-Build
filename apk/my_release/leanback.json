@@ -1,5 +1,5 @@
 {
   "code": 26051518,
   "name": "260515-18-release",
-  "desc": "* 版本: 5.4.1 → 260515-18-my_release\n* 26/05/15 Fix\n* 26/05/15 Fix"
+  "desc": "* 版本: 5.4.1 → 260515-18-my_release\n* 26/05/15 Fix\n* 26/05/15 Fix\n* 26/05/15 长按版本进行 Github 加速设置\n* 26/05/14 Fix\n* 26/05/14 修正版本检查提示\n* 26/05/14 设置界面增加 GitHub Acceleration\n* 26/05/14 长按版本显示 VersionCode 手工检查更新时如果当前版本已经最新显示提示\n* 26/05/14 增加 Github Acceleration 字符串\n* 26/05/13 优化新版本检查提示\n* 26/05/13 Fix"
 }
