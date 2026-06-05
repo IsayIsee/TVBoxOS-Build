@@ -338,7 +338,7 @@ jobs:
           echo -e '\n```' >> apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
 
       - name: Update FongMI APK To Repo
-        if: ${{ env.commit && ( matrix.developer == 'FongMI' || "${{ matrix.developer }}" == "fish2018" )}}
+        if: ${{ env.commit && ( matrix.developer == 'FongMI' || matrix.developer == 'fish2018' ) }}
         run: |
           SRC_DIR="${{ github.workspace }}/TVBoxOSC/apk"
           APK_DIR="${{ github.workspace }}/apk/${{ matrix.branchName }}"
