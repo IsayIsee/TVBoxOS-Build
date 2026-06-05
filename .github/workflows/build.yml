@@ -85,7 +85,7 @@ jobs:
             developer: FongMI
           - userName: IsayIsee
             repoName: webhtv
-            branchName: webhtv-latest-target37
+            branchName: webhtv_dev
             java_ver: 21
             developer: fish2018
     steps:
