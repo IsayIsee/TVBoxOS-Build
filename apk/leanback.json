@@ -1,5 +1,5 @@
 {
-  "code": 26051517,
-  "name": "260515-17-dev",
-  "desc": "* 版本: 5.4.9 → 260515-17-my_dev\n* 26/05/15 Remove explicit Python executable path\n* 26/05/15 长按版本号开启 Github 加速设置,用于新版本检查 缓存清除修改为长按避免无操作\n* 26/05/15 nextlib.media3ext 库当前没有针对 1.10.1 版本的,因此使用源代码补全项目所需依赖 为通过编译添加 setAudioPrefer, setVideoPrefer 方法\n* 26/05/15 nextlib.media3ext 库当前没有针对 1.10.1 版本的,因此使用源代码补全项目所需依赖\n* 26/05/15 media3 库升级到 fongmi 分支 1.10.1\n* 26/05/15 Merge pull request #1 from IsayIsee/fongmi\n* 26/05/14 Clean code\n* 26/05/14 Update build.gradle\n* 26/05/14 Optimize color system\n* 26/05/14 Adjust site and year color"
+  "code": 26060514,
+  "name": "260605-14-webhtv_dev",
+  "desc": "* 版本: 5.5.2 → 260605-14-webhtv_dev\n* 26/06/05 * 清除缓存改为长按\n* 26/06/05 * 同步 FongMi 修改\n* 26/06/05 * 更新升级检查路径\n* 26/06/03 fix: restore tv webhome title focus\n* 26/06/03 docs: update friend link badge\n* 26/06/03 docs: add discuss badge\n* 26/06/03 demo: update immersive nostr webhome\n* 26/06/03 docs: update webhome performance and management docs\n* 26/06/03 feat: support mobile webhome fullscreen detail\n* 26/06/03 perf: tune tv webview focus handling"
 }
