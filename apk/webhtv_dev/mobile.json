@@ -1,0 +1,5 @@
+{
+  "code": 26060514,
+  "name": "260605-14-webhtv_dev",
+  "desc": "* 版本: 5.5.2 → 260605-14-webhtv_dev\n* 26/06/05 * 清除缓存改为长按\n* 26/06/05 * 同步 FongMi 修改\n* 26/06/05 * 更新升级检查路径\n* 26/06/03 fix: restore tv webhome title focus\n* 26/06/03 docs: update friend link badge\n* 26/06/03 docs: add discuss badge\n* 26/06/03 demo: update immersive nostr webhome\n* 26/06/03 docs: update webhome performance and management docs\n* 26/06/03 feat: support mobile webhome fullscreen detail\n* 26/06/03 perf: tune tv webview focus handling"
+}
