@@ -24,4 +24,4 @@
 - [q215613905/TVBoxOS](https://github.com/q215613905/TVBoxOS)
 - [takagen99/Box](https://github.com/takagen99/Box)
 - [FongMi/TV](https://github.com/FongMi/TV)
-- [webhtv/webhtv-latest-target37](https://github.com/fish2018/webhtv)
+- [fish2018/webhtv](https://github.com/fish2018/webhtv)

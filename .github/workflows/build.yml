@@ -87,7 +87,7 @@ jobs:
             repoName: webhtv
             branchName: webhtv-latest-target37
             java_ver: 21
-            developer: FongMI
+            developer: fish2018
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -213,7 +213,7 @@ jobs:
           
           echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
 
-          if [ "${{ matrix.developer }}" == "FongMI" ]; then
+          if [ "${{ matrix.developer }}" == "FongMI" || "${{ matrix.developer }}" == "fish2018" ]; then
             PYTHON_PATH=$(which python3)
             {
               echo "storeFile=$ROOT_DIR/app/TVBoxOSC.jks"
@@ -262,7 +262,7 @@ jobs:
           
           BUILD_ARGS="assemblerelease --build-cache --parallel"
           
-          if [ "${{ matrix.developer }}" == "FongMI" ]; then
+          if [ "${{ matrix.developer }}" == "FongMI" || "${{ matrix.developer }}" == "fish2018" ]; then
             echo "Applying Python 3.10 path enforcement for FongMi..."
             PYTHON_310_EXE=$(which python3.10 || which python3)
             echo "Python 3.10 path is: $PYTHON_310_EXE"
@@ -298,7 +298,7 @@ jobs:
             echo "Credit: ${{ matrix.developer }}"
             echo "Commit: ${{ env.commit }}"
 
-            if [ "${{ matrix.developer }}" == "FongMI" ] && [ -n "${{ env.origVersionName }}" ]; then
+            if [ "${{ matrix.developer }}" == "FongMI" || "${{ matrix.developer }}" == "fish2018" ] && [ -n "${{ env.origVersionName }}" ]; then
               echo "Original version: ${{ env.origVersionName }}"
               echo "Compiled version: ${{ env.tag }}-${{ matrix.branchName }}"
             fi
@@ -338,7 +338,7 @@ jobs:
           echo -e '\n```' >> apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
 
       - name: Update FongMI APK To Repo
-        if: ${{ env.commit && matrix.developer == 'FongMI' }}
+        if: ${{ env.commit && ( matrix.developer == 'FongMI' || "${{ matrix.developer }}" == "fish2018" )}}
         run: |
           SRC_DIR="${{ github.workspace }}/TVBoxOSC/apk"
           APK_DIR="${{ github.workspace }}/apk/${{ matrix.branchName }}"
