@@ -213,7 +213,7 @@ jobs:
           
           echo "sdk.dir=$ANDROID_SDK_ROOT" > local.properties
 
-          if [ "${{ matrix.developer }}" == "FongMI" || "${{ matrix.developer }}" == "fish2018" ]; then
+          if [[ "${{ matrix.developer }}" == "FongMI" || "${{ matrix.developer }}" == "fish2018" ]]; then
             PYTHON_PATH=$(which python3)
             {
               echo "storeFile=$ROOT_DIR/app/TVBoxOSC.jks"
