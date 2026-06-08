@@ -1,3 +1,25 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-08 09:41
+- **原始版本**: 5.5.2
+- **编译版本**: 260608-17-webhtv_dev
+- **提交哈希**: [f79acb2](https://github.com/IsayIsee/webhtv/commit/f79acb2c761f092b36f638cefa116485405f0058)
+
+**详细日志/Changelog**:
+
+```
+26/06/08 Merge branch 'fish2018:main' into webhtv_dev
+26/06/08 为 nostr 推荐增加分级过滤 Merge pull request #19 from IsayIsee/patch-nostr
+26/06/08 Merge branch 'fish2018:main' into webhtv_dev
+26/06/08 feat: 为 nostr 推荐增加分级过滤
+26/06/08 feat: 丢弃无 tmdb id 的数据(小视频之类的)
+26/06/08 fix: 分级显示 fix: 评分显示 feat: 增加地区黑名单
+26/06/08 feat: 增加分级显示
+26/06/08 feat: 增加分级检测
+26/06/08 fix: avoid Java 15 string API in WebHome extensions
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-08 06:57
 - **原始版本**: 5.5.2
 - **编译版本**: 260608-13-webhtv_dev
