@@ -5,10 +5,20 @@
 [![Downloads](https://img.shields.io/github/downloads/IsayIsee/TVBoxOS-Build/total?style=flat-square&logo=download&label=Downloads&color=blue)](https://github.com/IsayIsee/TVBoxOS-Build/releases)
 [![Last Commit](https://img.shields.io/github/last-commit/IsayIsee/TVBoxOS-Build/master?style=flat-square&logo=git&logoColor=white&label=Updated&color=lightgrey)](https://github.com/IsayIsee/TVBoxOS-Build/commits/master)
 
+# 推荐
+**根据自己使用的感受强烈推荐 webhtv**
+- 增强的同步工具能更方便的的同步多设备的环境和配置
+- 增加代理功能，支持表单规则和 JSON/raw 文本规则
+- 新增的 WebHome 自定义首页能力
+  - 可调用 TMDB、Nostr、豆瓣等任意 API 获取内容来源
+  - 调用 fm.pan.check(items) 批量检测分享链接有效性
+
 # 注意
 - **为避免与原版本混淆，本仓库编译的 APK 证书使用的证书与原始仓库不相同**
 - **版本号会根据源代码更新时间生成，避免和原版本混淆**
-- **本项目编译的 FongMi 版升级检查为本仓库内 apk 目录下对应的版本**
+- **FongMi 分支自动升级**
+  - **本项目编译的 FongMi 版升级检查在编译时会被替换为为本仓库内 apk 目录下对应的版本**
+  - **本项目编译的 WebHomeTV 版升级检查在编译时会被替换为为本仓库内 apk 目录下对应的版本**
 
 # 编译代码来自以下仓库
 - [TVBoxOS/main](https://github.com/IsayIsee/TVBoxOS/tree/main) (Updated: 704cd2658fbcaf38551228cb90bd9f766a0c9e72)
