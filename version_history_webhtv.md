@@ -1,3 +1,28 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-08 00:47
+- **原始版本**: 5.5.2
+- **编译版本**: 260608-08-webhtv_dev
+- **提交哈希**: [732398b](https://github.com/IsayIsee/webhtv/commit/732398b8d12c43cd33c63976a18ca17a0dc7faba)
+
+**详细日志/Changelog**:
+
+```
+26/06/08 Merge branch 'fish2018:main' into webhtv_dev
+26/06/07 merge: live injection support
+26/06/07 feat: add live injection support
+26/06/06 docs: document site health ranking
+26/06/06 feat: add site health ranking
+26/06/06 fix: sync mobile vod pager after webhome switch
+26/06/06 chore: update demo tmdb image host
+26/06/06 docs: update webhome and proxy guidance
+26/06/06 fix: make proxy rule deletion explicit
+26/06/06 feat: add proxy rule suggestions
+26/06/06 Merge clean without try assets
+26/06/06 Add WebHome setting bridge and demo assets
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-05 07:51
 - **原始版本**: 5.5.2
 - **编译版本**: 260605-14-webhtv_dev
