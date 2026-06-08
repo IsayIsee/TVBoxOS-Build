@@ -469,8 +469,13 @@ jobs:
             cp -f apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log caption.txt
             cat caption.txt
             chmod +x telegram-bot-api-binary
-            ./telegram-bot-api-binary --api-id=${{ secrets.TELEGRAM_API_ID }} --api-hash=${{ secrets.TELEGRAM_API_HASH }} --local 2>&1 > /dev/null &
-            timeout 30 bash -c 'until curl -s http://127.0.0.1:8081 > /dev/null 2>&1; do sleep 1; done'
+            ./telegram-bot-api-binary --api-id=${{ secrets.TELEGRAM_API_ID }} --api-hash=${{ secrets.TELEGRAM_API_HASH }} --local> telegram.log 2>&1 &
+            echo "等待 Telegram Local API 启动..."
+            if ! timeout 30 bash -c 'until curl -s http://127.0.0.1:8081 > /dev/null 2>&1; do sleep 1; done'; then
+              echo "Telegram API 服务启动超时！以下是错误日志："
+              cat telegram.log
+              exit 1
+            fi
             [ -f ../.github/scripts/upload.py ] && mv ../.github/scripts/upload.py ./ && python upload.py
           fi
 
