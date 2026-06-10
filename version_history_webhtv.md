@@ -1,3 +1,21 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-10 08:42
+- **原始版本**: 5.5.2
+- **编译版本**: 260610-11-webhtv_dev
+- **提交哈希**: [290ac5d](https://github.com/IsayIsee/webhtv/commit/290ac5deb886c539b1ece1060db939ac362dd1fb)
+
+**详细日志/Changelog**:
+
+```
+26/06/10 Merge branch 'fish2018:main' into webhtv_dev
+26/06/10 fix: avoid login state editor scrollbar crash
+26/06/10 feat: unify manage file browser tree
+26/06/09 feat: refine login state management page
+26/06/09 feat: add login state learning sync
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-10 01:21
 - **原始版本**: 5.5.2
 - **编译版本**: 260610-09-webhtv_dev
