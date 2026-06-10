@@ -6,12 +6,16 @@
 [![Last Commit](https://img.shields.io/github/last-commit/IsayIsee/TVBoxOS-Build/master?style=flat-square&logo=git&logoColor=white&label=Updated&color=lightgrey)](https://github.com/IsayIsee/TVBoxOS-Build/commits/master)
 
 # 推荐
-**根据自己使用的感受强烈推荐 webhtv**
-- 增强的同步工具能更方便的的同步多设备的环境和配置
-- 增加代理功能，支持表单规则和 JSON/raw 文本规则
-- 新增的 WebHome 自定义首页能力
-  - 可调用 TMDB、Nostr、豆瓣等任意 API 获取内容来源
-  - 调用 fm.pan.check(items) 批量检测分享链接有效性
+## **根据自己使用的感受强烈推荐 webhtv(以下内容来自源仓库描述)**
+  - 增强的同步工具能更方便的的同步多设备的环境和配置
+  - 增加代理功能，支持表单规则和 JSON/raw 文本规则
+  - 新增的 WebHome 自定义首页能力
+    - 可调用 TMDB、Nostr、豆瓣等任意 API 获取内容来源
+    - 调用 fm.pan.check(items) 批量检测分享链接有效性
+## **提示**
+  目前默认的 Nostr 推荐页面未进行分级过滤,会导致推荐热榜里有很多不合适的内容,如果你介意可以使用我提供的具有分级过滤的 [Nostr.html](https://github.com/IsayIsee/TVBoxOS-Build/tree/master/apk/webhtv_dev/Nostr.html), 可以放入本地然后使用注入功能注入。  
+  **注入的具体使用方法请参考源仓库**
+   
 
 # 注意
 - **为避免与原版本混淆，本仓库编译的 APK 证书使用的证书与原始仓库不相同**
