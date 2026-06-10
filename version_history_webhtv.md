@@ -1,3 +1,27 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-10 01:21
+- **原始版本**: 5.5.2
+- **编译版本**: 260610-09-webhtv_dev
+- **提交哈希**: [7bc90d9](https://github.com/IsayIsee/webhtv/commit/7bc90d9c4437bccdad88ba867f264cfac5552f84)
+
+**详细日志/Changelog**:
+
+```
+26/06/10 Merge branch 'fish2018:main' into webhtv_dev
+26/06/09 merge: tv episode grid height fix
+26/06/09 fix: preserve tv episode grid minimum rows
+26/06/09 fix: expand tv episode grid height
+26/06/09 merge: ymvid WebHome playback fixes
+26/06/09 fix: stabilize ymvid inline WebHome playback
+26/06/09 Merge branch 'fish2018:main' into webhtv_dev
+26/06/09 fix: guard WebHome reloads for rate limited sites
+26/06/09 feat: add ymvid WebHome inline playback
+26/06/08 Merge remote-tracking branch 'origin/main' into eval/webhome-extension-scripts-main-20260607
+26/06/08 docs: add DM WebHome example and shorthand config
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-08 09:41
 - **原始版本**: 5.5.2
 - **编译版本**: 260608-17-webhtv_dev
