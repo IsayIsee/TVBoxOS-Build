@@ -471,10 +471,23 @@ jobs:
             chmod +x telegram-bot-api-binary
             ./telegram-bot-api-binary --api-id=${{ secrets.TELEGRAM_API_ID }} --api-hash=${{ secrets.TELEGRAM_API_HASH }} --local> telegram.log 2>&1 &
             echo "等待 Telegram Local API 启动..."
-            if ! timeout 30 bash -c 'until curl -s http://127.0.0.1:8081 > /dev/null 2>&1; do sleep 1; done'; then
-              echo "Telegram API 服务启动超时！以下是错误日志："
+            
+            # 用原生的普通循环代替 timeout + bash -c，防止触发 bash -e 闪退
+            success=0
+            for i in {1..30}; do
+              # 使用 || true 强行让这行命令的返回值永远是 0，防止触发 bash -e
+              curl -s http://127.0.0.1:8081 > /dev/null 2>&1 && { success=1; break; }
+              sleep 1
+            done
+            
+            if [ $success -eq 0 ]; then
+              echo "确定失败！Telegram API 服务无法启动。以下是真实错误日志："
+              echo "----------------------------------------"
               cat telegram.log
+              echo "----------------------------------------"
               exit 1
+            else
+              echo "Telegram Local API 成功启动！继续下一步..."
             fi
             [ -f ../.github/scripts/upload.py ] && mv ../.github/scripts/upload.py ./ && python upload.py
           fi
