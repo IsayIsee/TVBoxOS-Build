@@ -1,3 +1,28 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-11 08:42
+- **原始版本**: 5.5.2
+- **编译版本**: 260611-16-webhtv_dev
+- **提交哈希**: [9de3e3d](https://github.com/IsayIsee/webhtv/commit/9de3e3dc9164ca422a78d5f6e4f1369568267793)
+
+**详细日志/Changelog**:
+
+```
+26/06/11 Merge branch 'patch-nostr' into webhtv_dev
+26/06/11 update: 优化 imdb 查询 fix: 刷新榜单丢失本地 TMDB 数据 feat: 详情页显示分级 feat: relay 数据中增加评分和分级数据方便有需要的人直接过滤而不等待imdb刷新
+26/06/11 Merge branch 'fish2018:main' into webhtv_dev
+26/06/11 docs: update WebHome extension docs and templates
+26/06/10 Remove quark login state migration notes
+26/06/10 Fix wallpaper config loading and tab selection
+26/06/10 Limit WebHome back navigation to same site
+26/06/10 Optimize login state dialog and text preview
+26/06/10 Fix login state text preview safeguards
+26/06/10 docs: update enhanced feature documentation
+26/06/10 fix: 刷新榜单丢失 TMDB 数据 feat: 详情页显示分级
+26/06/09 feat: 热播数据提交时增加分级和评分,避免本地查询所有热播的分级数据
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-10 08:42
 - **原始版本**: 5.5.2
 - **编译版本**: 260610-11-webhtv_dev
