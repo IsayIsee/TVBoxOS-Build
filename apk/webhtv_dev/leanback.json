@@ -1,5 +1,5 @@
 {
-  "code": 26061009,
-  "name": "260610-09-webhtv_dev",
-  "desc": "* 版本: 5.5.2 → 260610-09-webhtv_dev\n* 26/06/10 Merge branch 'fish2018:main' into webhtv_dev\n* 26/06/09 merge: tv episode grid height fix\n* 26/06/09 fix: preserve tv episode grid minimum rows\n* 26/06/09 fix: expand tv episode grid height\n* 26/06/09 merge: ymvid WebHome playback fixes\n* 26/06/09 fix: stabilize ymvid inline WebHome playback\n* 26/06/09 Merge branch 'fish2018:main' into webhtv_dev\n* 26/06/09 fix: guard WebHome reloads for rate limited sites\n* 26/06/09 feat: add ymvid WebHome inline playback\n* 26/06/08 Merge remote-tracking branch 'origin/main' into eval/webhome-extension-scripts-main-20260607\n* 26/06/08 docs: add DM WebHome example and shorthand config"
+  "code": 26061011,
+  "name": "260610-11-webhtv_dev",
+  "desc": "* 版本: 5.5.2 → 260610-11-webhtv_dev\n* 26/06/10 Merge branch 'fish2018:main' into webhtv_dev\n* 26/06/10 fix: avoid login state editor scrollbar crash\n* 26/06/10 feat: unify manage file browser tree\n* 26/06/09 feat: refine login state management page\n* 26/06/09 feat: add login state learning sync"
 }
