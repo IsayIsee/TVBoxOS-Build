@@ -489,7 +489,27 @@ jobs:
             else
               echo "Telegram Local API 成功启动！继续下一步..."
             fi
-            [ -f ../.github/scripts/upload.py ] && mv ../.github/scripts/upload.py ./ && python upload.py
+          TARGET_SCRIPT="../.github/scripts/upload.py"
+  
+            if [ -f "$TARGET_SCRIPT" ]; then
+              echo "发现上传脚本，正在移动并准备执行..."
+              mv "$TARGET_SCRIPT" ./
+            fi
+          
+            if [ -f "upload.py" ]; then
+              echo "开始执行 python upload.py..."
+            
+              # 运行 python，如果失败了，捕获它的错误，防止 bash -e 直接闪退
+              if ! python upload.py; then
+                echo "Python 脚本执行失败！请检查上方 Python 打印的 Traceback 堆栈错误。"
+                exit 1
+              fi
+            
+              echo "Python 脚本执行成功！"
+            else
+              echo "错误：未找到 upload.py 脚本！"
+              exit 1
+            fi
           fi
 
       - name: Update FongMI Version History
