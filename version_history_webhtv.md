@@ -1,3 +1,19 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-15 11:33
+- **原始版本**: 5.5.2
+- **编译版本**: 260615-17-webhtv_dev
+- **提交哈希**: [f026746](https://github.com/IsayIsee/webhtv/commit/f026746aac66aa35c15b7f433de8166462aae3b8)
+
+**详细日志/Changelog**:
+
+```
+26/06/15 Merge branch 'fish2018:main' into webhtv_dev
+26/06/15 Add playback still background toggle
+26/06/15 update: 恢复启动时根据设置自动检查是否有新版本
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-15 00:55
 - **原始版本**: 5.5.2
 - **编译版本**: 260615-08-webhtv_dev
