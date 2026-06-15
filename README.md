@@ -13,13 +13,14 @@
     - 可以调用 app 原生开放能力
     - Nostr推荐榜单，基于去中心化技术实现，根据真实用户观影数据自动发布榜单*
     - 集成 WebHome 扩展脚本注入功能，可自由改变网站界面/能力
+  - 观影记录同步
   - 内置网盘搜索(盘搜)和网盘链接有效性检测
   - 站点注入，方便在线接口随时添加 webhome、自定义CSP、直播
   - 站点健康度学习，搜索和自动换源会优先使用健康度更高的站点
   - 支持网页管理，浏览器打开操作更便捷
   - 集成调试日志功能，方便快速定位问题
 ## **提示**
-  目前默认的 Nostr 推荐页面未进行分级过滤,会导致推荐热榜里有很多不合适的内容,如果你介意可以使用我提供的具有分级过滤的 [Nostr.html](https://github.com/IsayIsee/TVBoxOS-Build/tree/master/apk/webhtv_dev/Nostr.html), 可以放入本地然后使用注入功能注入。  
+  ~~目前默认的 Nostr 推荐页面未进行分级过滤,会导致推荐热榜里有很多不合适的内容,如果你介意可以使用我提供的具有分级过滤的 [Nostr.html](https://github.com/IsayIsee/TVBoxOS-Build/tree/master/apk/webhtv_dev/Nostr.html), 可以放入本地然后使用注入功能注入。~~  
   **注入的具体使用方法请参考源仓库**
    
 
