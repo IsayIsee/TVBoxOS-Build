@@ -1,3 +1,28 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-13 01:39
+- **原始版本**: 5.5.2
+- **编译版本**: 260613-09-webhtv_dev
+- **提交哈希**: [080265d](https://github.com/IsayIsee/webhtv/commit/080265d1c7c3e3a67892ab10c26586524be339e3)
+
+**详细日志/Changelog**:
+
+```
+26/06/13 Merge branch 'fish2018:main' into webhtv_dev
+26/06/12 Merge viewing record sync APIs
+26/06/12 Remove temporary playback sync docs
+26/06/12 Document viewing record sync API
+26/06/12 Implement viewing record sync write APIs
+26/06/12 Clarify server-provided playback tokens
+26/06/12 Fix viewing record sync entry label
+26/06/12 Refine viewing record webhook options
+26/06/12 Refine extension and injection dialogs
+26/06/12 Add playback REST API docs
+26/06/12 Add playback record reporting
+26/06/11 fix: request file access for custom csp saves
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-11 08:42
 - **原始版本**: 5.5.2
 - **编译版本**: 260611-16-webhtv_dev
