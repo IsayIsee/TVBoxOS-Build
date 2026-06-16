@@ -1,3 +1,20 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-16 09:41
+- **原始版本**: 5.5.2
+- **编译版本**: 260616-15-webhtv_dev
+- **提交哈希**: [298a2f3](https://github.com/IsayIsee/webhtv/commit/298a2f3189ca60111a53627d79b0c80d567db1ec)
+
+**详细日志/Changelog**:
+
+```
+26/06/16 Merge branch 'fish2018:main' into webhtv_dev
+26/06/16 Update WebHome devkit repository docs
+26/06/16 Reorganize WebHome devkit docs
+26/06/15 Improve mobile WebHome toolbar actions
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-15 11:33
 - **原始版本**: 5.5.2
 - **编译版本**: 260615-17-webhtv_dev
