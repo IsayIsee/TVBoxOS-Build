@@ -1,6 +1,6 @@
 {
-  "code": 26061710,
-  "name": "260617-10-webhtv_dev",
-  "desc": "* 版本: 5.5.2 → 260617-10-webhtv_dev\n* 26/06/17 Merge branch 'fish2018:main' into webhtv_dev\n* 26/06/16 fix: isolate proxy auto detection input\n* 26/06/16 feat: add proxy rule auto detection\n* 26/06/16 Merge branch 'fish2018:main' into webhtv_dev\n* 26/06/16 Remove duplicate custom CSP detect hint\n* 26/06/16 Polish custom CSP detection UI\n* 26/06/16 Add custom CSP snippet detection\n* 26/06/16 Sync WebHome site matches into regex field\n* 26/06/16 Polish WebHome extension setup UI\n* 26/06/16 Improve WebHome extension setup UX",
-  "url": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260617-10/mobile-arm64_v8a.apk"
+  "code": 26061712,
+  "name": "260617-12-webhtv_dev",
+  "desc": "* 版本: 5.5.2 → 260617-12-webhtv_dev\n* 26/06/17 Merge branch 'main' into webhtv_dev\n* 26/06/17 update: 修改升级文件下载路径从 json 中获取\n* 26/06/17 fix: suppress jgit release shrinker warnings\n* 26/06/17 Merge remote-tracking branch 'origin/main' into feature/csp-init-warmup\n* 26/06/17 fix: wait for local proxy before playback\n* 26/06/17 fix: align settings clipboard with keyboard behavior\n* 26/06/17 fix: adjust settings clipboard placement\n* 26/06/17 fix: anchor settings clipboard to screen\n* 26/06/17 fix: improve mobile settings clipboard overlay\n* 26/06/17 fix: limit settings clipboard overlay to mobile\n* 26/06/17 feat: add settings clipboard overlay\n* 26/06/17 feat: refine git cloud drive manager\n* 26/06/16 feat: add git cloud drive manager\n* 26/06/16 fix: remove debug log retention cap\n* 26/06/16 chore: add csp warmup diagnostics\n* 26/06/16 feat: add csp init warmup",
+  "url": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260617-12/TVBox_fish2018_260617-12_mobile-arm64_v8a.apk"
 }
