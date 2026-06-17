@@ -401,7 +401,9 @@ jobs:
           echo "${{ matrix.branchName }}" > /tmp/fongmi_branch.txt
           printf '%s' "$RAW_LOG" > /tmp/fongmi_raw.txt
           echo "$APK_DIR"  > /tmp/fongmi_dir.txt
-
+          echo "${{ env.tag }}" > /tmp/fongmi_tag.txt
+          echo "https://github.com/${{ github.repository }}"  > /tmp/fongmi_repo.txt
+  
           python3 ${{ github.workspace }}/.github/scripts/update_apk_json.py
 
       - name: Whether Or Not to Publish
