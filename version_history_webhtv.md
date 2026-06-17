@@ -1,3 +1,17 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-17 04:46
+- **原始版本**: 5.5.2
+- **编译版本**: 260617-12-webhtv_dev
+- **提交哈希**: [84c7ed9](https://github.com/IsayIsee/webhtv/commit/84c7ed93b1a41766c9e73e79ad58d4ef4a88341e)
+
+**详细日志/Changelog**:
+
+```
+26/06/17 fix: 升级包未按 abi 分别下载
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-17 04:17
 - **原始版本**: 5.5.2
 - **编译版本**: 260617-12-webhtv_dev
