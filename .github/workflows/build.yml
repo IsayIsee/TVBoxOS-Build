@@ -2,7 +2,7 @@ name: Build-APK
 
 on:
   schedule:
-    - cron: 30 10 * * *
+    - cron: 30 2 * * *
   workflow_dispatch:
     inputs:
       rebuild:
@@ -416,18 +416,6 @@ jobs:
           name: ${{ matrix.userName }}-${{ matrix.repoName }}-${{ matrix.branchName }}
           path: TVBoxOSC/apk/*
 
-      - name: Release and Upload
-        uses: ncipollo/release-action@v1
-        if: ${{ env.commit }}
-        with:
-          name: ${{ env.tag }}
-          tag: ${{ env.tag }}
-          bodyFile: TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log
-          allowUpdates: true
-          artifacts: |
-            TVBoxOSC/apk/*.apk
-            TVBoxOSC/apk/SourceCode-${{ env.tag }}.*
-
       - name: Post To Work Wechat
         if: ${{ env.commit }}
         continue-on-error: true
@@ -576,36 +564,96 @@ jobs:
           
           echo "Successfully updated version_history_webhtv.md for ${{ matrix.branchName }}"
 
-      - name: Push to master
+      - name: Save Job Metadata
         if: ${{ env.commit }}
+        run: |
+          cat > /tmp/job-meta.json << EOF
+          {
+            "commit":      "${{ env.commit }}",
+            "commitS":     "${{ env.commitS }}",
+            "tag":         "${{ env.tag }}",
+            "developer":   "${{ matrix.developer }}",
+            "repoName":    "${{ matrix.repoName }}",
+            "branchName":  "${{ matrix.branchName }}",
+            "userName":    "${{ matrix.userName }}",
+            "origVersionName": "${{ env.origVersionName }}"
+          }
+          EOF
+
+      - name: Upload Job Metadata
+        if: ${{ env.commit }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: meta-${{ matrix.userName }}-${{ matrix.repoName }}-${{ matrix.branchName }}
+          path: /tmp/job-meta.json
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PAT }}
+
+      - name: Download All Metadata
+        uses: actions/download-artifact@v4
+        with:
+          pattern: meta-*
+          path: metas/
+          merge-multiple: false
+
+      - name: Download All APK Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: IsayIsee-*          # 匹配 build job 上传的 artifact 名
+          path: all-apks/
+          merge-multiple: false
+
+      - name: Process Each Build
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git pull --rebase --autostash origin master
-          
-          # 更新 README.md
-          if grep -q "${{ matrix.repoName }}\/${{ matrix.branchName }}" README.md; then
-            sed -i "/${{ matrix.repoName }}\/${{ matrix.branchName }}/s#Updated: [a-zA-Z0-9]*#Updated: ${{ env.commit }}#" README.md
-          else
-            echo "- [${{ matrix.repoName }}/${{ matrix.branchName }}](https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}/tree/${{ matrix.branchName }}) (Updated: ${{ env.commit }})" >> README.md
-          fi
-          git add README.md
-          
-          # 新增：如果存在修改，则提交版本历史文件
-          if [ -f version_history.md ]; then
-            git add version_history.md
-          fi
-          
-          if [ -f version_history_webhtv.md ]; then
-            git add version_history_webhtv.md
-          fi
-          
-          # FongMI 提交 APK 和 JSON 到 repo apk 目录
-          if [ "${{ matrix.developer }}" == "FongMI" ] || [ "${{ matrix.developer }}" == "fish2018" ]; then
-            git add apk/ || true
-          fi
-          git commit -m "Update ${{ matrix.repoName }} to ${{ env.origVersionName }}" || exit 0
-          git push origin master
+
+          for meta_file in metas/*/job-meta.json; do
+            commit=$(jq -r .commit "$meta_file")
+            tag=$(jq -r .tag "$meta_file")
+            developer=$(jq -r .developer "$meta_file")
+            repoName=$(jq -r .repoName "$meta_file")
+            branchName=$(jq -r .branchName "$meta_file")
+            userName=$(jq -r .userName "$meta_file")
+            origVersionName=$(jq -r .origVersionName "$meta_file")
+
+            # 更新 README（原有逻辑完整保留）
+            git pull --rebase --autostash origin master
+            if grep -q "$repoName/$branchName" README.md; then
+              sed -i "/$repoName\/$branchName/s#Updated: [a-zA-Z0-9]*#Updated: $commit#" README.md
+            else
+              echo "- [$repoName/$branchName](https://github.com/$userName/$repoName/tree/$branchName) (Updated: $commit)" >> README.md
+            fi
+
+            # Release
+            APK_DIR="all-apks/$userName-$repoName-$branchName"
+            LOG_FILE="$APK_DIR/$userName-$branchName-Release.log"
+            gh release create "$tag" \
+              --title "$tag" \
+              --notes-file "$LOG_FILE" \
+              "$APK_DIR"/*.apk \
+              "$APK_DIR"/SourceCode-*.* \
+              2>/dev/null || \
+            gh release upload "$tag" \
+              "$APK_DIR"/*.apk \
+              "$APK_DIR"/SourceCode-*.* \
+              --clobber
+
+            git add README.md
+            [ -f version_history.md ] && git add version_history.md
+            [ -f version_history_webhtv.md ] && git add version_history_webhtv.md
+            git commit -m "Update $repoName to $origVersionName" || true
+            git push origin master
+          done
 
   clean:
     needs: build
