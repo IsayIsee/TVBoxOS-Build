@@ -1,3 +1,32 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-17 04:17
+- **原始版本**: 5.5.2
+- **编译版本**: 260617-12-webhtv_dev
+- **提交哈希**: [741cc60](https://github.com/IsayIsee/webhtv/commit/741cc60787d2246237dcd83805c41ba5bc0b975a)
+
+**详细日志/Changelog**:
+
+```
+26/06/17 Merge branch 'main' into webhtv_dev
+26/06/17 update: 修改升级文件下载路径从 json 中获取
+26/06/17 fix: suppress jgit release shrinker warnings
+26/06/17 Merge remote-tracking branch 'origin/main' into feature/csp-init-warmup
+26/06/17 fix: wait for local proxy before playback
+26/06/17 fix: align settings clipboard with keyboard behavior
+26/06/17 fix: adjust settings clipboard placement
+26/06/17 fix: anchor settings clipboard to screen
+26/06/17 fix: improve mobile settings clipboard overlay
+26/06/17 fix: limit settings clipboard overlay to mobile
+26/06/17 feat: add settings clipboard overlay
+26/06/17 feat: refine git cloud drive manager
+26/06/16 feat: add git cloud drive manager
+26/06/16 fix: remove debug log retention cap
+26/06/16 chore: add csp warmup diagnostics
+26/06/16 feat: add csp init warmup
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-17 03:33
 - **原始版本**: 5.5.2
 - **编译版本**: 260617-10-webhtv_dev
