@@ -406,7 +406,8 @@ jobs:
           echo "$APK_DIR"                    > /tmp/fongmi_dir.txt
           echo "${{ env.tag }}"              > /tmp/fongmi_tag.txt
           echo "https://github.com/${{ github.repository }}" > /tmp/fongmi_repo.txt
-
+          echo "${{ matrix.developer }}"  > /tmp/fongmi_developer.txt
+          
           python3 ${{ github.workspace }}/.github/scripts/update_apk_json.py
 
       - name: Post To Work Wechat
