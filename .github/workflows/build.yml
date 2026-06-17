@@ -343,22 +343,8 @@ jobs:
       - name: Update APK To Repo
         if: ${{ env.commit && ( matrix.developer == 'FongMI' || matrix.developer == 'fish2018' ) }}
         run: |
-          SRC_DIR="${{ github.workspace }}/TVBoxOSC/apk"
           APK_DIR="${{ github.workspace }}/apk/${{ matrix.branchName }}"
           mkdir -p "$APK_DIR"
-
-          for APK in $(find "$SRC_DIR" -name "*.apk" | sort); do
-            BASE=$(basename "$APK")
-            CLEAN=$(echo "$BASE" | sed 's/^TVBox_[^_]*_[^_]*_//')
-            case "$BASE" in
-              *mobile*)
-                cp "$APK" "$APK_DIR/$CLEAN" && echo "Copied mobile:   $CLEAN" ;;
-              *leanback*)
-                cp "$APK" "$APK_DIR/$CLEAN" && echo "Copied leanback: $CLEAN" ;;
-              *)
-                echo "Skipped: $BASE" ;;
-            esac
-          done
 
           CODE=$(echo "${{ env.tag }}" | tr -d '-')
 
@@ -589,7 +575,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: apkdir-${{ matrix.branchName }}
-          path: apk/${{ matrix.branchName }}/
+          path: apk/${{ matrix.branchName }}/*.json
           retention-days: 1
 
       - name: Upload Version History
@@ -710,7 +696,7 @@ jobs:
             git add README.md
             [ -f version_history.md ]       && git add version_history.md
             [ -f version_history_webhtv.md ] && git add version_history_webhtv.md
-            [ -d "apk/$branchName" ]         && git add "apk/$branchName/" || true
+            [ -d "apk/$branchName" ]         && git add "apk/$branchName/*.json" || true
             git commit -m "Update $repoName to $origVersionName" || true
             git push origin master
           done
