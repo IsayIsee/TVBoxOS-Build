@@ -1,3 +1,26 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-17 03:33
+- **原始版本**: 5.5.2
+- **编译版本**: 260617-10-webhtv_dev
+- **提交哈希**: [92db641](https://github.com/IsayIsee/webhtv/commit/92db6414a8d5ba6b22da0ab66774a41495b8330e)
+
+**详细日志/Changelog**:
+
+```
+26/06/17 Merge branch 'fish2018:main' into webhtv_dev
+26/06/16 fix: isolate proxy auto detection input
+26/06/16 feat: add proxy rule auto detection
+26/06/16 Merge branch 'fish2018:main' into webhtv_dev
+26/06/16 Remove duplicate custom CSP detect hint
+26/06/16 Polish custom CSP detection UI
+26/06/16 Add custom CSP snippet detection
+26/06/16 Sync WebHome site matches into regex field
+26/06/16 Polish WebHome extension setup UI
+26/06/16 Improve WebHome extension setup UX
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-16 09:41
 - **原始版本**: 5.5.2
 - **编译版本**: 260616-15-webhtv_dev
