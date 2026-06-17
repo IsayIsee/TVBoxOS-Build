@@ -1,3 +1,93 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-16 09:41
+- **原始版本**: 5.5.2
+- **编译版本**: 260616-15-webhtv_dev
+- **提交哈希**: [298a2f3](https://github.com/IsayIsee/webhtv/commit/298a2f3189ca60111a53627d79b0c80d567db1ec)
+
+**详细日志/Changelog**:
+
+```
+26/06/16 Merge branch 'fish2018:main' into webhtv_dev
+26/06/16 Update WebHome devkit repository docs
+26/06/16 Reorganize WebHome devkit docs
+26/06/15 Improve mobile WebHome toolbar actions
+
+```
+
+---
+
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-15 11:33
+- **原始版本**: 5.5.2
+- **编译版本**: 260615-17-webhtv_dev
+- **提交哈希**: [f026746](https://github.com/IsayIsee/webhtv/commit/f026746aac66aa35c15b7f433de8166462aae3b8)
+
+**详细日志/Changelog**:
+
+```
+26/06/15 Merge branch 'fish2018:main' into webhtv_dev
+26/06/15 Add playback still background toggle
+26/06/15 update: 恢复启动时根据设置自动检查是否有新版本
+
+```
+
+---
+
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-15 00:55
+- **原始版本**: 5.5.2
+- **编译版本**: 260615-08-webhtv_dev
+- **提交哈希**: [a56a589](https://github.com/IsayIsee/webhtv/commit/a56a589d0453a3aeecf670b1151ff78621eedd5d)
+
+**详细日志/Changelog**:
+
+```
+26/06/15 Merge remote-tracking branch 'origin/webhtv_dev' into webhtv_dev
+26/06/15 Merge branch 'main' into webhtv_dev
+26/06/15 Lock playback background during source changes
+26/06/15 Avoid mobile detail title flash before logo
+26/06/15 Prefer logos on mobile Nostr detail
+26/06/14 Fix Nostr search focus routing
+26/06/14 Add distributable skills and serverless relays
+26/06/14 Add AI client skills usage guide
+26/06/14 Pass artwork through WebHome pan playback
+26/06/14 Update WebHome playback artwork docs
+26/06/14 Preload WebHome artwork from detail
+26/06/14 Preload WebHome playback artwork before launch
+26/06/14 Pass playback wall pictures from Nostr home
+26/06/14 Remove playback wall scrim overlay
+26/06/14 Support WebHome playback wall pictures
+26/06/14 Improve playback context wallpaper framing
+26/06/14 Use accent color for selected playback chips
+26/06/14 Fix playback chip text contrast
+26/06/14 Fix playback text style resource linking
+26/06/14 Improve playback wallpaper readability
+26/06/14 Place mobile playback wallpaper below preview
+26/06/14 Preload contextual playback wallpaper
+26/06/14 Add contextual playback wallpaper
+26/06/13 Hide single-season tab in Nostr detail
+26/06/13 Fix Nostr TV cast names layout
+26/06/13 Remove native WebHome restore button
+26/06/13 Stabilize Nostr TV header controls
+26/06/13 Remove Nostr detail close button
+26/06/13 Fix Nostr WebHome TV and tablet controls
+26/06/13 Support raw hosted WebHome pages
+26/06/13 Fix mobile WebHome detail restore affordance
+26/06/13 Remove WebHome evaluation draft
+26/06/13 Prevent TV toolbar from overlapping WebHome
+26/06/13 Fix TV WebHome back exits fullscreen
+26/06/13 Let TV WebHome exit fullscreen to toolbar
+26/06/13 Make Nostr status panel opaque
+26/06/13 Implement TV WebHome fullscreen overlay
+26/06/13 Fix WebHome status panel legacy WebView layout
+26/06/13 Add WebHome home fullscreen preference
+26/06/13 Update WebHome chrome documentation
+26/06/13 Preapply cached WebHome chrome on startup
+26/06/13 Fix WebHome chrome gating outside vod home
+26/06/13 Implement WebHome edge fusion
+26/06/13 Update docs for single nostr demo
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-13 01:39
 - **原始版本**: 5.5.2
 - **编译版本**: 260613-09-webhtv_dev
