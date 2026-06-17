@@ -21,6 +21,7 @@
   - 集成调试日志功能，方便快速定位问题
 ## **提示**
   ~~目前默认的 Nostr 推荐页面未进行分级过滤,会导致推荐热榜里有很多不合适的内容,如果你介意可以使用我提供的具有分级过滤的 [Nostr.html](https://github.com/IsayIsee/TVBoxOS-Build/tree/master/apk/webhtv_dev/Nostr.html), 可以放入本地然后使用注入功能注入。~~  
+  源 Nostr 已提供分级选项
   **注入的具体使用方法请参考源仓库**
    
 
@@ -28,8 +29,8 @@
 - **为避免与原版本混淆，本仓库编译的 APK 证书使用的证书与原始仓库不相同**
 - **版本号会根据源代码更新时间生成，避免和原版本混淆**
 - **FongMi 分支自动升级**
-  - **本项目编译的 FongMi 版升级检查在编译时会被替换为为本仓库内 apk 目录下对应的版本**
-  - **本项目编译的 WebHomeTV 版升级检查在编译时会被替换为为本仓库内 apk 目录下对应的版本**
+  - **本项目编译的 FongMi 版升级检查在编译时会被替换为为本仓库内 ~~apk 目录~~ Release 下对应的版本**
+  - **本项目编译的 WebHomeTV 版升级检查在编译时会被替换为为本仓库内 ~~apk 目录~~ Release 下对应的版本**
 
 # 编译代码来自以下仓库
 - [TVBoxOS/main](https://github.com/IsayIsee/TVBoxOS/tree/main) (Updated: 704cd2658fbcaf38551228cb90bd9f766a0c9e72)
