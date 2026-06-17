@@ -36,7 +36,7 @@
 - [Takagen-Box/main](https://github.com/IsayIsee/Takagen-Box/tree/main) (Updated: 258a5fef61578869ae905ca230bdde9e99fc19a8)
 - [FongMI/my_release](https://github.com/IsayIsee/FongMI/tree/my_release) (Updated: 809725308faebb6c9d99644a79a181bc279a8326)
 - [FongMI/my_dev](https://github.com/IsayIsee/FongMI/tree/my_dev) (Updated: bc5f3a9ccee3bf8a5443db1ec8bd78a783e4f5e0)
-- [webhtv/webhtv_dev](https://github.com/IsayIsee/webhtv/tree/webhtv_dev) (Updated: 298a2f3189ca60111a53627d79b0c80d567db1ec)
+- [webhtv/webhtv_dev](https://github.com/IsayIsee/webhtv/tree/webhtv_dev) (Updated: 92db6414a8d5ba6b22da0ab66774a41495b8330e)
 
 
 # 感谢
