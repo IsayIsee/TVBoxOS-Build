@@ -1,5 +1,9 @@
 {
-  "code": 26051314,
-  "name": "260513-14-release",
-  "desc": "* 版本: 5.4.1 → 260513-14-release\n* 26/05/13 优化新版本检查提示"
+  "code": 26061712,
+  "name": "260617-12-webhtv_dev",
+  "desc": "* 版本: 5.5.2 → 260617-12-webhtv_dev\n* 26/06/17 fix: 升级包未按 abi 分别下载",
+  "urls": {
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260617-12/TVBox_fish2018_260617-12_mobile-arm64_v8a.apk",
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260617-12/TVBox_fish2018_260617-12_mobile-armeabi_v7a.apk"
+  }
 }
