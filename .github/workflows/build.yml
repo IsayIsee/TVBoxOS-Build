@@ -13,8 +13,9 @@ on:
         description: '构建后不提交发布新版'
         required: false
         type: boolean
+
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   telegram-bot-api:
@@ -37,7 +38,7 @@ jobs:
       # 有 cache 直接跳到 Upload，以下三步全部跳过
       - name: Checkout
         if: steps.cache-bin.outputs.cache-hit != 'true'
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Compile Telegram Bot API
         if: steps.cache-bin.outputs.cache-hit != 'true'
@@ -52,10 +53,11 @@ jobs:
           find telegram-bot-api -name "telegram-bot-api" -type f -executable -exec cp {} ./telegram-bot-api-binary \;
 
       - name: Upload Binary
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: telegram-bot-api-binary
           path: telegram-bot-api-binary
+          retention-days: 1
 
   build:
     runs-on: ubuntu-latest
@@ -90,9 +92,10 @@ jobs:
             developer: fish2018
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.PAT }}
 
       - name: Check New Commit
         run: |
@@ -175,7 +178,7 @@ jobs:
 
       - name: Setup Python
         if: ${{ env.commit }}
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
@@ -245,14 +248,14 @@ jobs:
 
       - name: Setup Java
         if: ${{ env.commit && matrix.java_ver }}
-        uses: actions/setup-java@v5
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: ${{ matrix.java_ver }}
 
       - name: Setup Gradle
         if: ${{ env.commit }}
-        uses: gradle/actions/setup-gradle@v6
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Build With Gradle
         if: ${{ env.commit }}
@@ -395,28 +398,16 @@ jobs:
           
           [ -z "$RAW_LOG" ] && RAW_LOG="${{ env.tag }}"
 
-          # 把变量写入环境文件，再由 Python 读取
-          echo "$CODE"     > /tmp/fongmi_code.txt
-          echo "${{ env.VERSION_NAME }}" > /tmp/fongmi_name.txt
-          echo "${{ matrix.branchName }}" > /tmp/fongmi_branch.txt
-          printf '%s' "$RAW_LOG" > /tmp/fongmi_raw.txt
-          echo "$APK_DIR"  > /tmp/fongmi_dir.txt
-          echo "${{ env.tag }}" > /tmp/fongmi_tag.txt
-          echo "https://github.com/${{ github.repository }}"  > /tmp/fongmi_repo.txt
-  
+          # 把变量写入临时文件，再由 Python 读取
+          echo "$CODE"                       > /tmp/fongmi_code.txt
+          echo "${{ env.VERSION_NAME }}"     > /tmp/fongmi_name.txt
+          echo "${{ matrix.branchName }}"    > /tmp/fongmi_branch.txt
+          printf '%s' "$RAW_LOG"             > /tmp/fongmi_raw.txt
+          echo "$APK_DIR"                    > /tmp/fongmi_dir.txt
+          echo "${{ env.tag }}"              > /tmp/fongmi_tag.txt
+          echo "https://github.com/${{ github.repository }}" > /tmp/fongmi_repo.txt
+
           python3 ${{ github.workspace }}/.github/scripts/update_apk_json.py
-
-      - name: Whether Or Not to Publish
-        if: ${{ inputs.donotpublish && env.commit }}
-        run: |
-          echo "commit=" >> $GITHUB_ENV
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v7
-        if: ${{ env.commit }}
-        with:
-          name: ${{ matrix.userName }}-${{ matrix.repoName }}-${{ matrix.branchName }}
-          path: TVBoxOSC/apk/*
 
       - name: Post To Work Wechat
         if: ${{ env.commit }}
@@ -437,7 +428,7 @@ jobs:
       - name: Download TG Tool
         if: ${{ env.commit }}
         continue-on-error: true
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v4
         with:
           name: telegram-bot-api-binary
           path: TVBoxOSC
@@ -461,15 +452,13 @@ jobs:
             chmod +x telegram-bot-api-binary
             ./telegram-bot-api-binary --api-id=${{ secrets.TELEGRAM_API_ID }} --api-hash=${{ secrets.TELEGRAM_API_HASH }} --local> telegram.log 2>&1 &
             echo "等待 Telegram Local API 启动..."
-            
-            # 用原生的普通循环代替 timeout + bash -c，防止触发 bash -e 闪退
+          
             success=0
             for i in {1..30}; do
-              # 使用 || true 强行让这行命令的返回值永远是 0，防止触发 bash -e
               curl -s http://127.0.0.1:8081 > /dev/null 2>&1 && { success=1; break; }
               sleep 1
             done
-            
+          
             if [ $success -eq 0 ]; then
               echo "确定失败！Telegram API 服务无法启动。以下是真实错误日志："
               echo "----------------------------------------"
@@ -479,8 +468,8 @@ jobs:
             else
               echo "Telegram Local API 成功启动！继续下一步..."
             fi
-          TARGET_SCRIPT="../.github/scripts/upload.py"
-  
+            TARGET_SCRIPT="../.github/scripts/upload.py"
+          
             if [ -f "$TARGET_SCRIPT" ]; then
               echo "发现上传脚本，正在移动并准备执行..."
               mv "$TARGET_SCRIPT" ./
@@ -488,13 +477,12 @@ jobs:
           
             if [ -f "upload.py" ]; then
               echo "开始执行 python upload.py..."
-            
-              # 运行 python，如果失败了，捕获它的错误，防止 bash -e 直接闪退
+          
               if ! python upload.py; then
                 echo "Python 脚本执行失败！请检查上方 Python 打印的 Traceback 堆栈错误。"
                 exit 1
               fi
-            
+          
               echo "Python 脚本执行成功！"
             else
               echo "错误：未找到 upload.py 脚本！"
@@ -508,10 +496,8 @@ jobs:
           HISTORY_FILE="${{ github.workspace }}/version_history.md"
           touch "$HISTORY_FILE"
           
-          # 临时创建一个存放当前分支新日志的文件
           TEMP_LOG="/tmp/current_branch_history.md"
           
-          # 1. 写入版本标题和时间
           echo "### FongMi [${{ matrix.branchName }}] - 更新于 $(date '+%Y-%m-%d %H:%M')" > "$TEMP_LOG"
           if [ -n "${{ env.origVersionName }}" ]; then
             echo "- **原始版本**: ${{ env.origVersionName }}" >> "$TEMP_LOG"
@@ -520,7 +506,6 @@ jobs:
           echo "- **提交哈希**: [${{ env.commitS }}](https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}/commit/${{ env.commit }})" >> "$TEMP_LOG"
           echo -e "\n**详细日志/Changelog**:\n" >> "$TEMP_LOG"
           
-          # 2. 提取我们在前面步骤中生成好的纯文本日志（去掉前缀和未处理的markdown标记）
           if [ -f "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" ]; then
             cat "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" >> "$TEMP_LOG"
           else
@@ -528,7 +513,6 @@ jobs:
           fi
           echo -e "\n---\n" >> "$TEMP_LOG"
           
-          # 3. 将新日志合并到原有历史文件（新日志置顶）
           cat "$HISTORY_FILE" >> "$TEMP_LOG"
           mv "$TEMP_LOG" "$HISTORY_FILE"
           
@@ -540,10 +524,8 @@ jobs:
           HISTORY_FILE="${{ github.workspace }}/version_history_webhtv.md"
           touch "$HISTORY_FILE"
           
-          # 临时创建一个存放当前分支新日志的文件
           TEMP_LOG="/tmp/current_branch_history.md"
           
-          # 1. 写入版本标题和时间
           echo "### WebHomeTV [${{ matrix.branchName }}] - 更新于 $(date '+%Y-%m-%d %H:%M')" > "$TEMP_LOG"
           if [ -n "${{ env.origVersionName }}" ]; then
             echo "- **原始版本**: ${{ env.origVersionName }}" >> "$TEMP_LOG"
@@ -552,7 +534,6 @@ jobs:
           echo "- **提交哈希**: [${{ env.commitS }}](https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}/commit/${{ env.commit }})" >> "$TEMP_LOG"
           echo -e "\n**详细日志/Changelog**:\n" >> "$TEMP_LOG"
           
-          # 2. 提取我们在前面步骤中生成好的纯文本日志（去掉前缀和未处理的markdown标记）
           if [ -f "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" ]; then
             cat "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" >> "$TEMP_LOG"
           else
@@ -560,24 +541,28 @@ jobs:
           fi
           echo -e "\n---\n" >> "$TEMP_LOG"
           
-          # 3. 将新日志合并到原有历史文件（新日志置顶）
           cat "$HISTORY_FILE" >> "$TEMP_LOG"
           mv "$TEMP_LOG" "$HISTORY_FILE"
           
           echo "Successfully updated version_history_webhtv.md for ${{ matrix.branchName }}"
+
+      - name: Whether Or Not to Publish
+        if: ${{ inputs.donotpublish && env.commit }}
+        run: |
+          echo "commit=" >> $GITHUB_ENV
 
       - name: Save Job Metadata
         if: ${{ env.commit }}
         run: |
           cat > /tmp/job-meta.json << EOF
           {
-            "commit":      "${{ env.commit }}",
-            "commitS":     "${{ env.commitS }}",
-            "tag":         "${{ env.tag }}",
-            "developer":   "${{ matrix.developer }}",
-            "repoName":    "${{ matrix.repoName }}",
-            "branchName":  "${{ matrix.branchName }}",
-            "userName":    "${{ matrix.userName }}",
+            "commit":          "${{ env.commit }}",
+            "commitS":         "${{ env.commitS }}",
+            "tag":             "${{ env.tag }}",
+            "developer":       "${{ matrix.developer }}",
+            "repoName":        "${{ matrix.repoName }}",
+            "branchName":      "${{ matrix.branchName }}",
+            "userName":        "${{ matrix.userName }}",
             "origVersionName": "${{ env.origVersionName }}"
           }
           EOF
@@ -588,12 +573,40 @@ jobs:
         with:
           name: meta-${{ matrix.userName }}-${{ matrix.repoName }}-${{ matrix.branchName }}
           path: /tmp/job-meta.json
+          retention-days: 1
+
+      - name: Upload APK Artifacts
+        if: ${{ env.commit }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk-${{ matrix.userName }}-${{ matrix.repoName }}-${{ matrix.branchName }}
+          path: TVBoxOSC/apk/*
+          retention-days: 1
+
+      - name: Upload APK Dir
+        if: ${{ env.commit && (matrix.developer == 'FongMI' || matrix.developer == 'fish2018') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: apkdir-${{ matrix.branchName }}
+          path: apk/${{ matrix.branchName }}/
+          retention-days: 1
+
+      - name: Upload Version History
+        if: ${{ env.commit && (matrix.developer == 'FongMI' || matrix.developer == 'fish2018') }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: history-${{ matrix.developer }}-${{ matrix.branchName }}
+          path: |
+            version_history.md
+            version_history_webhtv.md
+          retention-days: 1
 
   release:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
           token: ${{ secrets.PAT }}
@@ -608,8 +621,22 @@ jobs:
       - name: Download All APK Artifacts
         uses: actions/download-artifact@v4
         with:
-          pattern: IsayIsee-*          # 匹配 build job 上传的 artifact 名
+          pattern: apk-*
           path: all-apks/
+          merge-multiple: false
+
+      - name: Download APK Dirs
+        uses: actions/download-artifact@v4
+        with:
+          pattern: apkdir-*
+          path: apk-dirs/
+          merge-multiple: false
+
+      - name: Download Version Histories
+        uses: actions/download-artifact@v4
+        with:
+          pattern: history-*
+          path: histories/
           merge-multiple: false
 
       - name: Process Each Build
@@ -620,7 +647,10 @@ jobs:
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           for meta_file in metas/*/job-meta.json; do
+            [ -f "$meta_file" ] || continue
+
             commit=$(jq -r .commit "$meta_file")
+            commitS=$(jq -r .commitS "$meta_file")
             tag=$(jq -r .tag "$meta_file")
             developer=$(jq -r .developer "$meta_file")
             repoName=$(jq -r .repoName "$meta_file")
@@ -628,37 +658,63 @@ jobs:
             userName=$(jq -r .userName "$meta_file")
             origVersionName=$(jq -r .origVersionName "$meta_file")
 
-            # 更新 README（原有逻辑完整保留）
+            echo "=== Processing $repoName/$branchName ($developer) ==="
+
+            # pull 最新，避免多个 job 串行提交时冲突
             git pull --rebase --autostash origin master
+
+            # 更新 README
             if grep -q "$repoName/$branchName" README.md; then
               sed -i "/$repoName\/$branchName/s#Updated: [a-zA-Z0-9]*#Updated: $commit#" README.md
             else
               echo "- [$repoName/$branchName](https://github.com/$userName/$repoName/tree/$branchName) (Updated: $commit)" >> README.md
             fi
 
-            # Release
-            APK_DIR="all-apks/$userName-$repoName-$branchName"
-            LOG_FILE="$APK_DIR/$userName-$branchName-Release.log"
-            gh release create "$tag" \
-              --title "$tag" \
-              --notes-file "$LOG_FILE" \
-              "$APK_DIR"/*.apk \
-              "$APK_DIR"/SourceCode-*.* \
-              2>/dev/null || \
-            gh release upload "$tag" \
-              "$APK_DIR"/*.apk \
-              "$APK_DIR"/SourceCode-*.* \
-              --clobber
+            # 合并 version_history
+            HIST_DIR="histories/history-${developer}-${branchName}"
+            if [ -f "$HIST_DIR/version_history.md" ]; then
+              cp "$HIST_DIR/version_history.md" version_history.md
+            fi
+            if [ -f "$HIST_DIR/version_history_webhtv.md" ]; then
+              cp "$HIST_DIR/version_history_webhtv.md" version_history_webhtv.md
+            fi
 
+            # 复制 APK + JSON 到 apk 目录
+            APK_SRC="apk-dirs/apkdir-${branchName}"
+            if [ -d "$APK_SRC" ]; then
+              mkdir -p "apk/$branchName"
+              cp "$APK_SRC"/* "apk/$branchName/"
+            fi
+
+            # Release
+            ARTIFACT_DIR="all-apks/apk-${userName}-${repoName}-${branchName}"
+            LOG_FILE="$ARTIFACT_DIR/$userName-$branchName-Release.log"
+
+            if [ -d "$ARTIFACT_DIR" ]; then
+              # 尝试创建 release，失败则追加上传（release 已存在）
+              gh release create "$tag" \
+                --title "$tag" \
+                --notes-file "$LOG_FILE" \
+                "$ARTIFACT_DIR"/*.apk \
+                "$ARTIFACT_DIR"/SourceCode-*.* \
+                2>/dev/null || \
+              gh release upload "$tag" \
+                "$ARTIFACT_DIR"/*.apk \
+                "$ARTIFACT_DIR"/SourceCode-*.* \
+                --clobber
+            fi
+
+            # 提交变更
             git add README.md
-            [ -f version_history.md ] && git add version_history.md
+            [ -f version_history.md ]       && git add version_history.md
             [ -f version_history_webhtv.md ] && git add version_history_webhtv.md
+            [ -d "apk/$branchName" ]         && git add "apk/$branchName/" || true
             git commit -m "Update $repoName to $origVersionName" || true
             git push origin master
           done
 
   clean:
-    needs: build
+    needs: [build, release]
     runs-on: ubuntu-latest
     permissions:
       actions: write
