@@ -1,25 +1,3 @@
-### FongMi [my_release] - 更新于 2026-06-17 03:37
-- **原始版本**: 5.4.1
-- **编译版本**: 260515-18-my_release
-- **提交哈希**: [8097253](https://github.com/IsayIsee/FongMI/commit/809725308faebb6c9d99644a79a181bc279a8326)
-
-**详细日志/Changelog**:
-
-```
-26/05/15 Fix
-26/05/15 长按版本进行 Github 加速设置
-26/05/14 Fix
-26/05/14 修正版本检查提示
-26/05/14 设置界面增加 GitHub Acceleration
-26/05/14 长按版本显示 VersionCode 手工检查更新时如果当前版本已经最新显示提示
-26/05/14 增加 Github Acceleration 字符串
-26/05/13 优化新版本检查提示
-26/05/13 Fix
-
-```
-
----
-
 <<<<<<< Updated upstream
 ### FongMi [my_dev] - 更新于 2026-06-05 07:58
 - **原始版本**: 5.5.2

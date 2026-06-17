@@ -1,5 +1,6 @@
 {
-  "code": 26061615,
-  "name": "260616-15-webhtv_dev",
-  "desc": "* 版本: 5.5.2 → 260616-15-webhtv_dev\n* 26/06/16 Merge branch 'fish2018:main' into webhtv_dev\n* 26/06/16 Update WebHome devkit repository docs\n* 26/06/16 Reorganize WebHome devkit docs\n* 26/06/15 Improve mobile WebHome toolbar actions"
+  "code": 26061710,
+  "name": "260617-10-webhtv_dev",
+  "desc": "* 版本: 5.5.2 → 260617-10-webhtv_dev\n* 26/06/17 Merge branch 'fish2018:main' into webhtv_dev\n* 26/06/16 fix: isolate proxy auto detection input\n* 26/06/16 feat: add proxy rule auto detection\n* 26/06/16 Merge branch 'fish2018:main' into webhtv_dev\n* 26/06/16 Remove duplicate custom CSP detect hint\n* 26/06/16 Polish custom CSP detection UI\n* 26/06/16 Add custom CSP snippet detection\n* 26/06/16 Sync WebHome site matches into regex field\n* 26/06/16 Polish WebHome extension setup UI\n* 26/06/16 Improve WebHome extension setup UX",
+  "url": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260617-10/leanback-arm64_v8a.apk"
 }
