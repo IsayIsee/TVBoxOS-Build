@@ -415,7 +415,7 @@ jobs:
       - name: Download TG Tool
         if: ${{ env.commit }}
         continue-on-error: true
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: telegram-bot-api-binary
           path: TVBoxOSC
@@ -600,28 +600,28 @@ jobs:
           token: ${{ secrets.PAT }}
 
       - name: Download All Metadata
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: meta-*
           path: metas/
           merge-multiple: false
 
       - name: Download All APK Artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: apk-*
           path: all-apks/
           merge-multiple: false
 
       - name: Download APK Dirs
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: apkdir-*
           path: apk-dirs/
           merge-multiple: false
 
       - name: Download Version Histories
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: history-*
           path: histories/
