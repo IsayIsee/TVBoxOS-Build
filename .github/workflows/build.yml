@@ -255,7 +255,7 @@ jobs:
 
       - name: Setup Gradle
         if: ${{ env.commit }}
-        uses: gradle/actions/setup-gradle@v4
+        uses: gradle/actions/setup-gradle@v6
 
       - name: Build With Gradle
         if: ${{ env.commit }}
