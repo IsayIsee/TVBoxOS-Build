@@ -53,7 +53,7 @@ jobs:
           find telegram-bot-api -name "telegram-bot-api" -type f -executable -exec cp {} ./telegram-bot-api-binary \;
 
       - name: Upload Binary
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: telegram-bot-api-binary
           path: telegram-bot-api-binary
@@ -556,7 +556,7 @@ jobs:
 
       - name: Upload Job Metadata
         if: ${{ env.commit }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: meta-${{ matrix.userName }}-${{ matrix.repoName }}-${{ matrix.branchName }}
           path: /tmp/job-meta.json
@@ -564,7 +564,7 @@ jobs:
 
       - name: Upload APK Artifacts
         if: ${{ env.commit }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: apk-${{ matrix.userName }}-${{ matrix.repoName }}-${{ matrix.branchName }}
           path: TVBoxOSC/apk/*
@@ -572,7 +572,7 @@ jobs:
 
       - name: Upload APK Dir
         if: ${{ env.commit && (matrix.developer == 'FongMI' || matrix.developer == 'fish2018') }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: apkdir-${{ matrix.branchName }}
           path: apk/${{ matrix.branchName }}/*.json
@@ -580,7 +580,7 @@ jobs:
 
       - name: Upload Version History
         if: ${{ env.commit && (matrix.developer == 'FongMI' || matrix.developer == 'fish2018') }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: history-${{ matrix.developer }}-${{ matrix.branchName }}
           path: |
