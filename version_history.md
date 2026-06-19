@@ -1,3 +1,19 @@
+### FongMi [my_dev] - 更新于 2026-06-19 22:54
+- **原始版本**: 5.5.2
+- **编译版本**: 260620-06-my_dev
+- **提交哈希**: [415d5e2](https://github.com/IsayIsee/FongMI/commit/415d5e296589f044e5ea7643d099a80c5e08deb7)
+
+**详细日志/Changelog**:
+
+```
+26/06/20 Merge branch 'FongMi:fongmi' into my_dev
+26/06/12 Fix youtube
+26/05/28 Fix youtube
+
+```
+
+---
+
 <<<<<<< Updated upstream
 ### FongMi [my_dev] - 更新于 2026-06-05 07:58
 - **原始版本**: 5.5.2
