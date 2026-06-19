@@ -1,3 +1,22 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-19 22:48
+- **原始版本**: 5.5.2
+- **编译版本**: 260619-19-webhtv_dev
+- **提交哈希**: [bf12ad9](https://github.com/IsayIsee/webhtv/commit/bf12ad9e487802e54aad5ed71188dcbbaeab27df)
+
+**详细日志/Changelog**:
+
+```
+26/06/19 Merge branch 'fish2018:main' into webhtv_dev
+26/06/19 feat: add about disclaimer dialog
+26/06/19 docs: add community share link
+26/06/19 docs: link remote relay server docs
+26/06/19 chore: update webhome homepage examples
+26/06/19 fix: apply opening seek after local proxy wait
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-19 01:36
 - **原始版本**: 5.5.2
 - **编译版本**: 260619-09-webhtv_dev
