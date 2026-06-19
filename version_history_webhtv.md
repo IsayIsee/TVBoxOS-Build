@@ -1,3 +1,80 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-19 01:36
+- **原始版本**: 5.5.2
+- **编译版本**: 260619-09-webhtv_dev
+- **提交哈希**: [9ed9712](https://github.com/IsayIsee/webhtv/commit/9ed97120380cc938f0ac30b3ca0466ad539c65aa)
+
+**详细日志/Changelog**:
+
+```
+26/06/19 Merge branch 'fish2018:main' into webhtv_dev
+26/06/19 fix: always show subtitle off option
+26/06/19 feat: allow disabling subtitle tracks
+26/06/19 chore: keep plans local only
+26/06/19 fix: encode playback sync headers
+26/06/19 fix: show disabled remote trust summary
+26/06/19 fix: prevent remote self binding
+26/06/19 fix: separate enhance setting rows
+26/06/19 fix: prevent adding local remote device
+26/06/19 style: compact webhome debug controls
+26/06/19 feat: refine webhome extension debug actions
+26/06/19 feat: improve config list navigation
+26/06/19 chore: refine enhance settings order
+26/06/19 chore: reorder enhance settings
+26/06/19 fix: improve remote sync status and controls
+26/06/19 perf: gate player debug and trace proxy streams
+26/06/19 perf: optimize local proxy playback diagnostics
+26/06/19 fix: reduce playback debug overhead
+26/06/19 fix: compact remote config actions
+26/06/19 fix: simplify remote device list
+26/06/19 fix: simplify remote trust refresh actions
+26/06/19 fix: simplify config dialog navigation
+26/06/19 fix: improve local config selection
+26/06/19 fix: keep remote gson models in release
+26/06/18 feat: add rust remote relay binaries
+26/06/18 fix: avoid remote site read side effects
+26/06/18 feat: add websocket remote relay
+26/06/18 fix: prevent home picker flicker
+26/06/18 fix: show remote sync progress
+26/06/18 fix: remove remote relay count summary
+26/06/18 fix: align remote config dialog chrome
+26/06/18 fix: rework remote config dialog width
+26/06/18 fix: polish remote config edit and sync progress
+26/06/18 fix: clarify remote trust summary counts
+26/06/18 fix: simplify remote config switch status
+26/06/18 fix: simplify remote config add flow
+26/06/18 fix: polish remote config dialog
+26/06/18 fix: keep remote config dialog opaque
+26/06/18 fix: stabilize remote relay binding
+26/06/18 fix: sync remote relay setup dialog state
+26/06/18 fix: keep remote relay detection non-blocking
+26/06/18 fix: improve remote bind code and home status
+26/06/18 fix: correct remote relay qr workflow
+26/06/18 fix: keep remote server qr as display action
+26/06/18 fix: polish remote config cache and actions
+26/06/18 fix: redesign remote config management flow
+26/06/18 fix: polish remote trust config dialogs
+26/06/18 fix: refresh webhome fullscreen menu state
+26/06/18 fix: stabilize remote trust scan and fullscreen toggle
+26/06/18 feat: refine remote trust sync and webhome fullscreen
+26/06/18 feat: complete simple remote trust actions
+26/06/18 fix: improve remote trust reconnect behavior
+26/06/18 fix: match remote trust server input style
+26/06/18 fix: polish remote trust and csp dialogs
+26/06/18 fix: simplify remote trust service settings
+26/06/18 fix: polish remote trust settings and results
+26/06/18 fix: refine remote trust device controls
+26/06/17 fix: streamline remote trust controls
+26/06/17 fix: polish remote trust dialog ui
+26/06/17 feat: redesign remote trust ui
+26/06/17 docs: add remote trust ui redesign plan
+26/06/17 feat: add remote trust app controller
+26/06/17 docs: add remote trust usage guide
+26/06/17 feat: add remote trust agent foundation
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-17 04:46
 - **原始版本**: 5.5.2
 - **编译版本**: 260617-12-webhtv_dev
