@@ -657,198 +657,198 @@ jobs:
           fi
 
       # ========== 主处理步骤 ==========
-  - name: Process Each Build
-    env:
-      GH_TOKEN: ${{ secrets.PAT }}
-    run: |
-      git config --local user.name "github-actions[bot]"
-      git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-      
-      build_count=0
-      
-      # 收集所有 job-meta.json 文件
-      # 方式1: 直接在 metas/ 根目录
-      # 方式2: 在 metas/ 的子目录中
-      meta_files=""
-      
-      # 查找所有 job-meta.json
-      if [ -f "metas/job-meta.json" ]; then
-        meta_files="$meta_files metas/job-meta.json"
-      fi
-      
-      # 查找子目录中的
-      for meta_dir in metas/meta-*/; do
-        [ -d "$meta_dir" ] || continue
-        if [ -f "$meta_dir/job-meta.json" ]; then
-          meta_files="$meta_files $meta_dir/job-meta.json"
-        fi
-      done
-      
-      # 如果没有找到任何文件，尝试使用 find
-      if [ -z "$meta_files" ]; then
-        meta_files=$(find metas -name "job-meta.json" -type f 2>/dev/null || echo "")
-      fi
-      
-      for meta_file in $meta_files; do
-        [ -f "$meta_file" ] || continue
-      
-        build_count=$((build_count + 1))
-        echo ""
-        echo "========== 处理第 $build_count 个构建 =========="
-        echo "meta_file: $meta_file"
-      
-        commit=$(jq -r .commit "$meta_file")
-        commitS=$(jq -r .commitS "$meta_file")
-        tag=$(jq -r .tag "$meta_file")
-        developer=$(jq -r .developer "$meta_file")
-        repoName=$(jq -r .repoName "$meta_file")
-        branchName=$(jq -r .branchName "$meta_file")
-        userName=$(jq -r .userName "$meta_file")
-        origVersionName=$(jq -r .origVersionName "$meta_file")
-      
-        echo "repoName: $repoName"
-        echo "branchName: $branchName"
-        echo "developer: $developer"
-        echo "tag: $tag"
-      
-        # pull 最新
-        echo ""
-        echo "Pulling latest changes..."
-        git pull --rebase --autostash origin master || true
-      
-        # 更新 README
-        echo ""
-        echo "Updating README.md..."
-        if grep -q "$repoName/$branchName" README.md; then
-          sed -i "/$repoName\/$branchName/s#Updated: [a-zA-Z0-9]*#Updated: $commit#" README.md
-          echo "✓ Updated existing README entry"
-        else
-          echo "- [$repoName/$branchName](https://github.com/$userName/$repoName/tree/$branchName) (Updated: $commit)" >> README.md
-          echo "✓ Added new README entry"
-        fi
-      
-        # 复制 version_history
-        echo ""
-        echo "Copying version histories..."
-      
-        if [ "$developer" == "FongMI" ] || [ "$developer" == "fish2018" ]; then
-          # 查找所有 version_history 文件
-          for hist_file in histories/*/version_history*.md histories/version_history*.md; do
-            [ -f "$hist_file" ] || continue
-      
-            filename=$(basename "$hist_file")
-            if [ "$filename" == "version_history.md" ] && [ "$developer" == "FongMI" ]; then
-              cp "$hist_file" version_history.md
-              echo "✓ Copied version_history.md"
-            elif [ "$filename" == "version_history_webhtv.md" ] && [ "$developer" == "fish2018" ]; then
-              cp "$hist_file" version_history_webhtv.md
-              echo "✓ Copied version_history_webhtv.md"
-            fi
-          done
-        fi
-      
-        # 复制 APK JSON
-        echo ""
-        echo "Copying APK JSON files..."
-      
-        # 查找 JSON 文件（可能在根目录或子目录）
-        json_files=$(find apk-dirs -name "*.json" -type f 2>/dev/null || echo "")
-        if [ -n "$json_files" ]; then
-          mkdir -p "apk/$branchName"
-          for json_file in $json_files; do
-            cp "$json_file" "apk/$branchName/"
-          done
-          echo "✓ Copied JSON files to apk/$branchName/"
-          ls -la "apk/$branchName/" || true
-        fi
-      
-        # 查找 APK 并创建 Release
-        echo ""
-        echo "Creating/updating release for tag: $tag"
-      
-        # 查找 APK 文件
-        apk_files=$(find all-apks -name "*.apk" -type f 2>/dev/null || echo "")
-        source_files=$(find all-apks -name "SourceCode-*.*" -type f 2>/dev/null || echo "")
-        log_file=$(find all-apks -name "*Release.log" -type f 2>/dev/null | head -1 || echo "")
-      
-        if [ -n "$apk_files" ] || [ -n "$source_files" ]; then
-          echo "Found APK files:"
-          echo "$apk_files"
-          echo "Found source files:"
-          echo "$source_files"
-      
-          # 准备 release notes
-          if [ -n "$log_file" ] && [ -f "$log_file" ]; then
-            echo "Using log file: $log_file"
-            # 尝试创建 release，失败则追加上传
-            if gh release create "$tag" \
-              --title "$tag" \
-              --notes-file "$log_file" \
-              $apk_files \
-              $source_files \
-              2>&1; then
-              echo "✓ Release created successfully"
-            else
-              echo "Release may already exist, attempting to upload assets..."
-              gh release upload "$tag" \
-                $apk_files \
-                $source_files \
-                --clobber && echo "✓ Assets uploaded successfully"
-            fi
-          else
-            echo "⚠ No log file found, creating release without notes"
-            if gh release create "$tag" \
-              --title "$tag" \
-              $apk_files \
-              $source_files \
-              2>&1; then
-              echo "✓ Release created successfully"
-            else
-              echo "Release may already exist, attempting to upload assets..."
-              gh release upload "$tag" \
-                $apk_files \
-                $source_files \
-                --clobber && echo "✓ Assets uploaded successfully"
-            fi
+      - name: Process Each Build
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          build_count=0
+          
+          # 收集所有 job-meta.json 文件
+          # 方式1: 直接在 metas/ 根目录
+          # 方式2: 在 metas/ 的子目录中
+          meta_files=""
+          
+          # 查找所有 job-meta.json
+          if [ -f "metas/job-meta.json" ]; then
+            meta_files="$meta_files metas/job-meta.json"
           fi
-        else
-          echo "⚠ No APK or SourceCode files found in all-apks/"
-          echo "Contents of all-apks:"
-          find all-apks -type f 2>/dev/null || echo "all-apks directory not found"
-        fi
-      
-        # 提交变更
-        echo ""
-        echo "Committing changes..."
-        git add README.md
-        [ -f version_history.md ] && git add version_history.md
-        [ -f version_history_webhtv.md ] && git add version_history_webhtv.md
-        [ -d "apk/$branchName" ] && git add "apk/$branchName/*.json" || true
-      
-        if git commit -m "Update $repoName to $origVersionName"; then
-          echo "✓ Commit successful"
-        else
-          echo "⚠ Nothing to commit (repository up to date)"
-        fi
-      
-        if git push origin master; then
-          echo "✓ Push successful"
-        else
-          echo "✗ Push failed"
-        fi
-      done
-      
-      if [ $build_count -eq 0 ]; then
-        echo "ERROR: No builds found to process! Check if artifact downloads worked."
-        echo "Directory structure of metas/:"
-        find metas -type d 2>/dev/null || echo "metas/ directory not found"
-        echo "Files in metas/:"
-        find metas -type f 2>/dev/null || echo "No files found"
-        exit 1
-      else
-        echo ""
-        echo "========== 完成 $build_count 个构建的处理 =========="
-      fi
+          
+          # 查找子目录中的
+          for meta_dir in metas/meta-*/; do
+            [ -d "$meta_dir" ] || continue
+            if [ -f "$meta_dir/job-meta.json" ]; then
+              meta_files="$meta_files $meta_dir/job-meta.json"
+            fi
+          done
+          
+          # 如果没有找到任何文件，尝试使用 find
+          if [ -z "$meta_files" ]; then
+            meta_files=$(find metas -name "job-meta.json" -type f 2>/dev/null || echo "")
+          fi
+          
+          for meta_file in $meta_files; do
+            [ -f "$meta_file" ] || continue
+          
+            build_count=$((build_count + 1))
+            echo ""
+            echo "========== 处理第 $build_count 个构建 =========="
+            echo "meta_file: $meta_file"
+          
+            commit=$(jq -r .commit "$meta_file")
+            commitS=$(jq -r .commitS "$meta_file")
+            tag=$(jq -r .tag "$meta_file")
+            developer=$(jq -r .developer "$meta_file")
+            repoName=$(jq -r .repoName "$meta_file")
+            branchName=$(jq -r .branchName "$meta_file")
+            userName=$(jq -r .userName "$meta_file")
+            origVersionName=$(jq -r .origVersionName "$meta_file")
+          
+            echo "repoName: $repoName"
+            echo "branchName: $branchName"
+            echo "developer: $developer"
+            echo "tag: $tag"
+          
+            # pull 最新
+            echo ""
+            echo "Pulling latest changes..."
+            git pull --rebase --autostash origin master || true
+          
+            # 更新 README
+            echo ""
+            echo "Updating README.md..."
+            if grep -q "$repoName/$branchName" README.md; then
+              sed -i "/$repoName\/$branchName/s#Updated: [a-zA-Z0-9]*#Updated: $commit#" README.md
+              echo "✓ Updated existing README entry"
+            else
+              echo "- [$repoName/$branchName](https://github.com/$userName/$repoName/tree/$branchName) (Updated: $commit)" >> README.md
+              echo "✓ Added new README entry"
+            fi
+          
+            # 复制 version_history
+            echo ""
+            echo "Copying version histories..."
+          
+            if [ "$developer" == "FongMI" ] || [ "$developer" == "fish2018" ]; then
+              # 查找所有 version_history 文件
+              for hist_file in histories/*/version_history*.md histories/version_history*.md; do
+                [ -f "$hist_file" ] || continue
+          
+                filename=$(basename "$hist_file")
+                if [ "$filename" == "version_history.md" ] && [ "$developer" == "FongMI" ]; then
+                  cp "$hist_file" version_history.md
+                  echo "✓ Copied version_history.md"
+                elif [ "$filename" == "version_history_webhtv.md" ] && [ "$developer" == "fish2018" ]; then
+                  cp "$hist_file" version_history_webhtv.md
+                  echo "✓ Copied version_history_webhtv.md"
+                fi
+              done
+            fi
+          
+            # 复制 APK JSON
+            echo ""
+            echo "Copying APK JSON files..."
+          
+            # 查找 JSON 文件（可能在根目录或子目录）
+            json_files=$(find apk-dirs -name "*.json" -type f 2>/dev/null || echo "")
+            if [ -n "$json_files" ]; then
+              mkdir -p "apk/$branchName"
+              for json_file in $json_files; do
+                cp "$json_file" "apk/$branchName/"
+              done
+              echo "✓ Copied JSON files to apk/$branchName/"
+              ls -la "apk/$branchName/" || true
+            fi
+          
+            # 查找 APK 并创建 Release
+            echo ""
+            echo "Creating/updating release for tag: $tag"
+          
+            # 查找 APK 文件
+            apk_files=$(find all-apks -name "*.apk" -type f 2>/dev/null || echo "")
+            source_files=$(find all-apks -name "SourceCode-*.*" -type f 2>/dev/null || echo "")
+            log_file=$(find all-apks -name "*Release.log" -type f 2>/dev/null | head -1 || echo "")
+          
+            if [ -n "$apk_files" ] || [ -n "$source_files" ]; then
+              echo "Found APK files:"
+              echo "$apk_files"
+              echo "Found source files:"
+              echo "$source_files"
+          
+              # 准备 release notes
+              if [ -n "$log_file" ] && [ -f "$log_file" ]; then
+                echo "Using log file: $log_file"
+                # 尝试创建 release，失败则追加上传
+                if gh release create "$tag" \
+                  --title "$tag" \
+                  --notes-file "$log_file" \
+                  $apk_files \
+                  $source_files \
+                  2>&1; then
+                  echo "✓ Release created successfully"
+                else
+                  echo "Release may already exist, attempting to upload assets..."
+                  gh release upload "$tag" \
+                    $apk_files \
+                    $source_files \
+                    --clobber && echo "✓ Assets uploaded successfully"
+                fi
+              else
+                echo "⚠ No log file found, creating release without notes"
+                if gh release create "$tag" \
+                  --title "$tag" \
+                  $apk_files \
+                  $source_files \
+                  2>&1; then
+                  echo "✓ Release created successfully"
+                else
+                  echo "Release may already exist, attempting to upload assets..."
+                  gh release upload "$tag" \
+                    $apk_files \
+                    $source_files \
+                    --clobber && echo "✓ Assets uploaded successfully"
+                fi
+              fi
+            else
+              echo "⚠ No APK or SourceCode files found in all-apks/"
+              echo "Contents of all-apks:"
+              find all-apks -type f 2>/dev/null || echo "all-apks directory not found"
+            fi
+          
+            # 提交变更
+            echo ""
+            echo "Committing changes..."
+            git add README.md
+            [ -f version_history.md ] && git add version_history.md
+            [ -f version_history_webhtv.md ] && git add version_history_webhtv.md
+            [ -d "apk/$branchName" ] && git add "apk/$branchName/*.json" || true
+          
+            if git commit -m "Update $repoName to $origVersionName"; then
+              echo "✓ Commit successful"
+            else
+              echo "⚠ Nothing to commit (repository up to date)"
+            fi
+          
+            if git push origin master; then
+              echo "✓ Push successful"
+            else
+              echo "✗ Push failed"
+            fi
+          done
+          
+          if [ $build_count -eq 0 ]; then
+            echo "ERROR: No builds found to process! Check if artifact downloads worked."
+            echo "Directory structure of metas/:"
+            find metas -type d 2>/dev/null || echo "metas/ directory not found"
+            echo "Files in metas/:"
+            find metas -type f 2>/dev/null || echo "No files found"
+            exit 1
+          else
+            echo ""
+            echo "========== 完成 $build_count 个构建的处理 =========="
+          fi
 
   clean:
     needs: [build, release]
