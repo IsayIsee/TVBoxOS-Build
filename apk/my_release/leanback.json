@@ -1,6 +1,9 @@
 {
-  "code": 26051518,
-  "name": "260515-18-release",
-  "desc": "* 版本: 5.4.1 → 260515-18-my_release\n* 26/05/15 Fix\n* 26/05/15 Fix\n* 26/05/15 长按版本进行 Github 加速设置\n* 26/05/14 Fix\n* 26/05/14 修正版本检查提示\n* 26/05/14 设置界面增加 GitHub Acceleration\n* 26/05/14 长按版本显示 VersionCode 手工检查更新时如果当前版本已经最新显示提示\n* 26/05/14 增加 Github Acceleration 字符串\n* 26/05/13 优化新版本检查提示\n* 26/05/13 Fix",
-  "url": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260515-18/leanback-arm64_v8a.apk"
+  "code": 26061919,
+  "name": "260619-19-webhtv_dev",
+  "desc": "* fongmi release 更换为 webhtv_dev\n* 版本: 5.5.2 → 260619-19-webhtv_dev\n* 26/06/19 Merge branch 'fish2018:main' into webhtv_dev\n* 26/06/19 feat: add about disclaimer dialog\n* 26/06/19 docs: add community share link\n* 26/06/19 docs: link remote relay server docs\n* 26/06/19 chore: update webhome homepage examples\n* 26/06/19 fix: apply opening seek after local proxy wait",
+  "urls": {
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260619-19/TVBox_fish2018_260619-19_leanback-arm64_v8a.apk",
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260619-19/TVBox_fish2018_260619-19_leanback-armeabi_v7a.apk"
+  }
 }
