@@ -622,36 +622,56 @@ jobs:
           path: histories/
           merge-multiple: false
 
-      - name: Verify Artifacts
+      # ========== 调试步骤 ==========
+      - name: Debug - List downloaded artifacts
         run: |
-          echo "=== meta files ==="
-          find metas/ -name "*.json" -exec basename {} \;
-          echo ""
-          echo "=== apk dirs ==="
-          find all-apks/ -maxdepth 1 -type d -not -name "." -exec basename {} \;
+          echo "=== 检查 metas/ 目录 ==="
+          if [ -d metas ]; then
+            find metas/ -type f | sort
+            echo "Total files in metas: $(find metas/ -type f | wc -l)"
+          else
+            echo "ERROR: metas/ directory does not exist!"
+          fi
+          
+          echo -e "\n=== 检查 all-apks/ 目录 ==="
+          if [ -d all-apks ]; then
+            find all-apks/ -type f | head -30
+            echo "Total files in all-apks: $(find all-apks/ -type f | wc -l)"
+          else
+            echo "ERROR: all-apks/ directory does not exist!"
+          fi
+          
+          echo -e "\n=== 检查 apk-dirs/ 目录 ==="
+          if [ -d apk-dirs ]; then
+            find apk-dirs/ -type f
+            echo "Total JSON files: $(find apk-dirs/ -type f -name '*.json' | wc -l)"
+          else
+            echo "ERROR: apk-dirs/ directory does not exist!"
+          fi
+          
+          echo -e "\n=== 检查 histories/ 目录 ==="
+          if [ -d histories ]; then
+            find histories/ -type f
+          else
+            echo "INFO: histories/ directory does not exist (optional)"
+          fi
 
+      # ========== 主处理步骤 ==========
       - name: Process Each Build
         env:
           GH_TOKEN: ${{ secrets.PAT }}
         run: |
-          set -e  # 遇到错误立即退出
-          
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
           build_count=0
-          failed_builds=0
-          
           for meta_file in metas/*/job-meta.json; do
             [ -f "$meta_file" ] || continue
           
             build_count=$((build_count + 1))
             echo ""
-            echo "============================================"
-            echo "Processing build #$build_count: $meta_file"
-            echo "============================================"
+            echo "========== 处理第 $build_count 个构建 =========="
           
-            # 读取元数据
             commit=$(jq -r .commit "$meta_file")
             commitS=$(jq -r .commitS "$meta_file")
             tag=$(jq -r .tag "$meta_file")
@@ -661,26 +681,24 @@ jobs:
             userName=$(jq -r .userName "$meta_file")
             origVersionName=$(jq -r .origVersionName "$meta_file")
           
-            echo "Tag: $tag | Repo: $repoName/$branchName | Developer: $developer"
+            echo "repoName: $repoName"
+            echo "branchName: $branchName"
+            echo "developer: $developer"
+            echo "tag: $tag"
           
-            # Pull latest
-            echo "[1/6] Pulling latest changes..."
-            if ! git pull --rebase --autostash origin master 2>&1; then
-              echo "⚠ Warning: git pull failed, continuing anyway..."
-            fi
+            # pull 最新，避免多个 job 串行提交时冲突
+            git pull --rebase --autostash origin master
           
-            # Update README
-            echo "[2/6] Updating README.md..."
+            # 更新 README
             if grep -q "$repoName/$branchName" README.md; then
               sed -i "/$repoName\/$branchName/s#Updated: [a-zA-Z0-9]*#Updated: $commit#" README.md
-              echo "✓ Updated existing entry"
+              echo "✓ Updated existing README entry"
             else
               echo "- [$repoName/$branchName](https://github.com/$userName/$repoName/tree/$branchName) (Updated: $commit)" >> README.md
-              echo "✓ Added new entry"
+              echo "✓ Added new README entry"
             fi
           
-            # Copy version histories
-            echo "[3/6] Copying version histories..."
+            # 合并 version_history
             HIST_DIR="histories/history-${developer}-${branchName}"
             if [ -f "$HIST_DIR/version_history.md" ]; then
               cp "$HIST_DIR/version_history.md" version_history.md
@@ -691,131 +709,75 @@ jobs:
               echo "✓ Copied version_history_webhtv.md"
             fi
           
-            # Copy APK JSON
-            echo "[4/6] Copying APK JSON files..."
+            # 复制 APK + JSON 到 apk 目录
             APK_SRC="apk-dirs/apkdir-${branchName}"
             if [ -d "$APK_SRC" ]; then
               mkdir -p "apk/$branchName"
               cp "$APK_SRC"/* "apk/$branchName/"
-              echo "✓ JSON files copied:"
-              ls -lh "apk/$branchName/"*.json 2>/dev/null || echo "  (no JSON files found)"
+              echo "✓ Copied JSON files to apk/$branchName/"
+              ls -la "apk/$branchName/"
             else
-              echo "⚠ Warning: JSON source not found at $APK_SRC"
+              echo "⚠ APK source dir not found: $APK_SRC"
             fi
           
-            # Create/Upload Release
-            echo "[5/6] Creating GitHub Release..."
+            # Release
             ARTIFACT_DIR="all-apks/apk-${userName}-${repoName}-${branchName}"
             LOG_FILE="$ARTIFACT_DIR/$userName-$branchName-Release.log"
           
-            if [ ! -d "$ARTIFACT_DIR" ]; then
-              echo "✗ ERROR: Artifact directory not found: $ARTIFACT_DIR"
-              failed_builds=$((failed_builds + 1))
-              continue
-            fi
+            if [ -d "$ARTIFACT_DIR" ]; then
+              echo "Found artifact dir: $ARTIFACT_DIR"
+              echo "Files in artifact dir:"
+              ls -la "$ARTIFACT_DIR"
           
-            if [ ! -f "$LOG_FILE" ]; then
-              echo "✗ ERROR: Release log not found: $LOG_FILE"
-              failed_builds=$((failed_builds + 1))
-              continue
-            fi
+              echo ""
+              echo "Attempting to create/upload release for tag: $tag"
           
-            echo "Release artifacts:"
-            ls -lh "$ARTIFACT_DIR"/ | grep -E "\.(apk|tar\.xz)$" || echo "  (no APK/archive files found)"
-          
-            # Try to create release
-            release_created=0
-          
-            if gh release create "$tag" \
-              --title "$tag" \
-              --notes-file "$LOG_FILE" \
-              "$ARTIFACT_DIR"/*.apk \
-              "$ARTIFACT_DIR"/SourceCode-*.* \
-              2>&1 | tee /tmp/gh-release-output.txt; then
-              echo "✓ Release created successfully"
-              release_created=1
-            else
-              release_error=$(cat /tmp/gh-release-output.txt)
-              if echo "$release_error" | grep -q "already exists"; then
-                echo "Release already exists, uploading assets..."
-                release_created=1
-              elif echo "$release_error" | grep -q "authentication required"; then
-                echo "✗ FATAL: Authentication failed - check PAT token"
-                cat /tmp/gh-release-output.txt
-                failed_builds=$((failed_builds + 1))
-                continue
-              else
-                echo "Release creation output:"
-                cat /tmp/gh-release-output.txt
-              fi
-            fi
-          
-            if [ $release_created -eq 1 ]; then
-              # Try to upload/overwrite assets
-              if gh release upload "$tag" \
+              # 尝试创建 release，失败则追加上传（release 已存在）
+              if gh release create "$tag" \
+                --title "$tag" \
+                --notes-file "$LOG_FILE" \
                 "$ARTIFACT_DIR"/*.apk \
                 "$ARTIFACT_DIR"/SourceCode-*.* \
-                --clobber 2>&1 | tee /tmp/gh-upload-output.txt; then
-                echo "✓ Release assets uploaded/updated"
+                2>&1; then
+                echo "✓ Release created successfully"
               else
-                echo "⚠ Warning: Asset upload had issues:"
-                cat /tmp/gh-upload-output.txt
+                echo "Release may already exist, attempting to upload assets..."
+                gh release upload "$tag" \
+                  "$ARTIFACT_DIR"/*.apk \
+                  "$ARTIFACT_DIR"/SourceCode-*.* \
+                  --clobber && echo "✓ Assets uploaded successfully"
               fi
+            else
+              echo "⚠ Artifact dir not found: $ARTIFACT_DIR"
             fi
           
-            # Git commit and push
-            echo "[6/6] Committing and pushing changes..."
+            # 提交变更
+            echo ""
+            echo "Committing changes..."
             git add README.md
             [ -f version_history.md ]       && git add version_history.md
             [ -f version_history_webhtv.md ] && git add version_history_webhtv.md
-            [ -d "apk/$branchName" ]         && git add "apk/$branchName"/*.json 2>/dev/null || true
+            [ -d "apk/$branchName" ]         && git add "apk/$branchName/*.json" || true
           
-            if ! git diff --cached --quiet; then
-              echo "Changes to commit:"
-              git diff --cached --name-only | sed 's/^/  - /'
-          
-              if git commit -m "Update $repoName to $origVersionName"; then
-                echo "✓ Commit created"
-              else
-                echo "✗ Commit failed"
-                failed_builds=$((failed_builds + 1))
-                continue
-              fi
+            if git commit -m "Update $repoName to $origVersionName"; then
+              echo "✓ Commit successful"
             else
-              echo "No changes to commit"
+              echo "⚠ Nothing to commit (repository up to date)"
             fi
           
-            # Push with retry
-            push_retries=3
-            push_success=0
-            while [ $push_retries -gt 0 ]; do
-              if git push origin master 2>&1 | tee /tmp/git-push-output.txt; then
-                echo "✓ Push successful"
-                push_success=1
-                break
-              else
-                push_retries=$((push_retries - 1))
-                if [ $push_retries -gt 0 ]; then
-                  echo "⚠ Push failed, retrying... ($push_retries retries left)"
-                  sleep 3
-                  git pull --rebase --autostash origin master
-                else
-                  echo "✗ Push failed after 3 retries:"
-                  cat /tmp/git-push-output.txt
-                  failed_builds=$((failed_builds + 1))
-                fi
-              fi
-            done
+            if git push origin master; then
+              echo "✓ Push successful"
+            else
+              echo "✗ Push failed"
+            fi
           done
           
-          echo ""
-          echo "============================================"
-          echo "Summary: Processed $build_count builds"
-          if [ $failed_builds -eq 0 ]; then
-            echo "✓ All builds completed successfully"
-          else
-            echo "✗ $failed_builds builds failed"
+          if [ $build_count -eq 0 ]; then
+            echo "ERROR: No builds found to process! Check if artifact downloads worked."
             exit 1
+          else
+            echo ""
+            echo "========== 完成 $build_count 个构建的处理 =========="
           fi
 
   clean:
