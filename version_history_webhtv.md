@@ -1,3 +1,17 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-22 09:50
+- **原始版本**: 5.5.2
+- **编译版本**: 260622-17-webhtv_dev
+- **提交哈希**: [525a97f](https://github.com/IsayIsee/webhtv/commit/525a97fc0d251d4f40fd5a4e448208dc2dd6f73d)
+
+**详细日志/Changelog**:
+
+```
+26/06/22 fix: 命名空间错误
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-22 03:25
 - **原始版本**: 5.5.2
 - **编译版本**: 260622-09-webhtv_dev
