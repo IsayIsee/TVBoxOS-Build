@@ -1,3 +1,50 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-22 03:25
+- **原始版本**: 5.5.2
+- **编译版本**: 260622-09-webhtv_dev
+- **提交哈希**: [32cb95e](https://github.com/IsayIsee/webhtv/commit/32cb95e0b559b40ca5998614292817968cea1c8a)
+
+**详细日志/Changelog**:
+
+```
+26/06/22 Merge branch 'fish2018:main' into webhtv_dev
+26/06/22 Merge branch 'main' into webhtv_dev
+26/06/21 fix: fallback from ijk live errors
+26/06/21 feat: update startup splash images
+26/06/21 fix: isolate push playback history artwork
+26/06/21 fix: improve remote sync and git cloud controls
+26/06/21 fix: refresh remote device online status
+26/06/21 feat: show update download progress
+26/06/21 fix: show build tag and update check result
+26/06/21 ci: require signing secrets for release builds
+26/06/21 ci: strip v prefix from release title
+26/06/21 ci: set repo for standalone cnb sync
+26/06/21 ci: add standalone cnb release sync
+26/06/21 fix: install android 37 platform in release workflow
+26/06/21 fix: use available android sdk for release workflow
+26/06/20 feat: improve playback and git cloud release flow
+26/06/20 feat(player): persist playback speed and add episode shortcuts
+26/06/20 feat(player): add IJK playback kernel
+26/06/20 docs: record upstream baseline commits
+26/06/20 merge: feat-player-osd-settings
+26/06/20 feat: refine nostr homepage artwork and focus
+26/06/20 docs: document push artwork history restore
+26/06/20 fix: restore push recent wall artwork
+26/06/20 fix: preserve push artwork and recent playback
+26/06/20 fix: feather playback artwork background edges
+26/06/19 feat: add player on-screen display settings
+26/06/19 merge: integrate FongMi sync and site dialog perf
+26/06/19 perf: defer leanback site dialog list rendering
+26/06/19 debug: trace leanback site dialog timing
+26/06/19 perf: cache custom csp json text
+26/06/19 fix: improve custom csp tv focus states
+26/06/19 merge: sync FongMi upstream through 1242ac7b3
+26/06/12 Fix youtube
+26/05/28 Fix youtube
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-19 22:48
 - **原始版本**: 5.5.2
 - **编译版本**: 260619-19-webhtv_dev

@@ -1,9 +1,9 @@
 {
-  "code": 26061919,
-  "name": "260619-19-webhtv_dev",
-  "desc": "* 版本: 5.5.2 → 260619-19-webhtv_dev\n* 26/06/19 Merge branch 'fish2018:main' into webhtv_dev\n* 26/06/19 feat: add about disclaimer dialog\n* 26/06/19 docs: add community share link\n* 26/06/19 docs: link remote relay server docs\n* 26/06/19 chore: update webhome homepage examples\n* 26/06/19 fix: apply opening seek after local proxy wait",
+  "code": 26062209,
+  "name": "260622-09-webhtv_dev",
+  "desc": "* 版本: 5.5.2 → 260622-09-webhtv_dev\n* 26/06/22 Merge branch 'fish2018:main' into webhtv_dev\n* 26/06/22 Merge branch 'main' into webhtv_dev\n* 26/06/21 fix: fallback from ijk live errors\n* 26/06/21 feat: update startup splash images\n* 26/06/21 fix: isolate push playback history artwork\n* 26/06/21 fix: improve remote sync and git cloud controls\n* 26/06/21 fix: refresh remote device online status\n* 26/06/21 feat: show update download progress\n* 26/06/21 fix: show build tag and update check result\n* 26/06/21 ci: require signing secrets for release builds\n* 26/06/21 ci: strip v prefix from release title\n* 26/06/21 ci: set repo for standalone cnb sync\n* 26/06/21 ci: add standalone cnb release sync\n* 26/06/21 fix: install android 37 platform in release workflow\n* 26/06/21 fix: use available android sdk for release workflow\n* 26/06/20 feat: improve playback and git cloud release flow\n* 26/06/20 feat(player): persist playback speed and add episode shortcuts\n* 26/06/20 feat(player): add IJK playback kernel\n* 26/06/20 docs: record upstream baseline commits\n* 26/06/20 merge: feat-player-osd-settings\n* 26/06/20 feat: refine nostr homepage artwork and focus\n* 26/06/20 docs: document push artwork history restore\n* 26/06/20 fix: restore push recent wall artwork\n* 26/06/20 fix: preserve push artwork and recent playback\n* 26/06/20 fix: feather playback artwork background edges\n* 26/06/19 feat: add player on-screen display settings\n* 26/06/19 merge: integrate FongMi sync and site dialog perf\n* 26/06/19 perf: defer leanback site dialog list rendering\n* 26/06/19 debug: trace leanback site dialog timing\n* 26/06/19 perf: cache custom csp json text\n* 26/06/19 fix: improve custom csp tv focus states\n* 26/06/19 merge: sync FongMi upstream through 1242ac7b3\n* 26/06/12 Fix youtube\n* 26/05/28 Fix youtube",
   "urls": {
-    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260619-19/TVBox_fish2018_260619-19_leanback-arm64_v8a.apk",
-    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260619-19/TVBox_fish2018_260619-19_leanback-armeabi_v7a.apk"
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260622-09/TVBox_fish2018_260622-09_leanback-arm64_v8a.apk",
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260622-09/TVBox_fish2018_260622-09_leanback-armeabi_v7a.apk"
   }
 }
