@@ -665,12 +665,24 @@ jobs:
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
           build_count=0
-          for meta_file in metas/*/job-meta.json; do
+          
+          # 遍历 metas 目录下的所有子目录（每个子目录是一个 artifact）
+          for meta_dir in metas/meta-*/; do
+            # 去掉末尾的 /
+            meta_dir="${meta_dir%/}"
+          
+            # 检查目录是否存在
+            [ -d "$meta_dir" ] || continue
+          
+            # 查找 job-meta.json 文件
+            meta_file="$meta_dir/job-meta.json"
             [ -f "$meta_file" ] || continue
           
             build_count=$((build_count + 1))
             echo ""
             echo "========== 处理第 $build_count 个构建 =========="
+            echo "meta_dir: $meta_dir"
+            echo "meta_file: $meta_file"
           
             commit=$(jq -r .commit "$meta_file")
             commitS=$(jq -r .commitS "$meta_file")
@@ -687,9 +699,13 @@ jobs:
             echo "tag: $tag"
           
             # pull 最新，避免多个 job 串行提交时冲突
-            git pull --rebase --autostash origin master
+            echo ""
+            echo "Pulling latest changes..."
+            git pull --rebase --autostash origin master || true
           
             # 更新 README
+            echo ""
+            echo "Updating README.md..."
             if grep -q "$repoName/$branchName" README.md; then
               sed -i "/$repoName\/$branchName/s#Updated: [a-zA-Z0-9]*#Updated: $commit#" README.md
               echo "✓ Updated existing README entry"
@@ -698,66 +714,119 @@ jobs:
               echo "✓ Added new README entry"
             fi
           
-            # 合并 version_history
-            HIST_DIR="histories/history-${developer}-${branchName}"
-            if [ -f "$HIST_DIR/version_history.md" ]; then
-              cp "$HIST_DIR/version_history.md" version_history.md
-              echo "✓ Copied version_history.md"
-            fi
-            if [ -f "$HIST_DIR/version_history_webhtv.md" ]; then
-              cp "$HIST_DIR/version_history_webhtv.md" version_history_webhtv.md
-              echo "✓ Copied version_history_webhtv.md"
-            fi
+            # 查找并复制 version_history
+            echo ""
+            echo "Copying version histories..."
           
-            # 复制 APK + JSON 到 apk 目录
-            APK_SRC="apk-dirs/apkdir-${branchName}"
-            if [ -d "$APK_SRC" ]; then
-              mkdir -p "apk/$branchName"
-              cp "$APK_SRC"/* "apk/$branchName/"
-              echo "✓ Copied JSON files to apk/$branchName/"
-              ls -la "apk/$branchName/"
-            else
-              echo "⚠ APK source dir not found: $APK_SRC"
-            fi
+            # 在 histories 目录下查找所有 version_history 文件
+            # 由于 merge-multiple: false，文件在子目录中
+            for hist_dir in histories/history-*/; do
+              [ -d "$hist_dir" ] || continue
           
-            # Release
-            ARTIFACT_DIR="all-apks/apk-${userName}-${repoName}-${branchName}"
-            LOG_FILE="$ARTIFACT_DIR/$userName-$branchName-Release.log"
+              if [ -f "$hist_dir/version_history.md" ] && [ "$developer" == "FongMI" ]; then
+                cp "$hist_dir/version_history.md" version_history.md
+                echo "✓ Copied version_history.md from $hist_dir"
+              fi
           
-            if [ -d "$ARTIFACT_DIR" ]; then
-              echo "Found artifact dir: $ARTIFACT_DIR"
+              if [ -f "$hist_dir/version_history_webhtv.md" ] && [ "$developer" == "fish2018" ]; then
+                cp "$hist_dir/version_history_webhtv.md" version_history_webhtv.md
+                echo "✓ Copied version_history_webhtv.md from $hist_dir"
+              fi
+            done
+          
+            # 复制 APK JSON 到 apk 目录
+            echo ""
+            echo "Copying APK JSON files..."
+          
+            # 在 apk-dirs 目录下查找所有 JSON 文件
+            for apkdir_dir in apk-dirs/apkdir-*/; do
+              [ -d "$apkdir_dir" ] || continue
+          
+              # 提取分支名（从目录名中）
+              dir_branch=$(basename "$apkdir_dir" | sed 's/apkdir-//')
+          
+              if [ "$dir_branch" == "$branchName" ]; then
+                mkdir -p "apk/$branchName"
+                find "$apkdir_dir" -name "*.json" -type f -exec cp {} "apk/$branchName/" \;
+                echo "✓ Copied JSON files to apk/$branchName/"
+                ls -la "apk/$branchName/" || true
+              fi
+            done
+          
+            # 查找 APK 并创建 Release
+            echo ""
+            echo "Creating/updating release for tag: $tag"
+          
+            # 查找对应的 APK artifact 目录
+            apk_artifact_dir="all-apks/apk-${userName}-${repoName}-${branchName}"
+          
+            if [ -d "$apk_artifact_dir" ]; then
+              echo "Found artifact dir: $apk_artifact_dir"
               echo "Files in artifact dir:"
-              ls -la "$ARTIFACT_DIR"
+              ls -la "$apk_artifact_dir" || true
           
-              echo ""
-              echo "Attempting to create/upload release for tag: $tag"
+              # 查找 Release log 文件
+              log_file="$apk_artifact_dir/$userName-$branchName-Release.log"
+              if [ ! -f "$log_file" ]; then
+                # 尝试在子目录中查找
+                log_file=$(find "$apk_artifact_dir" -name "*Release.log" -type f | head -1)
+              fi
           
-              # 尝试创建 release，失败则追加上传（release 已存在）
-              if gh release create "$tag" \
-                --title "$tag" \
-                --notes-file "$LOG_FILE" \
-                "$ARTIFACT_DIR"/*.apk \
-                "$ARTIFACT_DIR"/SourceCode-*.* \
-                2>&1; then
-                echo "✓ Release created successfully"
+              # 查找 APK 文件
+              apk_files=$(find "$apk_artifact_dir" -name "*.apk" -type f 2>/dev/null || echo "")
+              source_files=$(find "$apk_artifact_dir" -name "SourceCode-*.*" -type f 2>/dev/null || echo "")
+          
+              if [ -n "$apk_files" ] || [ -n "$source_files" ]; then
+                # 准备 release notes
+                if [ -f "$log_file" ]; then
+                  echo "Using log file: $log_file"
+                  # 尝试创建 release，失败则追加上传
+                  if gh release create "$tag" \
+                    --title "$tag" \
+                    --notes-file "$log_file" \
+                    $apk_files \
+                    $source_files \
+                    2>&1; then
+                    echo "✓ Release created successfully"
+                  else
+                    echo "Release may already exist, attempting to upload assets..."
+                    gh release upload "$tag" \
+                      $apk_files \
+                      $source_files \
+                      --clobber && echo "✓ Assets uploaded successfully"
+                  fi
+                else
+                  echo "⚠ No log file found, creating release without notes"
+                  if gh release create "$tag" \
+                    --title "$tag" \
+                    $apk_files \
+                    $source_files \
+                    2>&1; then
+                    echo "✓ Release created successfully"
+                  else
+                    echo "Release may already exist, attempting to upload assets..."
+                    gh release upload "$tag" \
+                      $apk_files \
+                      $source_files \
+                      --clobber && echo "✓ Assets uploaded successfully"
+                  fi
+                fi
               else
-                echo "Release may already exist, attempting to upload assets..."
-                gh release upload "$tag" \
-                  "$ARTIFACT_DIR"/*.apk \
-                  "$ARTIFACT_DIR"/SourceCode-*.* \
-                  --clobber && echo "✓ Assets uploaded successfully"
+                echo "⚠ No APK or SourceCode files found in $apk_artifact_dir"
               fi
             else
-              echo "⚠ Artifact dir not found: $ARTIFACT_DIR"
+              echo "⚠ Artifact dir not found: $apk_artifact_dir"
+              echo "Available artifact directories:"
+              find all-apks -type d -name "apk-*" 2>/dev/null || echo "None found"
             fi
           
             # 提交变更
             echo ""
             echo "Committing changes..."
             git add README.md
-            [ -f version_history.md ]       && git add version_history.md
+            [ -f version_history.md ] && git add version_history.md
             [ -f version_history_webhtv.md ] && git add version_history_webhtv.md
-            [ -d "apk/$branchName" ]         && git add "apk/$branchName/*.json" || true
+            [ -d "apk/$branchName" ] && git add "apk/$branchName/*.json" || true
           
             if git commit -m "Update $repoName to $origVersionName"; then
               echo "✓ Commit successful"
@@ -774,6 +843,8 @@ jobs:
           
           if [ $build_count -eq 0 ]; then
             echo "ERROR: No builds found to process! Check if artifact downloads worked."
+            echo "Directory structure of metas/:"
+            find metas -type d 2>/dev/null || echo "metas/ directory not found"
             exit 1
           else
             echo ""
