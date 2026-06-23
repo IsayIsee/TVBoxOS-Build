@@ -1,3 +1,36 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-23 08:47
+- **原始版本**: 5.5.2
+- **编译版本**: 260623-16-webhtv_dev
+- **提交哈希**: [1fa918e](https://github.com/IsayIsee/webhtv/commit/1fa918eaeb831a437cd478df9afe13dea49fc50a)
+
+**详细日志/Changelog**:
+
+```
+26/06/23 Merge branch 'fish2018:main' into webhtv_dev
+26/06/23 fix: refine osd mini progress and csp okhttp compatibility
+26/06/22 fix: restore osd mini progress line
+26/06/22 fix: make mobile live fullscreen rotation explicit
+26/06/22 fix: refine mobile live embedded UI
+26/06/22 feat: embed mobile live view
+26/06/22 feat: improve git cloud and site dialogs
+26/06/22 fix: persist ijk playback history
+26/06/22 fix: sync player resize mode after surface attach
+26/06/22 Fix LUT first preset activation
+26/06/21 fix: guard LUT and danmaku crash paths
+26/06/21 fix: do not restart LUT preview on panel close
+26/06/21 fix: restart LUT preview after panel closes
+26/06/21 fix: stabilize LUT preview processing
+26/06/21 feat: add dynamic LUT preview controls
+26/06/21 fix: correct cube LUT axis mapping
+26/06/21 feat: add playback LUT quick panel
+26/06/21 chore: add LUT preset validator
+26/06/21 fix: support 65-point LUT presets
+26/06/21 feat: add video LUT color grading
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-23 06:42
 - **原始版本**: 5.5.2
 - **编译版本**: 260623-08-webhtv_dev
