@@ -1,9 +1,9 @@
 {
-  "code": 26062217,
-  "name": "260622-17-webhtv_dev",
-  "desc": "* 版本: 5.5.2 → 260622-17-webhtv_dev\n* 26/06/22 fix: 命名空间错误",
+  "code": 26062308,
+  "name": "260623-08-webhtv_dev",
+  "desc": "* 版本: 5.5.2 → 260623-08-webhtv_dev\n* 26/06/23 fix: 仓库填写错误\n* 26/06/23 docs: 自定义内容说明",
   "urls": {
-    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260622-17/TVBox_fish2018_260622-17_mobile-arm64_v8a.apk",
-    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260622-17/TVBox_fish2018_260622-17_mobile-armeabi_v7a.apk"
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260623-08/TVBox_fish2018_260623-08_mobile-arm64_v8a.apk",
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260623-08/TVBox_fish2018_260623-08_mobile-armeabi_v7a.apk"
   }
 }
