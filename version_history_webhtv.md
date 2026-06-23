@@ -1,3 +1,47 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-23 14:26
+- **原始版本**: 5.5.2
+- **编译版本**: 260623-22-webhtv_dev
+- **提交哈希**: [4b1687b](https://github.com/IsayIsee/webhtv/commit/4b1687b63c7390d07d40fce36d31d96a217eb166)
+
+**详细日志/Changelog**:
+
+```
+26/06/23 Merge branch 'fish2018:main' into webhtv_dev
+26/06/23 Refine TV home function buttons
+26/06/23 Adjust mobile live preview height
+26/06/23 Adjust mobile live embedded controls
+26/06/23 Filter empty live sources
+26/06/23 Add mobile live program guide
+26/06/23 Remove hardcoded EPG test behavior
+26/06/23 Improve XML EPG channel matching
+26/06/23 Fix live EPG source crash
+26/06/23 Add live EPG source selector
+26/06/23 Refine mobile live source sheet
+26/06/23 Add mobile live control sheet
+26/06/23 Keep status bar for type dialog
+26/06/23 Refine mobile live line picker
+26/06/23 Restore live panel visual style
+26/06/23 Refine mobile live channel panel
+26/06/23 Polish mobile quick search sheet
+26/06/23 Restyle mobile danmaku setting choices
+26/06/23 Align fullscreen episode panel to screen edge
+26/06/23 Polish mobile danmaku chips and episode side sheet
+26/06/23 Align danmaku setting sheet styling
+26/06/23 Refine mobile episode grouping and cast UI
+26/06/23 Refine mobile playback sheets and audio background
+26/06/23 Fix mobile video page scroll and title metadata
+26/06/23 Use shadowed mobile video action icons
+26/06/23 Improve mobile video action buttons
+26/06/23 Refine mobile video info layout
+26/06/23 Fix mobile episode grid scroll and intro placement
+26/06/23 Add mobile episode grid nav inset
+26/06/23 Fix mobile episode grid scrolling
+26/06/23 Refine mobile player controls and episode grid
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-23 08:47
 - **原始版本**: 5.5.2
 - **编译版本**: 260623-16-webhtv_dev
