@@ -1,3 +1,49 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-24 23:03
+- **原始版本**: 5.5.2
+- **编译版本**: 260625-06-webhtv_dev
+- **提交哈希**: [c12a050](https://github.com/IsayIsee/webhtv/commit/c12a0503c3923a253824dd245f3e1b3abf7bd666)
+
+**详细日志/Changelog**:
+
+```
+26/06/25 Merge branch 'fish2018:main' into webhtv_dev
+26/06/25 Tune premium wallpaper readability
+26/06/25 Expand built-in premium wallpapers
+26/06/24 Remove legacy solid wallpapers
+26/06/24 Refine built-in wallpaper style
+26/06/24 Add built-in premium wallpapers
+26/06/24 Improve mobile custom CSP sorting
+26/06/24 Refine mobile search result layout
+26/06/24 Prevent back from entering PiP
+26/06/24 Optimize mobile live channel list
+26/06/24 Fix mobile live list selection
+26/06/24 Exclude blocked sites from search
+26/06/24 Compact search hot keyword chips
+26/06/24 Group search hot keywords
+26/06/24 Fix search layout toggle icon tint
+26/06/24 Add search result layout toggle
+26/06/24 Skip unsupported media tracks
+26/06/24 Use state icons for CSP block toggle
+26/06/24 Add mobile CSP site blocking
+26/06/24 Merge bugfix v5.5.2-sdk28-202606241550
+26/06/24 Fix mobile episode grouping and add LUT presets
+26/06/24 Revert mobile episode layout to v5.5.2-sdk28-202606241247
+26/06/24 Keep mobile episodes below group tabs
+26/06/24 Raise mobile episode group layer
+26/06/24 Clip mobile episode grid items
+26/06/24 Fix mobile episode group overlap
+26/06/24 Compact mobile video episode layout
+26/06/24 Make episode groups scroll continuously
+26/06/24 Guard episode group edge swipes
+26/06/24 Stabilize episode group swipe direction
+26/06/24 Improve episode group swipe navigation
+26/06/24 Fix realtime live stream fallback
+26/06/24 Fix mobile live fullscreen controls
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-24 02:25
 - **原始版本**: 5.5.2
 - **编译版本**: 260624-10-webhtv_dev
