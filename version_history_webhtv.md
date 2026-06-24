@@ -1,3 +1,49 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-24 02:25
+- **原始版本**: 5.5.2
+- **编译版本**: 260624-10-webhtv_dev
+- **提交哈希**: [1c2963b](https://github.com/IsayIsee/webhtv/commit/1c2963ba2886b63a29b455ce76ed565fba7f119b)
+
+**详细日志/Changelog**:
+
+```
+26/06/24 Merge branch 'main' into webhtv_dev
+26/06/24 fix: 格式占位符错误
+26/06/24 chore: 优化版本检查代码
+26/06/24 chore: 非手工检查更新时如果发生版本检查错误不提示
+26/06/24 Add live source shortcut button
+26/06/24 Fix live HLS playback stalls
+26/06/24 Fix live HLS stuck playback handling
+26/06/24 Fix live OSD progress display
+26/06/24 Reload short live streams near end
+26/06/24 Respect navigation inset in mobile control sheet
+26/06/24 Fix mobile sheet height and long title episodes
+26/06/24 Fix mobile control height and episode focus
+26/06/24 Fix live PiP dialog and episode scroll
+26/06/24 Apply episode column changes live
+26/06/24 Improve mobile episode grid controls
+26/06/24 Fix mobile live dialog lifecycle
+26/06/24 Guard custom CSP dialog lifecycle
+26/06/24 Add custom scrollbar to CSP text editor
+26/06/24 Remove green default wall option
+26/06/24 Add cinema wall palette options
+26/06/24 Update built-in LUT presets
+26/06/24 Fix mobile player fallback state labels
+26/06/23 Fix LUT label and live fullscreen tap
+26/06/23 Fallback IJK timeout to Exo
+26/06/23 Constrain mobile episode grid to visible viewport
+26/06/23 Reset LUT state when switching player engines
+26/06/23 Fix graphite wallpaper default index
+26/06/23 Enable marquee for focused episode grid items
+26/06/23 Limit default wallpapers to graphite and green
+26/06/23 Tighten mobile playback action spacing
+26/06/23 Set graphite default theme
+26/06/23 Refine mobile episodes and live OSD
+26/06/23 Fix TV site dialog search spacing
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-23 14:26
 - **原始版本**: 5.5.2
 - **编译版本**: 260623-22-webhtv_dev
