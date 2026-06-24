@@ -1,9 +1,9 @@
 {
-  "code": 26062006,
-  "name": "260620-06-dev",
-  "desc": "* 版本: 5.5.2 → 260620-06-my_dev\n* 26/06/20 Merge branch 'FongMi:fongmi' into my_dev\n* 26/06/12 Fix youtube\n* 26/05/28 Fix youtube",
+  "code": 26062411,
+  "name": "260624-11-dev",
+  "desc": "* 版本: 5.5.2 → 260624-11-my_dev\n* 26/06/24 chore: update libs\n* 26/06/24 Merge remote-tracking branch 'origin/my_dev' into my_dev\n* 26/06/05 Merge branch 'fongmi' into my_dev",
   "urls": {
-    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260620-06/TVBox_FongMI_260620-06_leanback-arm64_v8a.apk",
-    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260620-06/TVBox_FongMI_260620-06_leanback-armeabi_v7a.apk"
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260624-11/TVBox_FongMI_260624-11_leanback-arm64_v8a.apk",
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260624-11/TVBox_FongMI_260624-11_leanback-armeabi_v7a.apk"
   }
 }

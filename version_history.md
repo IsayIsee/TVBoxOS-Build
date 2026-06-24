@@ -1,3 +1,19 @@
+### FongMi [my_dev] - 更新于 2026-06-24 06:38
+- **原始版本**: 5.5.2
+- **编译版本**: 260624-11-my_dev
+- **提交哈希**: [e758f5f](https://github.com/IsayIsee/FongMI/commit/e758f5fc9efd5ec398cb2743ec6441a93457f26f)
+
+**详细日志/Changelog**:
+
+```
+26/06/24 chore: update libs
+26/06/24 Merge remote-tracking branch 'origin/my_dev' into my_dev
+26/06/05 Merge branch 'fongmi' into my_dev
+
+```
+
+---
+
 <<<<<<< Updated upstream
 ### FongMi [my_dev] - 更新于 2026-06-05 07:58
 - **原始版本**: 5.5.2
