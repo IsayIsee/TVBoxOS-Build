@@ -38,7 +38,7 @@ jobs:
       # 有 cache 直接跳到 Upload，以下三步全部跳过
       - name: Checkout
         if: steps.cache-bin.outputs.cache-hit != 'true'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Compile Telegram Bot API
         if: steps.cache-bin.outputs.cache-hit != 'true'
@@ -87,7 +87,7 @@ jobs:
             developer: fish2018
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           token: ${{ secrets.PAT }}
@@ -588,7 +588,7 @@ jobs:
     if: ${{ always() && !cancelled() }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
           token: ${{ secrets.PAT }}
