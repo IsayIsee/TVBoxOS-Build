@@ -108,33 +108,33 @@ jobs:
       - name: Checkout Source Code
         if: ${{ env.commit }}
         run: |
-          git clone ${{ env.upStream }} TVBoxOSC
+          git clone $upStream TVBoxOSC
           cd TVBoxOSC
-          git checkout ${{ env.commit }}
-          echo "tag=$(git log --date=format:'%y%m%d-%H' --pretty=format:%cd ${{ env.commitS }} -1)" >> $GITHUB_ENV
+          git checkout $commit
+          echo "tag=$(git log --date=format:'%y%m%d-%H' --pretty=format:%cd $commitS -1)" >> $GITHUB_ENV
 
       - name: Extra Modify
         if: ${{ env.commit }}
         working-directory: TVBoxOSC
         run: |
           if [ "${{ matrix.developer }}" == "takagen99" ]; then
-            sed -i 's/\.concat(buildTime())/ +\"${{ env.tag }}\"/g' app/build.gradle 
-            sed -i "/android:text=/s#=\"#=\"${{ env.tag }}\\\\n\\\\n#" app/src/main/res/layout/dialog_about.xml
+            sed -i 's/\.concat(buildTime())/ +\"$tag\"/g' app/build.gradle 
+            sed -i "/android:text=/s#=\"#=\"$tag\\\\n\\\\n#" app/src/main/res/layout/dialog_about.xml
           else
             # 提取原始 versionName
             if [ -f app/build.gradle ]; then
               ORIG_VERSION=$(grep 'versionName' app/build.gradle | grep -o '[0-9a-zA-Z_.\"-]*$' | tr -d '"'\' | head -1)
             fi
             if [ -z "$ORIG_VERSION" ]; then
-              echo "origVersionName=${{ env.tag }}" >> $GITHUB_ENV
-              echo "Original versionName: ${{ env.tag }}"          
+              echo "origVersionName=$tag" >> $GITHUB_ENV
+              echo "Original versionName: $tag"          
             else
               echo "origVersionName=$ORIG_VERSION" >> $GITHUB_ENV
               echo "Original versionName: $ORIG_VERSION"
             fi
           
-            VERSION_CODE=$(echo "${{ env.tag }}" | tr -dc '0-9' | cut -c1-9)
-            VERSION_NAME=$(echo "${{ env.tag }}-${{ matrix.branchName }}" | sed 's/my_//')    
+            VERSION_CODE=$(echo "$tag" | tr -dc '0-9' | cut -c1-9)
+            VERSION_NAME=$(echo "$tag-${{ matrix.branchName }}" | sed 's/my_//')    
             echo "VERSION_CODE=$VERSION_CODE" >> $GITHUB_ENV
             echo "VERSION_NAME=$VERSION_NAME" >> $GITHUB_ENV
             [ -f app/build.gradle ] && sed -i "/versionName/s#[0-9a-zA-Z_\.\'\"-]\+\$#\'$VERSION_NAME\'#" app/build.gradle
@@ -168,7 +168,7 @@ jobs:
       - name: Compress Source Code
         if: ${{ env.commit }}
         working-directory: TVBoxOSC
-        run: tar -cJf SourceCode-${{ env.tag }}.tar.xz --exclude=.git --exclude=.github *
+        run: tar -cJf SourceCode-$tag.tar.xz --exclude=.git --exclude=.github *
 
       - name: Setup Python
         if: ${{ env.commit }}
@@ -280,11 +280,11 @@ jobs:
                           -not -path "./Release/*" \
                           -print); do
             base=$(basename "$file")
-            new_base="TVBox_${{ matrix.developer }}_${{ env.tag }}_${base}"
+            new_base="TVBox_${{ matrix.developer }}_$tag_${base}"
             echo "Moving $file -> apk/$new_base"
             cp "$file" "apk/$new_base"
           done
-          mv SourceCode-${{ env.tag }}.* apk/
+          mv SourceCode-$tag.* apk/
 
       - name: Release Note
         if: ${{ env.commit }}
@@ -293,11 +293,11 @@ jobs:
           lastCommit=$(grep "${{ matrix.repoName }}\/${{ matrix.branchName }}" ${{ github.workspace }}/README.md | grep -o '[a-z0-9]\{40\}' || echo "")
           {
             echo "Credit: ${{ matrix.developer }}"
-            echo "Commit: ${{ env.commit }}"
+            echo "Commit: $commit"
 
-            if [[ "${{ matrix.developer }}" == "FongMI" || "${{ matrix.developer }}" == "fish2018" ]] && [ -n "${{ env.origVersionName }}" ]; then
-              echo "Original version: ${{ env.origVersionName }}"
-              echo "Compiled version: ${{ env.tag }}-${{ matrix.branchName }}"
+            if [[ "${{ matrix.developer }}" == "FongMI" || "${{ matrix.developer }}" == "fish2018" ]] && [ -n "$origVersionName" ]; then
+              echo "Original version: $origVersionName"
+              echo "Compiled version: $tag-${{ matrix.branchName }}"
             fi
             echo "Changelog:"
             echo '```'
@@ -309,7 +309,7 @@ jobs:
             LOG=$(git log --pretty=format:'%ad %s' \
                   --date=format:'%y/%m/%d' \
                   --after="$THREE_MONTHS_AGO" \
-                  ${lastCommit:0:7}..${{ env.commitS }} \
+                  ${lastCommit:0:7}..$commitS \
               | sed -e "s# \{2,\}#\n#g" \
                     -e "/^Merge \(pull\|branch\|remote\)/d" \
                     -e '/^$/d' \
@@ -317,7 +317,7 @@ jobs:
             if [ -z "$LOG" ]; then
               LOG=$(git log --pretty=format:'%ad %s' \
                   --date=format:'%y/%m/%d' \
-                ${{ env.commitS }} -10 \
+                $commitS -10 \
                 | sed -e "s# \{2,\}#\n#g" \
                       -e "/^Merge \(pull\|branch\|remote\)/d" \
                       -e '/^$/d' \
@@ -326,7 +326,7 @@ jobs:
           else
             LOG=$(git log --pretty=format:'%ad %s' \
                   --date=format:'%y/%m/%d' \
-              ${{ env.commitS }} -10 \
+              $commitS -10 \
               | sed -e "s# \{2,\}#\n#g" \
                     -e "/^Merge \(pull\|branch\|remote\)/d" \
                     -e '/^$/d')
@@ -340,7 +340,7 @@ jobs:
           APK_DIR="${{ github.workspace }}/apk/${{ matrix.branchName }}"
           mkdir -p "$APK_DIR"
 
-          CODE=$(echo "${{ env.tag }}" | tr -d '-')
+          CODE=$(echo "$tag" | tr -d '-')
 
           lastCommit=$(grep "${{ matrix.repoName }}\/${{ matrix.branchName }}" \
                         "${{ github.workspace }}/README.md" \
@@ -353,38 +353,38 @@ jobs:
               git log --pretty=format:'%ad %s' \
                   --date=format:'%y/%m/%d' \
                 --after="$THREE_MONTHS_AGO" \
-                ${lastCommit:0:7}..${{ env.commitS }} 2>/dev/null \
+                ${lastCommit:0:7}..$commitS 2>/dev/null \
               | grep -v "^Merge " | grep -v "^$" || echo "")
 
             if [ -z "$RAW_LOG" ]; then
               RAW_LOG=$(cd "${{ github.workspace }}/TVBoxOSC" && \
                 git log --pretty=format:'%ad %s' \
                   --date=format:'%y/%m/%d' \
-                  ${{ env.commitS }} -10 2>/dev/null \
+                  $commitS -10 2>/dev/null \
                 | grep -v "^Merge " | grep -v "^$" || echo "")
             fi
           else
             RAW_LOG=$(cd "${{ github.workspace }}/TVBoxOSC" && \
               git log --pretty=format:'%ad %s' \
                   --date=format:'%y/%m/%d' \
-                ${{ env.commitS }} -10 2>/dev/null \
+                $commitS -10 2>/dev/null \
               | grep -v "^Merge " | grep -v "^$" || echo "")
           fi
           
-          if [ -n "${{ env.origVersionName }}" ]; then
-            VERSION_LINE="版本: ${{ env.origVersionName }} → ${{ env.tag }}-${{ matrix.branchName }}"
+          if [ -n "$origVersionName" ]; then
+            VERSION_LINE="版本: $origVersionName → $tag-${{ matrix.branchName }}"
             RAW_LOG=$(printf '%s\n%s' "$VERSION_LINE" "$RAW_LOG")
           fi
           
-          [ -z "$RAW_LOG" ] && RAW_LOG="${{ env.tag }}"
+          [ -z "$RAW_LOG" ] && RAW_LOG="$tag"
 
           # 把变量写入临时文件，再由 Python 读取
           echo "$CODE"                       > /tmp/fongmi_code.txt
-          echo "${{ env.VERSION_NAME }}"     > /tmp/fongmi_name.txt
+          echo "$VERSION_NAME"     > /tmp/fongmi_name.txt
           echo "${{ matrix.branchName }}"    > /tmp/fongmi_branch.txt
           printf '%s' "$RAW_LOG"             > /tmp/fongmi_raw.txt
           echo "$APK_DIR"                    > /tmp/fongmi_dir.txt
-          echo "${{ env.tag }}"              > /tmp/fongmi_tag.txt
+          echo "$tag"              > /tmp/fongmi_tag.txt
           echo "https://github.com/${{ github.repository }}" > /tmp/fongmi_repo.txt
           echo "${{ matrix.developer }}"  > /tmp/fongmi_developer.txt
           
@@ -402,7 +402,7 @@ jobs:
             {
               "msgtype": "markdown_v2", 
               "markdown_v2": {
-                "content":"### TVBox 项目构建成功\n- **项目**: ${{ matrix.repoName }}\n- **分支**: ${{ matrix.branchName }}\n- **版本**: ${{ env.origVersionName }}"
+                "content":"### TVBox 项目构建成功\n- **项目**: ${{ matrix.repoName }}\n- **分支**: ${{ matrix.branchName }}\n- **版本**: $origVersionName"
               }
             }
 
@@ -480,11 +480,11 @@ jobs:
           TEMP_LOG="/tmp/current_branch_history.md"
           
           echo "### FongMi [${{ matrix.branchName }}] - 更新于 $(date '+%Y-%m-%d %H:%M')" > "$TEMP_LOG"
-          if [ -n "${{ env.origVersionName }}" ]; then
-            echo "- **原始版本**: ${{ env.origVersionName }}" >> "$TEMP_LOG"
-            echo "- **编译版本**: ${{ env.tag }}-${{ matrix.branchName }}" >> "$TEMP_LOG"
+          if [ -n "$origVersionName" ]; then
+            echo "- **原始版本**: $origVersionName" >> "$TEMP_LOG"
+            echo "- **编译版本**: $tag-${{ matrix.branchName }}" >> "$TEMP_LOG"
           fi
-          echo "- **提交哈希**: [${{ env.commitS }}](https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}/commit/${{ env.commit }})" >> "$TEMP_LOG"
+          echo "- **提交哈希**: [$commitS](https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}/commit/$commit)" >> "$TEMP_LOG"
           echo -e "\n**详细日志/Changelog**:\n" >> "$TEMP_LOG"
           
           if [ -f "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" ]; then
@@ -508,11 +508,11 @@ jobs:
           TEMP_LOG="/tmp/current_branch_history.md"
           
           echo "### WebHomeTV [${{ matrix.branchName }}] - 更新于 $(date '+%Y-%m-%d %H:%M')" > "$TEMP_LOG"
-          if [ -n "${{ env.origVersionName }}" ]; then
-            echo "- **原始版本**: ${{ env.origVersionName }}" >> "$TEMP_LOG"
-            echo "- **编译版本**: ${{ env.tag }}-${{ matrix.branchName }}" >> "$TEMP_LOG"
+          if [ -n "$origVersionName" ]; then
+            echo "- **原始版本**: $origVersionName" >> "$TEMP_LOG"
+            echo "- **编译版本**: $tag-${{ matrix.branchName }}" >> "$TEMP_LOG"
           fi
-          echo "- **提交哈希**: [${{ env.commitS }}](https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}/commit/${{ env.commit }})" >> "$TEMP_LOG"
+          echo "- **提交哈希**: [$commitS](https://github.com/${{ matrix.userName }}/${{ matrix.repoName }}/commit/$commit)" >> "$TEMP_LOG"
           echo -e "\n**详细日志/Changelog**:\n" >> "$TEMP_LOG"
           
           if [ -f "TVBoxOSC/apk/${{ matrix.userName }}-${{ matrix.branchName }}-Release.log" ]; then
@@ -537,14 +537,14 @@ jobs:
         run: |
           cat > /tmp/job-meta.json << EOF
           {
-            "commit":          "${{ env.commit }}",
-            "commitS":         "${{ env.commitS }}",
-            "tag":             "${{ env.tag }}",
+            "commit":          "$commit",
+            "commitS":         "$commitS",
+            "tag":             "$tag",
             "developer":       "${{ matrix.developer }}",
             "repoName":        "${{ matrix.repoName }}",
             "branchName":      "${{ matrix.branchName }}",
             "userName":        "${{ matrix.userName }}",
-            "origVersionName": "${{ env.origVersionName }}"
+            "origVersionName": "$origVersionName"
           }
           EOF
 
