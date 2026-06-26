@@ -18,18 +18,28 @@ def genFileDirectory(path):
         for fileName in sorted(file_name_dic):
             files[fileName] = open(path + "/" + fileName, "rb")
             media.append(dict(type='document', media=f'attach://{fileName}'))
-    media[-1]['caption'] = get_caption()
-    media[-1]['parse_mode'] = "Markdown"
     return media, files
 
 def sendAPKs(path):
     media, files = genFileDirectory(path)
-    parma = {
+
+    # 第一条：只发文件，caption 留空
+    params = {
         "chat_id": CHAT_ID,
         "media": json.dumps(media)
     }
-    response = requests.post(urlPrefix + "/sendMediaGroup", params=parma, files=files)
-    print(response.json())
+    response = requests.post(urlPrefix + "/sendMediaGroup", params=params, files=files)
+    print("sendMediaGroup:", response.json())
+
+    # 第二条：发完整 changelog 文本
+    caption = get_caption()
+    params2 = {
+        "chat_id": CHAT_ID,
+        "text": caption,
+        "parse_mode": "Markdown"
+    }
+    response2 = requests.post(urlPrefix + "/sendMessage", params=params2)
+    print("sendMessage:", response2.json())
 
 if __name__ == "__main__":
     apk_path = "./apk"
