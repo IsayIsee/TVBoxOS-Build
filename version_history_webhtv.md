@@ -1,3 +1,55 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-26 06:39
+- **原始版本**: 5.5.2
+- **编译版本**: 260626-13-webhtv_dev
+- **提交哈希**: [b92710f](https://github.com/IsayIsee/webhtv/commit/b92710ff7bffb57bbb6929efa407fb9dae9acbad)
+
+**详细日志/Changelog**:
+
+```
+26/06/26 Merge branch 'main' into webhtv_dev
+26/06/26 Merge LUT warmup auto refresh recovery
+26/06/26 Fix LUT warmup auto refresh recovery
+26/06/26 Merge mobile UI scale setting
+26/06/26 Refine mobile UI scale options
+26/06/26 Restore home tab after UI scale change
+26/06/26 Add app UI scale setting
+26/06/26 Merge parse button style fix
+26/06/26 Unify mobile parse button styling
+26/06/26 Merge branch 'main' into webhtv_dev
+26/06/26 Revert \"Fix LUT warmup source retry loop\"
+26/06/25 Fix LUT warmup source retry loop
+26/06/25 Revert \"Avoid restart when applying LUT effects\"
+26/06/25 Avoid restart when applying LUT effects
+26/06/25 Disable LUT effects for live playback
+26/06/25 Use compact fixed LUT panel width
+26/06/25 Tighten fullscreen LUT panel width
+26/06/25 Move random wallpaper generator to scripts
+26/06/25 Generate wallpaper variants from built-in templates
+26/06/25 Simplify random wallpaper generator settings
+26/06/25 Add random wallpaper generator
+26/06/25 Stabilize live PiP aspect ratio
+26/06/25 Use WebP resources for built-in wallpapers
+26/06/25 Revert built-in wallpaper rendering changes
+26/06/25 Render built-in wallpapers in dedicated view
+26/06/25 Stabilize built-in wallpaper resume rendering
+26/06/25 Fix built-in wallpaper lightweight rendering
+26/06/25 Fix live embedded video height stability
+26/06/25 Fix live fullscreen menu and custom CSP segments
+26/06/25 Fix live fullscreen exit playback lifecycle
+26/06/25 Fix live portrait back stopping playback
+26/06/25 Fix live playback ignoring VOD speed
+26/06/25 Fix live back handling and player overlays
+26/06/25 Stop playback immediately on explicit exit
+26/06/25 Fix CSP recognition and live rotation layout
+26/06/25 Fix playback, LUT, and config injection issues
+26/06/25 Merge remote-tracking branch 'origin/webhtv_dev' into webhtv_dev
+26/06/25 Add missing LUT presets
+26/06/24 docs: 增加 部署远程托管 WebHTV Remote Vercel Edge Relay 注意内容
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-24 23:03
 - **原始版本**: 5.5.2
 - **编译版本**: 260625-06-webhtv_dev
