@@ -1,3 +1,22 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-26 09:59
+- **原始版本**: 5.5.2
+- **编译版本**: 260626-17-webhtv_dev
+- **提交哈希**: [0ad7491](https://github.com/IsayIsee/webhtv/commit/0ad74915ff02837e65489a8e5caefc67eeeb3e12)
+
+**详细日志/Changelog**:
+
+```
+26/06/26 Merge branch 'main' into webhtv_dev
+26/06/26 fix: shift mobile UI scale options down
+26/06/26 fix: adjust mobile episode grid spacing
+26/06/26 fix: restore fullscreen flag for mobile player
+26/06/26 fix: allow fullscreen edge taps to show controls
+26/06/26 Fix mobile VOD toolbar scrolling away
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-26 06:45
 - **原始版本**: 5.5.2
 - **编译版本**: 260626-13-webhtv_dev
