@@ -599,6 +599,7 @@ jobs:
           pattern: meta-*
           path: metas/
           merge-multiple: false
+          error-on-no-matches: false
 
       - name: Download All APK Artifacts
         uses: actions/download-artifact@v8
@@ -606,6 +607,7 @@ jobs:
           pattern: apk-*
           path: all-apks/
           merge-multiple: false
+          error-on-no-matches: false
 
       - name: Download APK Dirs
         uses: actions/download-artifact@v8
@@ -613,6 +615,7 @@ jobs:
           pattern: apkdir-*
           path: apk-dirs/
           merge-multiple: false
+          error-on-no-matches: false
 
       - name: Download Version Histories
         uses: actions/download-artifact@v8
@@ -620,6 +623,7 @@ jobs:
           pattern: history-*
           path: histories/
           merge-multiple: false
+          error-on-no-matches: false
 
       # ========== 调试步骤 ==========
       - name: Debug - List downloaded artifacts
@@ -838,12 +842,9 @@ jobs:
           done
           
           if [ $build_count -eq 0 ]; then
-            echo "ERROR: No builds found to process! Check if artifact downloads worked."
-            echo "Directory structure of metas/:"
-            find metas -type d 2>/dev/null || echo "metas/ directory not found"
-            echo "Files in metas/:"
-            find metas -type f 2>/dev/null || echo "No files found"
-            exit 1
+            echo "INFO: No builds to process — all repositories were up-to-date (cache hit) or donotpublish was set."
+            echo "Skipping release. This is not an error."
+            exit 0
           else
             echo ""
             echo "========== 完成 $build_count 个构建的处理 =========="
