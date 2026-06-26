@@ -1,4 +1,4 @@
-### WebHomeTV [webhtv_dev] - 更新于 2026-06-26 06:39
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-26 06:45
 - **原始版本**: 5.5.2
 - **编译版本**: 260626-13-webhtv_dev
 - **提交哈希**: [b92710f](https://github.com/IsayIsee/webhtv/commit/b92710ff7bffb57bbb6929efa407fb9dae9acbad)
