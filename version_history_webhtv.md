@@ -1,3 +1,29 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-27 15:37
+- **原始版本**: 5.5.2
+- **编译版本**: 260627-23-webhtv_dev
+- **提交哈希**: [e653373](https://github.com/IsayIsee/webhtv/commit/e653373de87d2754df250f0e7d595f00b14cafff)
+
+**详细日志/Changelog**:
+
+```
+26/06/27 Merge branch 'fish2018:main' into webhtv_dev
+26/06/27 Merge fix-player-button-settings-tv-focus-20260627
+26/06/27 Fix TV player button settings focus
+26/06/27 merge: git cloud anonymous favorites
+26/06/27 fix: require token for cnb search and fork actions
+26/06/27 fix: add 2.5x playback speed preset
+26/06/27 feat: allow anonymous git cloud browsing
+26/06/27 feat: support dragging player button order
+26/06/27 fix: use icons for player button actions
+26/06/27 feat: add player button configuration
+26/06/27 feat: enhance exo compatibility mode
+26/06/27 fix: scope live source drawer to fullscreen
+26/06/27 feat: add exo 4k compatibility mode
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-27 08:41
 - **原始版本**: 5.5.2
 - **编译版本**: 260627-16-webhtv_dev
