@@ -1,3 +1,69 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-27 08:41
+- **原始版本**: 5.5.2
+- **编译版本**: 260627-16-webhtv_dev
+- **提交哈希**: [660792f](https://github.com/IsayIsee/webhtv/commit/660792f451d4ec103584e08627d97fd93c1d0415)
+
+**详细日志/Changelog**:
+
+```
+26/06/27 Merge branch 'fish2018:main' into webhtv_dev
+26/06/27 feat: add tv compact title shortcut
+26/06/27 fix: show tv quick search progress
+26/06/27 feat: add compact title shortcut button
+26/06/27 merge: compact episode title controls
+26/06/27 fix: support scraper episode title formats
+26/06/27 feat: move compact title toggle to playback controls
+26/06/27 feat: add compact episode title option
+26/06/27 merge: exo 4k60 research and webhome fixes
+26/06/27 fix: guard webhome restore and collect selection
+26/06/27 fix: restore native episode marquee
+26/06/27 fix: restore original episode marquee speed
+26/06/27 fix: restore episode marquee rendering
+26/06/27 fix: stabilize episode marquee and ui scale steps
+26/06/27 fix: tune episode marquee and ui scale
+26/06/27 docs: record exo 4k60 device conclusion
+26/06/27 merge: diagnostics controls update
+26/06/27 fix: move diagnostics toggle into mobile controls
+26/06/27 fix: toggle playback diagnostics panel
+26/06/27 fix: move playback diagnostics osd panel
+26/06/27 feat: add playback diagnostics osd
+26/06/27 docs: add 4k60 exo decode analysis
+26/06/27 merge: restore quick search base fixes
+26/06/27 fix: make tv quick search drawer full height
+26/06/27 fix: tune tv episode segment size
+26/06/27 fix: show initial playback content metadata
+26/06/27 fix: open webhome inline playback before resolving media
+26/06/27 fix: recover webhome when returned url is empty
+26/06/27 docs: compare non-exo decode strategies
+26/06/27 docs: add exo hard decode optimization references
+26/06/27 docs: document exo hard decode dependency gaps
+26/06/27 fix: show tv quick search loading drawer
+26/06/27 fix: open tv quick search dialog immediately
+26/06/27 fix: anchor tv quick search dialog
+26/06/27 fix: show tv quick search results in dialog
+26/06/27 fix: restore tv quick search focus
+26/06/27 fix: constrain custom recycler measurement
+26/06/27 fix: align exo cache preload behavior
+26/06/27 Revert \"fix: bypass cache for local proxy exo playback\"
+26/06/27 fix: bypass cache for local proxy exo playback
+26/06/26 fix: align exo ffmpeg renderer path
+26/06/26 fix: size exo cache for preload
+26/06/26 fix: add exo preload settings entry
+26/06/26 fix: align exo precache settings
+26/06/26 fix: improve tv lut quick panel navigation
+26/06/26 fix: align exo audio passthrough default
+26/06/26 fix: align exo retry format playback
+26/06/26 fix: handle tv lut quick remote navigation
+26/06/26 fix: focus tv lut dialog list
+26/06/26 fix: keep tv lut menu focus in panel
+26/06/26 fix: align exo playback and tv lut focus
+26/06/26 fix: respect fullscreen episode column setting
+26/06/26 Fix mobile player info and live controls
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-26 09:59
 - **原始版本**: 5.5.2
 - **编译版本**: 260626-17-webhtv_dev
