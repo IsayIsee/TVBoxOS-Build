@@ -1,9 +1,9 @@
 {
-  "code": 26062915,
-  "name": "260629-15-webhtv_dev",
-  "desc": "* 版本: 5.5.5 → 260629-15-webhtv_dev\n* 26/06/29 feat: 增加代理健康检查，如果代理不可用则降级到直连 fix: 版本已经最新还提示有更新\n* 26/06/29 feat: 增加代理健康检查，如果代理不可用则降级到直连 fix: 版本已经最新还提示有更新\n* 26/06/29 Merge branch 'main' into webhtv_dev\n* 26/06/29 Fix playback resume for dynamic episode URLs\n* 26/06/29 Fix TV playback history save on exit\n* 26/06/29 Restore live URL scheme parsing\n* 26/06/29 Fix mobile live channel selection state\n* 26/06/29 Fix about dialog initial window layout\n* 26/06/29 Fix mobile playback history save on exit",
+  "code": 26062916,
+  "name": "260629-16-webhtv_dev",
+  "desc": "* 版本: 5.5.5 → 260629-16-webhtv_dev\n* 26/06/29 Merge branch 'fish2018:main' into webhtv_dev\n* 26/06/29 Remove danmaku search input label\n* 26/06/29 Consolidate danmaku display settings tabs\n* 26/06/29 Simplify danmaku display settings\n* 26/06/29 Add fixed danmaku row shortcuts\n* 26/06/29 Redesign fullscreen danmaku search dialog\n* 26/06/29 Improve mobile danmaku search controls\n* 26/06/29 Refine mobile danmaku search dialog colors\n* 26/06/29 Polish mobile danmaku search dialog UI\n* 26/06/29 Show mobile danmaku search results in dialog\n* 26/06/29 Fix danmaku search input dialog layout params\n* 26/06/29 Use player fullscreen state for danmaku search\n* 26/06/29 Fix mobile danmaku search keyboard overlap\n* 26/06/29 Fix danmaku search result playback\n* 26/06/29 Support object responses for danmaku search\n* 26/06/29 Restore danmaku picker after child dialogs\n* 26/06/29 Fix danmaku dialog return and white edges\n* 26/06/29 Fix danmaku dialog overlay positioning\n* 26/06/29 Fix video detail switch before playback service binds",
   "urls": {
-    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260629-15/TVBox_fish2018_260629-15_leanback-arm64_v8a.apk",
-    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260629-15/TVBox_fish2018_260629-15_leanback-armeabi_v7a.apk"
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260629-16/TVBox_fish2018_260629-16_leanback-arm64_v8a.apk",
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260629-16/TVBox_fish2018_260629-16_leanback-armeabi_v7a.apk"
   }
 }

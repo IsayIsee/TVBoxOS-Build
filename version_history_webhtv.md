@@ -1,3 +1,35 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-29 08:55
+- **原始版本**: 5.5.5
+- **编译版本**: 260629-16-webhtv_dev
+- **提交哈希**: [c8d2dac](https://github.com/IsayIsee/webhtv/commit/c8d2dac6d8562b6d7c9e81339dc591a5211dc989)
+
+**详细日志/Changelog**:
+
+```
+26/06/29 Merge branch 'fish2018:main' into webhtv_dev
+26/06/29 Remove danmaku search input label
+26/06/29 Consolidate danmaku display settings tabs
+26/06/29 Simplify danmaku display settings
+26/06/29 Add fixed danmaku row shortcuts
+26/06/29 Redesign fullscreen danmaku search dialog
+26/06/29 Improve mobile danmaku search controls
+26/06/29 Refine mobile danmaku search dialog colors
+26/06/29 Polish mobile danmaku search dialog UI
+26/06/29 Show mobile danmaku search results in dialog
+26/06/29 Fix danmaku search input dialog layout params
+26/06/29 Use player fullscreen state for danmaku search
+26/06/29 Fix mobile danmaku search keyboard overlap
+26/06/29 Fix danmaku search result playback
+26/06/29 Support object responses for danmaku search
+26/06/29 Restore danmaku picker after child dialogs
+26/06/29 Fix danmaku dialog return and white edges
+26/06/29 Fix danmaku dialog overlay positioning
+26/06/29 Fix video detail switch before playback service binds
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-29 07:36
 - **原始版本**: 5.5.5
 - **编译版本**: 260629-15-webhtv_dev
