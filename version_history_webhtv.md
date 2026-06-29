@@ -1,3 +1,27 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-29 05:50
+- **原始版本**: 5.5.5
+- **编译版本**: 260629-13-webhtv_dev
+- **提交哈希**: [ebeaef4](https://github.com/IsayIsee/webhtv/commit/ebeaef48c0a2a9756e8bf155ef4333d05340463b)
+
+**详细日志/Changelog**:
+
+```
+26/06/29 chore: 由于 fish2018/webhtv 与 fongmi 同步代码的原因导致无法合并代码,因此 rebase 了代码 chore: 修改新 Update 检查代码来适配 TVBoxOS-Build 的升级路径
+26/06/29
+chore:　change Readme
+26/06/24 docs: 增加 部署远程托管 WebHTV Remote Vercel Edge Relay 注意内容
+26/06/24 fix: 格式占位符错误
+26/06/24 chore: 优化版本检查代码
+26/06/24 chore: 非手工检查更新时如果发生版本检查错误不提示
+26/06/23 fix: 仓库填写错误
+26/06/23 docs: 自定义内容说明
+26/06/22 fix: 命名空间错误
+26/06/19 merge: sync FongMi upstream through 1242ac7b3
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-27 15:37
 - **原始版本**: 5.5.2
 - **编译版本**: 260627-23-webhtv_dev

@@ -1,9 +1,9 @@
 {
-  "code": 26062723,
-  "name": "260627-23-webhtv_dev",
-  "desc": "* 版本: 5.5.2 → 260627-23-webhtv_dev\n* 26/06/27 Merge branch 'fish2018:main' into webhtv_dev\n* 26/06/27 Merge fix-player-button-settings-tv-focus-20260627\n* 26/06/27 Fix TV player button settings focus\n* 26/06/27 merge: git cloud anonymous favorites\n* 26/06/27 fix: require token for cnb search and fork actions\n* 26/06/27 fix: add 2.5x playback speed preset\n* 26/06/27 feat: allow anonymous git cloud browsing\n* 26/06/27 feat: support dragging player button order\n* 26/06/27 fix: use icons for player button actions\n* 26/06/27 feat: add player button configuration\n* 26/06/27 feat: enhance exo compatibility mode\n* 26/06/27 fix: scope live source drawer to fullscreen\n* 26/06/27 feat: add exo 4k compatibility mode",
+  "code": 26062913,
+  "name": "260629-13-webhtv_dev",
+  "desc": "* 版本: 5.5.5 → 260629-13-webhtv_dev\n* 26/06/29 chore: 由于 fish2018/webhtv 与 fongmi 同步代码的原因导致无法合并代码,因此 rebase 了代码 chore: 修改新 Update 检查代码来适配 TVBoxOS-Build 的升级路径\n* 26/06/29  chore:　change Readme\n* 26/06/24 docs: 增加 部署远程托管 WebHTV Remote Vercel Edge Relay 注意内容\n* 26/06/24 fix: 格式占位符错误\n* 26/06/24 chore: 优化版本检查代码\n* 26/06/24 chore: 非手工检查更新时如果发生版本检查错误不提示\n* 26/06/23 fix: 仓库填写错误\n* 26/06/23 docs: 自定义内容说明\n* 26/06/22 fix: 命名空间错误\n* 26/06/19 merge: sync FongMi upstream through 1242ac7b3",
   "urls": {
-    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260627-23/TVBox_fish2018_260627-23_mobile-arm64_v8a.apk",
-    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260627-23/TVBox_fish2018_260627-23_mobile-armeabi_v7a.apk"
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260629-13/TVBox_fish2018_260629-13_mobile-arm64_v8a.apk",
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260629-13/TVBox_fish2018_260629-13_mobile-armeabi_v7a.apk"
   }
 }
