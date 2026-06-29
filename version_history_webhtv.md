@@ -1,3 +1,24 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-29 07:36
+- **原始版本**: 5.5.5
+- **编译版本**: 260629-15-webhtv_dev
+- **提交哈希**: [a40f1c4](https://github.com/IsayIsee/webhtv/commit/a40f1c4041d617897ababcb6d970a1b0361c548d)
+
+**详细日志/Changelog**:
+
+```
+26/06/29 feat: 增加代理健康检查，如果代理不可用则降级到直连 fix: 版本已经最新还提示有更新
+26/06/29 Merge branch 'main' into webhtv_dev
+26/06/29 Fix playback resume for dynamic episode URLs
+26/06/29 Fix TV playback history save on exit
+26/06/29 Restore live URL scheme parsing
+26/06/29 Fix mobile live channel selection state
+26/06/29 Fix about dialog initial window layout
+26/06/29 Fix mobile playback history save on exit
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-29 05:50
 - **原始版本**: 5.5.5
 - **编译版本**: 260629-13-webhtv_dev
