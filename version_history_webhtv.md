@@ -1,3 +1,21 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-06-30 06:50
+- **原始版本**: 5.5.5
+- **编译版本**: 260630-13-webhtv_dev
+- **提交哈希**: [8d0fede](https://github.com/IsayIsee/webhtv/commit/8d0fede6c81e25bb227ab83263996e4271641407)
+
+**详细日志/Changelog**:
+
+```
+26/06/30 Merge branch 'fish2018:main' into webhtv_dev
+26/06/30 fix: align extension enable state ui
+26/06/30 fix: keep resolution osd after lut playback
+26/06/29 Launch tablet live in landscape fullscreen
+26/06/29 Start live fullscreen on tablets
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-29 08:55
 - **原始版本**: 5.5.5
 - **编译版本**: 260629-16-webhtv_dev
