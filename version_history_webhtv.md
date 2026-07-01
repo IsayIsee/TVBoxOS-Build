@@ -1,3 +1,42 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-07-01 13:10
+- **原始版本**: 5.5.5
+- **编译版本**: 260701-20-webhtv_dev
+- **提交哈希**: [216a48d](https://github.com/IsayIsee/webhtv/commit/216a48d808504a74a4328b4707f4d4af77f4ddea)
+
+**详细日志/Changelog**:
+
+```
+26/07/01 Merge branch 'fish2018:main' into webhtv_dev
+26/07/01 Add manual site dialog ordering
+26/07/01 Default nonstandard parse types
+26/07/01 Handle string parse types
+26/07/01 Clean custom CSP files on save
+26/07/01 Move custom CSP file button
+26/07/01 Refine custom CSP file picker
+26/07/01 Fix custom CSP local file handling
+26/07/01 Add QuickJS drpy parser globals
+26/07/01 Align cloud video mark episode selection with TV
+26/07/01 Fix explicit cloud video episode selection
+26/07/01 fix: respect disabled remote trust sessions
+26/07/01 fix: simplify debug logs mobile layout
+26/07/01 fix: keep debug logs page within viewport
+26/07/01 chore: clarify git cloud cache button
+26/07/01 fix: verify CNB create and search APIs
+26/07/01 fix: normalize empty CNB create responses
+26/07/01 fix: prevent debug log horizontal overflow
+26/07/01 fix: use CNB owner repo creation endpoint
+26/07/01 chore: improve git cloud debug diagnostics
+26/07/01 chore: reduce debug log server noise
+26/07/01 chore: log git cloud debug responses
+26/07/01 fix: handle empty CNB git cloud repos
+26/06/30 fix: support ffmpeg dts audio fallback diagnostics
+26/06/30 fix: keep exo enhanced audio fallback diagnostics
+26/06/30 fix: refresh async danmaku and hot word focus
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-06-30 06:50
 - **原始版本**: 5.5.5
 - **编译版本**: 260630-13-webhtv_dev
