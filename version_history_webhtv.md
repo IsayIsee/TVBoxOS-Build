@@ -1,3 +1,41 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-07-02 00:26
+- **原始版本**: 5.5.6
+- **编译版本**: 260702-08-webhtv_dev
+- **提交哈希**: [8fe278c](https://github.com/IsayIsee/webhtv/commit/8fe278c583b198fadf305b00ba388b0b7ab241d9)
+
+**详细日志/Changelog**:
+
+```
+26/07/02 Merge branch 'main' into webhtv_dev
+26/07/01 fix update manifest selection
+26/07/01 Decode release notes markdown input
+26/07/01 Add app language selection
+26/07/01 Preserve size in compact episode titles
+26/07/01 Merge branch 'main' into fongmi-sync
+26/06/30 chore: sync upstream fongmi baseline
+26/06/30 Fix epg title parse
+26/06/29 Fix crash
+26/06/30 fix: support ffmpeg dts audio fallback diagnostics
+26/06/30 fix: keep exo enhanced audio fallback diagnostics
+26/06/30 fix: refresh async danmaku and hot word focus
+26/06/30 fix: align extension enable state ui
+26/06/30 fix: keep resolution osd after lut playback
+26/06/29 Merge branch 'bugfix/tv-card-click-service-null-20260629' into fongmi-sync
+26/06/29 Fix playback resume for dynamic episode URLs
+26/06/29 Fix TV playback history save on exit
+26/06/29 Restore live URL scheme parsing
+26/06/29 Fix mobile live channel selection state
+26/06/29 Fix about dialog initial window layout
+26/06/29 Fix mobile playback history save on exit
+26/06/29 chore: sync upstream version to 5.5.6
+26/06/29 style: compact TV playback control actions
+26/06/29 chore: align mobile screen support manifest
+26/06/29 refactor: centralize playback orientation handling
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-07-01 13:10
 - **原始版本**: 5.5.5
 - **编译版本**: 260701-20-webhtv_dev
