@@ -1,3 +1,34 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-07-03 06:18
+- **原始版本**: 5.5.6
+- **编译版本**: 260703-13-webhtv_dev
+- **提交哈希**: [71eb72a](https://github.com/IsayIsee/webhtv/commit/71eb72abfbdbcf21eb0841754fccadbb0b40e97c)
+
+**详细日志/Changelog**:
+
+```
+26/07/03 Merge branch 'fish2018:main' into webhtv_dev
+26/07/03 Add mobile OSD settings dialog
+26/07/03 Add tablet live mode setting
+26/07/03 Match TV OSD dialog to player button layout
+26/07/03 Polish TV OSD settings dialog
+26/07/03 Add TV exit confirmation dialog
+26/07/03 Fix TV danmaku search focus
+26/07/03 Add TV playback params control
+26/07/03 Fix Nostr TV playback return route
+26/07/03 Fix player button dialog top clipping
+26/07/03 Fix site dialog group reset
+26/07/02 Merge branch 'fish2018:main' into webhtv_dev
+26/07/02 Merge branch 'fongmi-sync' into main
+26/07/02 Add audio passthrough setting
+26/07/02 Disable bottom danmaku
+26/07/02 Remember player brightness
+26/07/02 Refresh parse list after config reload
+26/07/02 Fix site search and custom CSP parses input
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-07-02 00:26
 - **原始版本**: 5.5.6
 - **编译版本**: 260702-08-webhtv_dev
