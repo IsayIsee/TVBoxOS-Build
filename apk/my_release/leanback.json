@@ -1,9 +1,9 @@
 {
-  "code": 26061919,
-  "name": "260619-19-webhtv_dev",
-  "desc": "* fongmi release 更换为 webhtv_dev\n* 版本: 5.5.2 → 260619-19-webhtv_dev\n* 26/06/19 Merge branch 'fish2018:main' into webhtv_dev\n* 26/06/19 feat: add about disclaimer dialog\n* 26/06/19 docs: add community share link\n* 26/06/19 docs: link remote relay server docs\n* 26/06/19 chore: update webhome homepage examples\n* 26/06/19 fix: apply opening seek after local proxy wait",
+  "code": 26070208,
+  "name": "260702-08-webhtv_dev",
+  "desc": "* 版本: 5.5.6 → 260702-08-webhtv_dev\n* 26/07/02 Merge branch 'main' into webhtv_dev\n* 26/07/01 fix update manifest selection\n* 26/07/01 Decode release notes markdown input\n* 26/07/01 Add app language selection\n* 26/07/01 Preserve size in compact episode titles\n* 26/07/01 Merge branch 'main' into fongmi-sync\n* 26/06/30 chore: sync upstream fongmi baseline\n* 26/06/30 Fix epg title parse\n* 26/06/29 Fix crash\n* 26/06/30 fix: support ffmpeg dts audio fallback diagnostics\n* 26/06/30 fix: keep exo enhanced audio fallback diagnostics\n* 26/06/30 fix: refresh async danmaku and hot word focus\n* 26/06/30 fix: align extension enable state ui\n* 26/06/30 fix: keep resolution osd after lut playback\n* 26/06/29 Merge branch 'bugfix/tv-card-click-service-null-20260629' into fongmi-sync\n* 26/06/29 Merge branch 'bugfix/tv-card-click-service-null-20260629' into fongmi-sync\n* 26/06/29 Merge branch 'bugfix/tv-card-click-service-null-20260629' into fongmi-sync\n* 26/06/29 Fix playback resume for dynamic episode URLs\n* 26/06/29 Fix TV playback history save on exit\n* 26/06/29 Restore live URL scheme parsing\n* 26/06/29 Fix mobile live channel selection state\n* 26/06/29 Fix about dialog initial window layout\n* 26/06/29 Fix mobile playback history save on exit\n* 26/06/29 chore: sync upstream version to 5.5.6\n* 26/06/29 style: compact TV playback control actions\n* 26/06/29 chore: align mobile screen support manifest\n* 26/06/29 refactor: centralize playback orientation handling",
   "urls": {
-    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260619-19/TVBox_fish2018_260619-19_leanback-arm64_v8a.apk",
-    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260619-19/TVBox_fish2018_260619-19_leanback-armeabi_v7a.apk"
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260702-08/TVBox_fish2018_260702-08_leanback-arm64_v8a.apk",
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260702-08/TVBox_fish2018_260702-08_leanback-armeabi_v7a.apk"
   }
 }
