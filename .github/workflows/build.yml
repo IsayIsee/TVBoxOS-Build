@@ -75,11 +75,11 @@ jobs:
             branchName: main
             java_ver: 17
             developer: takagen99
-          - userName: IsayIsee
-            repoName: FongMI
-            branchName: my_dev
-            java_ver: 21
-            developer: FongMI
+#          - userName: IsayIsee
+#            repoName: FongMI
+#            branchName: my_dev
+#            java_ver: 21
+#            developer: FongMI
           - userName: IsayIsee
             repoName: webhtv
             branchName: webhtv_dev

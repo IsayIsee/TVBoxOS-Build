@@ -13,15 +13,16 @@
 - 
 - **本项目使用的证书与原始仓库不相同，因此不能直接更新，如无特殊需求请尽量使用原始仓库版本**
 - **为避免与原版本混淆，版本号会根据源代码更新时间生成，防止向开发者反馈问题时搞错**
-- **FongMi 分支自动升级**
-  - **本项目编译的 FongMi 版升级检查在编译时会被替换为为本仓库内 ~~apk 目录~~ Release 下对应的版本**
-  - **本项目编译的 WebHomeTV 版升级检查在编译时会被替换为为本仓库内 ~~apk 目录~~ Release 下对应的版本**
+- **由于 Fongmi 明确表示其依赖的自扩展 media3 不再开源也未提供 aar 文件，因此源代码无法正确构建，暂停自动构建**
+- **~~FongMi 分支自动升级~~**
+  - **~~本项目编译的 FongMi 版升级检查在编译时会被替换为为本仓库内~~ ~~apk 目录~~ Release 下对应的版本**
+- **本项目编译的 WebHomeTV 版升级检查在编译时会被替换为为本仓库内 ~~apk 目录~~ Release 下对应的版本**
   - apk 目录下的应用仅为旧版升级兜底，将在一段时间后彻底删除仅保留 json 文件
 
 # 编译代码来自以下仓库
 - [TVBoxOS/main](https://github.com/IsayIsee/TVBoxOS/tree/main) (Updated: 704cd2658fbcaf38551228cb90bd9f766a0c9e72)
 - [Takagen-Box/main](https://github.com/IsayIsee/Takagen-Box/tree/main) (Updated: 258a5fef61578869ae905ca230bdde9e99fc19a8)
-- [FongMI/my_dev](https://github.com/IsayIsee/FongMI/tree/my_dev) (Updated: e758f5fc9efd5ec398cb2743ec6441a93457f26f)
+- ~~[FongMI/my_dev](https://github.com/IsayIsee/FongMI/tree/my_dev)~~ (Updated: e758f5fc9efd5ec398cb2743ec6441a93457f26f)
 - [webhtv/webhtv_dev](https://github.com/IsayIsee/webhtv/tree/webhtv_dev) (Updated: 8fe278c583b198fadf305b00ba388b0b7ab241d9)
 
 
