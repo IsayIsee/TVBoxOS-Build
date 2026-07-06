@@ -1,3 +1,53 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-07-06 00:48
+- **原始版本**: 5.5.6
+- **编译版本**: 260706-08-webhtv_dev
+- **提交哈希**: [948b8c9](https://github.com/IsayIsee/webhtv/commit/948b8c98018c6a50a68cbe91f8d5ca9d6d0518e0)
+
+**详细日志/Changelog**:
+
+```
+26/07/06 Merge branch 'main' into webhtv_dev
+26/07/05 Fix config add dialog mode
+26/07/05 Fix dialog action button layout
+26/07/05 Fix leanback config dialog button truncation
+26/07/05 Improve custom dialogs and playback controls
+26/07/05 Fix mobile light dialog text colors
+26/07/05 Fix mobile site dialog text colors
+26/07/05 Force hardware video decode by default
+26/07/05 Dismiss update check toast when dialog opens
+26/07/05 Optimize update check requests
+26/07/05 Fix mobile config history dialog colors
+26/07/04 Refine mobile live list style setting
+26/07/04 Add mobile live list style setting
+26/07/04 Improve mobile live item contrast on dark wallpapers
+26/07/04 Tune mobile live selected color
+26/07/04 Tune mobile live selected item contrast
+26/07/04 Improve mobile live list readability on light wallpapers
+26/07/04 Use custom mobile site dialog shell
+26/07/04 Use custom config history dialog shell
+26/07/04 Use custom remote trust action dialogs
+26/07/04 Use custom remote add device dialog
+26/07/04 Polish quick search result item background
+26/07/04 Use custom config dialog with optional name
+26/07/04 Improve live source action icon contrast
+26/07/04 Use custom manage page dialogs
+26/07/04 Merge branch 'feature/dialog-ui-style-20260704' into fongmi-sync
+26/07/04 Use custom login state learn dialog
+26/07/04 Use overlay for danmaku setting side panel
+26/07/04 Fix danmaku setting side sheet background
+26/07/04 Polish mobile filter dialog glass style
+26/07/04 Apply glass style to live source dialog
+26/07/04 Increase dialog glass opacity
+26/07/04 Polish player dialog glass styling
+26/07/04 Merge danmaku search list focus fix
+26/07/04 Fix danmaku search list focus highlight
+26/07/03 Optimize danmaku rendering pipeline
+26/07/03 Optimize danmaku reload performance
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-07-03 06:18
 - **原始版本**: 5.5.6
 - **编译版本**: 260703-13-webhtv_dev
