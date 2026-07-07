@@ -1,3 +1,64 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-07-07 06:40
+- **原始版本**: 5.5.6
+- **编译版本**: 260707-10-webhtv_dev
+- **提交哈希**: [60ec070](https://github.com/IsayIsee/webhtv/commit/60ec070dffa393a91f864be3a4d134ccc89cb862)
+
+**详细日志/Changelog**:
+
+```
+26/07/07 Merge branch 'main' into webhtv_dev
+26/07/07 Merge branch 'upgrade/media3-1.11-fongmi-20260705'
+26/07/06 Refine CSP warmup dialog controls
+26/07/06 Add custom CSP warmup site selection
+26/07/06 Refine CSP warmup dialog controls
+26/07/06 Add custom CSP warmup site selection
+26/07/06 Fix Git cloud editor text padding
+26/07/06 Fix Git cloud text editor sizing
+26/07/06 Fix TV opening ending adjustment keys
+26/07/06 Fix settings config and restore dialogs
+26/07/06 Fix Git cloud editor text padding
+26/07/06 Fix Git cloud text editor sizing
+26/07/06 Fix TV opening ending adjustment keys
+26/07/06 Fix settings config and restore dialogs
+26/07/06 Document Media3 build requirements
+26/07/06 Separate codec focus and track states
+26/07/06 Reset codec panel scroll on tab switch
+26/07/06 Fix TV focus for playback panels
+26/07/06 Improve playback diagnostics panels
+26/07/06 Move playback performance controls into panel
+26/07/06 Add playback performance presets
+26/07/06 Fix prefilled config add saving mode
+26/07/06 Reset video surface when switching back to hard decode
+26/07/06 Retry hard decode after manual switch
+26/07/06 Improve landscape diagnostics readability
+26/07/06 Improve playback diagnostics layout
+26/07/06 Compact playback diagnostics HUD
+26/07/06 Highlight current tracks in codec capability diagnostics
+26/07/06 Tune playback diagnostics HUD presentation
+26/07/06 Refine diagnostics HUD and codec capability UI
+26/07/06 Improve playback diagnostics HUD layout
+26/07/06 Add hardware codec capability diagnostics
+26/07/06 Improve playback diagnostics and audio fallback
+26/07/06 Add Exo FFmpeg soft decode load shedding
+26/07/06 Expose playback optimization status
+26/07/06 Clarify Exo track over-capability diagnostics
+26/07/06 Prefer platform audio during Exo soft video decode
+26/07/06 Revert Exo FFmpeg renderer queue tuning
+26/07/06 Tune FFmpeg software video decode
+26/07/06 Revert \"Prevent Exo soft decode from exceeding video limits\"
+26/07/06 Prevent Exo soft decode from exceeding video limits
+26/07/06 Constrain Exo enhanced profile for software decode
+26/07/05 Fix config add dialog mode
+26/07/06 Add adaptive Exo video profile downgrades
+26/07/06 Point Media3 lock to pushed source branch
+26/07/06 Upgrade FongMi Media3 to 1.11 alpha
+26/07/05 Optimize Exo playback with latest Media3 fork
+26/07/05 Optimize Exo enhanced video profile selection
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-07-06 00:48
 - **原始版本**: 5.5.6
 - **编译版本**: 260706-08-webhtv_dev
