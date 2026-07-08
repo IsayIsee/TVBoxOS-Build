@@ -23,7 +23,7 @@
 - [TVBoxOS/main](https://github.com/IsayIsee/TVBoxOS/tree/main) (Updated: 704cd2658fbcaf38551228cb90bd9f766a0c9e72)
 - [Takagen-Box/main](https://github.com/IsayIsee/Takagen-Box/tree/main) (Updated: 258a5fef61578869ae905ca230bdde9e99fc19a8)
 - ~~[FongMI/my_dev](https://github.com/IsayIsee/FongMI/tree/my_dev)~~ (Updated: e758f5fc9efd5ec398cb2743ec6441a93457f26f)
-- [webhtv/webhtv_dev](https://github.com/IsayIsee/webhtv/tree/webhtv_dev) (Updated: 60ec070dffa393a91f864be3a4d134ccc89cb862)
+- [webhtv/webhtv_dev](https://github.com/IsayIsee/webhtv/tree/webhtv_dev) (Updated: 42271b65c77c65547ee99fd7fbb9df19b3733977)
 
 
 # 感谢
