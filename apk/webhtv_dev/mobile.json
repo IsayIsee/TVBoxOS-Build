@@ -1,9 +1,9 @@
 {
-  "code": 26070815,
-  "name": "260708-15-webhtv_dev",
-  "desc": "* 版本: 5.5.6 → 260708-15-webhtv_dev\n* 26/07/08 feat: 增加自动同步和合并",
+  "code": 26070816,
+  "name": "260708-16-webhtv_dev",
+  "desc": "* 版本: 5.5.6 → 260708-16-webhtv_dev\n* 26/07/08 fix: branch name\n* 26/07/08 fix: Secrets",
   "urls": {
-    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260708-15/TVBox_fish2018_260708-15_mobile-arm64_v8a.apk",
-    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260708-15/TVBox_fish2018_260708-15_mobile-armeabi_v7a.apk"
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260708-16/TVBox_fish2018_260708-16_mobile-arm64_v8a.apk",
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260708-16/TVBox_fish2018_260708-16_mobile-armeabi_v7a.apk"
   }
 }
