@@ -1,3 +1,70 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-07-10 10:29
+- **原始版本**: 5.5.6
+- **编译版本**: 260710-10-webhtv_dev
+- **提交哈希**: [093995d](https://github.com/IsayIsee/webhtv/commit/093995ddf8ac818d0db49bd2d252915f64b3f580)
+
+**详细日志/Changelog**:
+
+```
+26/07/10 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/07/10 Merge branch 'main' into webhtv_dev
+26/07/10 fix: improve mpv config history and player switching
+26/07/10 feat: add playback performance help dialog
+26/07/10 fix: install Android SDK platform 37.0 in CI
+26/07/10 Merge branch 'feature/android-mpv-player'
+26/07/10 fix: apply live playback headers consistently
+26/07/10 fix: preserve push playlist details
+26/07/10 fix: stabilize youtube push playback
+26/07/09 fix: stabilize remote relay origin identity
+26/07/09 fix: adapt mobile search grid to result width
+26/07/09 fix: stabilize mpv surface resize
+26/07/09 feat: add mpv vulkan renderer diagnostics
+26/07/09 fix: prevent duplicate decode switch tap
+26/07/09 fix: use three columns for portrait history
+26/07/09 fix: refresh parsed source when switching decode
+26/07/09 feat: apply HLS adblock in MPV proxy
+26/07/09 fix: compact mobile live program guide
+26/07/09 fix: align MPV LUT preview slide with Exo
+26/07/09 feat: add MPV native LUT shader pipeline
+26/07/09 feat: add MPV config management
+26/07/08 feat: add MPV secondary subtitle selection
+26/07/08 docs: update Android build documentation
+26/07/08 feat: report MPV native end-file details
+26/07/08 fix: cache MPV VOD segments during playback
+26/07/08 fix: show unsupported media tracks
+26/07/08 fix: stabilize MPV default surface resizing
+26/07/08 Revert \"fix: show unsupported media tracks\"
+26/07/08 Revert \"fix: cache MPV HLS segments while streaming\"
+26/07/08 fix: cache MPV HLS segments while streaming
+26/07/08 fix: show unsupported media tracks
+26/07/08 fix: select highest HLS variant for MPV
+26/07/08 fix: improve MPV HLS handling
+26/07/08 fix: adapt single episode button width
+26/07/08 fix: support MPV audio passthrough and AAC preference
+26/07/08 fix: handle native player audio focus
+26/07/08 fix: expose mpv cache state
+26/07/08 fix: map subtitle styles to mpv
+26/07/08 fix: support MPV repeat and chapters
+26/07/08 fix: reject DRM media for MPV
+26/07/08 fix: publish MPV video size before first frame
+26/07/08 fix: sync MPV surface size before render
+26/07/08 fix: harden MPV HLS proxy responses
+26/07/08 fix: classify MPV playback errors
+26/07/08 fix: preserve bitmap subtitle mime types
+26/07/08 fix: support MPV playback offsets
+26/07/08 fix: support MPV HLS proxy range responses
+26/07/08 fix: complete playback diagnostics fields
+26/07/08 fix: correct media diagnostics track state
+26/07/08 fix: show current media diagnostics for mpv and ijk
+26/07/08 feat: expose mpv media tracks
+26/07/08 fix: refresh source when switching decode mode
+26/07/08 fix: refresh source when switching player kernels
+26/07/07 feat: add Android MPV player integration
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-07-09 06:43
 - **原始版本**: 5.5.6
 - **编译版本**: 260708-16-webhtv_dev
