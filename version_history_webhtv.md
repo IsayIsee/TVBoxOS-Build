@@ -1,3 +1,54 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-07-13 06:05
+- **原始版本**: 5.5.6
+- **编译版本**: 260713-08-webhtv_dev
+- **提交哈希**: [cc0a34b](https://github.com/IsayIsee/webhtv/commit/cc0a34b53d02578d48a823404203667e0a21f674)
+
+**详细日志/Changelog**:
+
+```
+26/07/13 Merge branch 'main' into webhtv_dev
+26/07/13 fix: restore IJK FFmpeg 4 HLS compatibility
+26/07/13 fix: add native IJK support for Bilibili DASH
+26/07/12 fix: support Bilibili MPD across player kernels
+26/07/12 merge: optimize GitHub update checks
+26/07/12 fix: speed up GitHub update checks
+26/07/12 feat(webhome): add recommendation source preference
+26/07/12 feat: add player-specific performance settings
+26/07/12 feat: improve player track and danmaku panels
+26/07/12 feat: complete app backup and git cloud restore
+26/07/12 fix(mobile): adapt landscape layout to window bounds
+26/07/12 fix: render MPV software Dolby Vision with gpu-next
+26/07/12 fix: align fullscreen gesture regions
+26/07/12 build: add reproducible MPV native toolchain
+26/07/12 docs: record MPV native dependency baseline
+26/07/11 build: timestamp fast release versions
+26/07/11 fix: restore MPV LUT slider with Vulkan support
+26/07/11 build: add optional fast release mode
+26/07/11 merge: injected Python live playback fix
+26/07/11 fix: support injected Python live playback
+26/07/11 fix: support mpv subtitle hot switching
+26/07/11 feat: split live tap controls by screen side
+26/07/11 fix: adapt live fullscreen orientation
+26/07/11 fix: recognize injected live spiders
+26/07/11 fix: refresh source when switching player
+26/07/11 fix: make jar youtube MPD playback usable
+26/07/10 feat: add lightweight playback performance profile
+26/07/10 fix: disable audio passthrough in recommended profile
+26/07/10 fix: warm injected CSP sites after config load
+26/07/10 ci: ignore deprecated CNB plugin output command
+26/07/10 revert: remove youtube push routing changes
+26/07/10 Merge branch 'fix/pan-playback-regression-20260710'
+26/07/10 ci: publish large APKs as CNB release assets
+26/07/10 fix: apply live playback headers consistently
+26/07/10 feat: add playback performance help dialog
+26/07/10 docs: reorganize project readme
+26/07/10 fix: improve mpv config history and player switching
+26/07/10 fix: add ExoPlayer Dolby Vision HEVC fallback
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-07-10 10:29
 - **原始版本**: 5.5.6
 - **编译版本**: 260710-10-webhtv_dev
