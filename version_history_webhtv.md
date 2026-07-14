@@ -1,3 +1,29 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-07-14 05:27
+- **原始版本**: 5.5.6
+- **编译版本**: 260713-17-webhtv_dev
+- **提交哈希**: [dd7d57c](https://github.com/IsayIsee/webhtv/commit/dd7d57c1bb45814219f05ecce2e7b336472a090b)
+
+**详细日志/Changelog**:
+
+```
+26/07/13 Merge branch 'main' into webhtv_dev
+26/07/13 merge: add remote ISO playback support
+26/07/13 fix: harden remote ISO detection and diagnostics
+26/07/13 feat: support remote DVD and Blu-ray ISO playback
+26/07/13 docs: add reproducible IJK native build guide
+26/07/13 merge: migrate CNB release repository
+26/07/13 fix: migrate CNB release repository
+26/07/13 fix: refine playback performance dialog actions
+26/07/13 fix: compact playback performance dialog actions
+26/07/13 fix: improve IJK Bilibili seek and playback
+26/07/13 fix: preserve IJK pan playback and adapt Bilibili DASH
+26/07/13 fix: add IJK SegmentBase DASH native support
+26/07/13 fix: restore TVBoxOSC IJK pan playback
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-07-13 06:05
 - **原始版本**: 5.5.6
 - **编译版本**: 260713-08-webhtv_dev
