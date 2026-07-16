@@ -1,3 +1,59 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-07-16 05:37
+- **原始版本**: 5.5.6
+- **编译版本**: 260716-05-webhtv_dev
+- **提交哈希**: [6f9e67d](https://github.com/IsayIsee/webhtv/commit/6f9e67d4d0cb814be282af8e83810b67dd45c798)
+
+**详细日志/Changelog**:
+
+```
+26/07/16 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/07/16 fix: preserve original search keyword conversion
+26/07/16 fix: restore all global search sources
+26/07/16 fix: restore original search source inclusion
+26/07/16 fix: improve sync workflow merge conflict handling
+26/07/16 Merge branch 'main' into webhtv_dev
+26/07/16 fix: align leanback audio light effect halo
+26/07/16 fix: decouple leanback playback options state
+26/07/16 fix: hide mobile karaoke effects outside immersive audio
+26/07/16 fix: pin leanback lyrics search sheet position
+26/07/16 fix: keep leanback lyrics search sheet height stable
+26/07/16 fix: stabilize leanback lyrics search results
+26/07/16 feat: add immersive audio toggle to leanback player settings
+26/07/16 fix: restore leanback in-player settings dialog
+26/07/16 fix: lock leanback playback options sheet height
+26/07/16 fix: center leanback lyrics offset label
+26/07/16 fix: preserve leanback playback options height
+26/07/16 fix: switch leanback playback option tabs in place
+26/07/16 chore: align leanback audio option label
+26/07/16 fix: simplify leanback playback controls
+26/07/16 chore: synchronize playback experience updates
+26/07/16 merge: add Exo DV5 and DV7 HDR10 fallback
+26/07/16 fix: force Exo DV5 HDR10 fallback
+26/07/15 fix: make Exo Dolby Vision HDR10 fallback safe
+26/07/16 merge: fix MPV playback regressions
+26/07/16 fix: bypass ISO probing for regular pan media
+26/07/16 fix: advance MPV VOD after playback ends
+26/07/16 fix: decouple VOD rotation and control lock
+26/07/16 fix: prevent release MPV initialization crash
+26/07/15 merge: MPV config manager redesign
+26/07/15 feat: redesign MPV config management
+26/07/15 fix: decouple live control lock from orientation
+26/07/15 docs: update MPV native build guidance
+26/07/15 fix: stabilize Blu-ray ISO timeline and seeking
+26/07/15 fix: map Blu-ray ISO track languages by stream order
+26/07/15 fix: restore Blu-ray ISO track languages in MPV
+26/07/15 debug: log MPV track names and languages
+26/07/15 fix: expose MPV track languages in selector
+26/07/15 fix: keep all label in search progress
+26/07/15 fix: preserve concurrent native search results
+26/07/15 feat: make interface scale presets more compact
+26/07/15 fix: keep live orientation when unlocking controls
+26/07/15 fix: ignore playback controls after service release
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-07-14 05:27
 - **原始版本**: 5.5.6
 - **编译版本**: 260713-17-webhtv_dev
