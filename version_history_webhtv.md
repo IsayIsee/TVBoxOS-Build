@@ -1,3 +1,51 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-07-17 05:39
+- **原始版本**: 5.5.6
+- **编译版本**: 260717-05-webhtv_dev
+- **提交哈希**: [2e5f9df](https://github.com/IsayIsee/webhtv/commit/2e5f9df6477f2562059f1f0240208a56a23cdec0)
+
+**详细日志/Changelog**:
+
+```
+26/07/17 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/07/17 fix: keep mobile offset dialog at bottom
+26/07/17 docs: document mpv curl http2 native stack
+26/07/17 build: enable mpv curl http2 on armv7
+26/07/17 build: pin mpv curl http2 native stack
+26/07/17 build: enable mpv curl http2 on arm64
+26/07/17 build: add mpv libcurl http2 support
+26/07/17 fix: share audio content state with control dialog
+26/07/17 fix: recognize music content in audio controls
+26/07/17 fix: scope audio controls to audio playback
+26/07/17 docs: update mpv native build baseline
+26/07/17 docs: record stable latest mpv combination
+26/07/17 build: update armv7 mpv native stack
+26/07/17 build: lock stable latest mpv combination
+26/07/17 test: use upstream mpv ffmpeg 8.0.1 combination
+26/07/17 test: restore latest mpv after lifecycle fix
+26/07/17 fix: serialize mpv context recreation after teardown
+26/07/17 build: support alternate mpv native lock files
+26/07/17 docs: document mpv native hotfix compatibility
+26/07/17 fix: restore verified mpv binaries for android
+26/07/17 fix: install android-stable mpv native libraries
+26/07/17 fix: pin android-stable mpv native revision
+26/07/17 test: build latest mpv with previous libplacebo
+26/07/17 test: isolate libplacebo native regression
+26/07/17 test: isolate mpv native upgrade regression
+26/07/17 revert: restore mpv context reset behavior
+26/07/17 fix: reuse mpv context across media changes
+26/07/17 build: install upgraded mpv native libraries
+26/07/16 build: pin mpv version check to release tag
+26/07/16 build: upgrade mpv native dependencies
+26/07/16 chore: stop tracking ignored plans
+26/07/16 fix: defer leanback flag selection refresh
+26/07/16 docs: add netdisk playback optimization plan
+26/07/16 Optimize playback rebuffering and mpv config precedence
+26/07/16 fix: avoid synthetic referer for MPV local proxies
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-07-16 05:37
 - **原始版本**: 5.5.6
 - **编译版本**: 260716-05-webhtv_dev
