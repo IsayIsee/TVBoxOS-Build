@@ -1,3 +1,20 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-07-17 13:02
+- **原始版本**: 5.5.6
+- **编译版本**: 260717-12-webhtv_dev
+- **提交哈希**: [7adf051](https://github.com/IsayIsee/webhtv/commit/7adf051816832f5ac0a190e1d725717b343febe8)
+
+**详细日志/Changelog**:
+
+```
+26/07/17 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/07/17 build: verify bundled mpv native assets
+26/07/17 fix: map MPV ISO tracks by source PID
+26/07/17 fix: map MPV ISO track metadata by playlist
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-07-17 05:39
 - **原始版本**: 5.5.6
 - **编译版本**: 260717-05-webhtv_dev
