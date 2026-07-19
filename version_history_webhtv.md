@@ -1,3 +1,73 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-07-19 05:49
+- **原始版本**: 5.5.6
+- **编译版本**: 260719-05-webhtv_dev
+- **提交哈希**: [88bdcf8](https://github.com/IsayIsee/webhtv/commit/88bdcf8eb23c6b08202e6b49f5bdca2b159e4255)
+
+**详细日志/Changelog**:
+
+```
+26/07/19 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/07/19 merge: reduce hidden karaoke timeline overhead
+26/07/19 fix: skip hidden karaoke timeline updates
+26/07/19 merge: preserve site injection and WebHome extensions in backups
+26/07/19 fix: continue backup restore when optional data is incomplete
+26/07/19 fix: preserve injection and WebHome extensions in backups
+26/07/19 merge: MPV Vulkan zero-copy and history URL fix
+26/07/19 fix: strip config suffix from history vod id
+26/07/19 feat: enable MPV MediaCodec Vulkan zero-copy
+26/07/19 merge: restore YouTube live sniff fallback
+26/07/19 fix: restore YouTube live sniff fallback
+26/07/19 merge: integrate playback optimization and diagnostics
+26/07/19 fix: prevent cast crash before playback is ready
+26/07/19 refactor: generalize playback link diagnostics naming
+26/07/19 fix: add TV remote focus to MPV config dialogs
+26/07/18 fix: tolerate invalid mpv configs and restore URL import
+26/07/18 feat: add TV pan diagnostics control
+26/07/18 feat: marquee focused search titles
+26/07/18 fix: shorten backup file names
+26/07/18 feat: add full-chain pan network diagnostics
+26/07/18 feat: add pan network diagnostic core
+26/07/18 feat: adapt EXO startup buffer to prior rebuffering
+26/07/18 Clarify external proxy boundaries
+26/07/18 Classify playback error stages
+26/07/18 Trace playback route ownership
+26/07/18 Trace EXO preload lifecycle
+26/07/18 Trace startup and rebuffer intervals
+26/07/18 Trace playback startup stages
+26/07/18 Add per-playback trace identifiers
+26/07/18 Gate MPV detailed diagnostics behind demand
+26/07/18 Throttle MPV cache observer fallback
+26/07/18 Defer MPV cache fallback until file load
+26/07/18 Prefer MPV cache property observers
+26/07/18 Lock MPV option priority boundaries
+26/07/18 Implement MPV network recovery ownership policy
+26/07/18 fix: tune mpv rebuffer recovery profiles
+26/07/18 test: lock mpv fast startup cache policy
+26/07/18 feat: add automatic playback performance profile
+26/07/18 feat(exo): add playback buffer diagnostics
+26/07/18 fix(exo): separate rebuffer recovery presets
+26/07/18 fix(exo): rebalance load control heap budget
+26/07/18 fix(exo): bound preload range and defaults
+26/07/18 fix(exo): separate preload buffer watermarks
+26/07/18 fix(exo): scope playback priority to active io
+26/07/18 refactor(exo): lock fast start thresholds
+26/07/18 fix(exo): enforce target buffer capacity
+26/07/18 fix(exo): preserve requested buffer capacity
+26/07/18 fix(exo): cap buffer target by heap budget
+26/07/17 fix(exo): preserve finite remote preload threads
+26/07/17 feat(exo): limit loopback proxy preload concurrency
+26/07/17 feat(exo): prioritize playback over preload
+26/07/17 fix(exo): invalidate stale preload generations
+26/07/17 fix(exo): wait for safe buffer before preload
+26/07/17 fix(exo): stop preload while buffering
+26/07/17 fix(exo): defer preload until playable
+26/07/17 fix(exo): start preload after buffered position
+26/07/17 build: verify bundled mpv native assets
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-07-17 13:02
 - **原始版本**: 5.5.6
 - **编译版本**: 260717-12-webhtv_dev
