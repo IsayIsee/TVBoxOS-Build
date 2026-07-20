@@ -1,3 +1,66 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-07-20 09:05
+- **原始版本**: 5.5.6
+- **编译版本**: 260720-16-webhtv_dev
+- **提交哈希**: [d76415f](https://github.com/IsayIsee/webhtv/commit/d76415fff01a81043054661d790b57d5d295e430)
+
+**详细日志/Changelog**:
+
+```
+26/07/20 fix: correct WeChat webhook JSON format in sync workflow
+26/07/20 Merge remote-tracking branch 'origin/webhtv_dev' into webhtv_dev
+26/07/20 Merge branch 'main' into webhtv_dev
+26/07/20 merge: add LAN APK push
+26/07/20 fix: select APK after choosing target device
+26/07/20 feat: push local APKs over LAN
+26/07/20 merge: add GitHub update fallback
+26/07/20 fix: fall back to GitHub for app updates
+26/07/20 merge: migrate CNB repositories to fish2035
+26/07/20 fix: migrate in-app CNB links
+26/07/20 ci: migrate optional CNB release mirror
+26/07/20 merge: integrate MPV automatic 4K direct output fixes
+26/07/20 fix: prioritize stable direct output for 4K MPV
+26/07/20 fix: switch 4K MPV auto output before first frame
+26/07/20 merge: integrate login state learning scalability fixes
+26/07/20 fix: ignore diagnostic logs during login learning
+26/07/20 fix: scale login state learning for large file sets
+26/07/20 merge: integrate main-2 playback and diagnostics updates
+26/07/20 docs: clarify playback performance choices
+26/07/20 perf: keep automatic MPV direct output across episodes
+26/07/19 fix: reuse MPV direct-output context across media
+26/07/19 docs: document MPV TV output optimization
+26/07/19 fix: treat MPV AImageReader starvation as transient
+26/07/19 perf: reduce MPV surface and track update churn
+26/07/19 feat: add adaptive MPV TV surface output
+26/07/19 feat: add MPV TV output modes
+26/07/19 fix: improve TV playback performance dialog focus
+26/07/19 docs: finalize websocket danmaku build workflow
+26/07/19 test: calibrate websocket danmaku load budgets
+26/07/19 test: complete websocket danmaku device matrix
+26/07/19 test: add websocket danmaku integration coverage
+26/07/19 feat: aggregate live danmaku diagnostics
+26/07/19 fix: align live danmaku with playback lifecycle
+26/07/19 fix: clear stale live danmaku render work
+26/07/19 perf: bound live danmaku render admission
+26/07/19 perf: admit live danmaku by available tracks
+26/07/19 perf: measure live danmaku off the main thread
+26/07/19 feat: add Media3 live danmaku batch API
+26/07/19 feat: expire and measure live danmaku backlog
+26/07/19 feat: batch live danmaku delivery
+26/07/19 feat: bound live danmaku input queues
+26/07/19 feat: parse live danmaku messages safely
+26/07/19 feat: retry live danmaku with jitter
+26/07/19 feat: isolate live danmaku connection generations
+26/07/19 feat: route local live danmaku directly
+26/07/19 feat: add isolated live danmaku websocket client
+26/07/19 feat: classify and sanitize danmaku sources
+26/07/19 fix: apply danmaku visibility consistently
+26/07/19 fix: restore danmaku across controller replacement
+26/07/19 fix: clear danmaku across playback lifecycle
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-07-19 05:49
 - **原始版本**: 5.5.6
 - **编译版本**: 260719-05-webhtv_dev
