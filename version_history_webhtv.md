@@ -1,3 +1,166 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-08-10 04:49
+- **原始版本**: 5.5.6
+- **编译版本**: 260810-12-webhtv_dev
+- **提交哈希**: [322a7fe](https://github.com/IsayIsee/webhtv/commit/322a7fe5133c2d82fbdfdc1d145c3465141497f6)
+
+**详细日志/Changelog**:
+
+```
+26/08/10 merge: resolve OkProxySelector conflict — integrate health checking with rate-limited logging
+26/08/07 chore: declare vibration permission
+26/08/07 fix: keep mpv buffering and hls seeks accurate
+26/08/07 fix: stabilize seek progress and mpv buffer timeline
+26/08/07 fix: refine player dialog remote focus
+26/08/07 feat: choose playback engine from dialog
+26/08/07 merge: beta into main
+26/08/07 fix: preserve mpv frame during transient seek
+26/08/07 fix: preload opaque HTTP sources in mpv
+26/08/07 fix: keep episode grid layout across fullscreen rotation
+26/08/07 fix: handle ijk long-url playback errors
+26/08/07 fix: keep paused buffer timeline live
+26/08/06 fix: stabilize mpv and ijk buffering
+26/08/06 fix: stabilize immersive audio layout
+26/08/06 feat: improve paused preload across player kernels
+26/08/06 feat: improve playback buffering and disk preload
+26/08/05 fix: compact Quark episode titles
+26/08/05 fix: synchronize MPV AImageReader frames
+26/08/05 fix: support EXO playback on older Android versions
+26/08/04 fix: enable live program catchup selection
+26/08/04 fix: stabilize live stream playback
+26/08/02 fix: stabilize EXO app proxy VOD buffering
+26/08/02 fix: decode PNG-wrapped HLS segments in MPV
+26/08/02 fix: align MPV sniffed media request headers
+26/08/02 fix: support episode title regex on Android 9
+26/08/01 feat: consolidate playback profiles into auto and light
+26/08/01 fix: restore MPV proxy seeking and guard startup rotation
+26/08/01 fix: restore EXO dynamic network protection
+26/08/01 fix: keep MPV TV direct output in production
+26/08/01 fix: internalize playback automatic optimizations
+26/08/01 fix: shorten MPV HLS bitrate status
+26/08/01 fix: show all playback performance parameters
+26/08/01 fix: restore visible experiment controls and reset
+26/08/01 fix: simplify playback performance controls
+26/08/01 fix: simplify playback performance settings UI
+26/08/01 fix: recover EXO after decoder resources are reclaimed
+26/08/01 fix: use system font fallback for MPV subtitles
+26/07/31 fix: allow scaling native ASS subtitles in MPV
+26/07/31 fix: avoid reusing config name when adding source
+26/07/31 fix: hide cast action in TV fullscreen controls
+26/07/31 fix: unify background playback and audio mode PiP
+26/07/31 feat: add compatible profile retention audit
+26/07/31 feat: add lightweight profile retention assessment
+26/07/31 feat: merge balanced playback profile into auto
+26/07/31 feat: add playback profile A/B validation
+26/07/31 feat: constrain EXO single-rate network rescue
+26/07/31 feat: add EXO frame scheduling A/B
+26/07/30 test: add playback scenario matrix
+26/07/30 feat: add playback experiment rollback
+26/07/30 feat: learn IJK runtime fallbacks
+26/07/29 feat: control IJK decode pressure
+26/07/29 feat: recover IJK realtime backlog
+26/07/29 feat: adapt IJK finite buffer by scene and memory
+26/07/29 feat: classify IJK stream scenes from manifests
+26/07/28 feat: prioritize MPV HLS preloading
+26/07/28 feat: add MPV resource pressure degradation
+26/07/28 feat: add MPV HLS controlled variant fallback
+26/07/28 feat: clarify MPV cache time controls
+26/07/28 feat: manage MPV back cache from seek behavior
+26/07/28 feat: scale MPV forward cache from runtime facts
+26/07/28 feat: add MPV automatic controller baseline
+26/07/28 feat: recover EXO RTSP live lag
+26/07/27 feat: add versioned EXO decoder runtime blacklist
+26/07/27 feat: prioritize foreground EXO playback
+26/07/27 feat: isolate EXO rebuffer learning
+26/07/27 feat: adapt EXO playback thresholds
+26/07/27 feat: make EXO throughput estimates path aware
+26/07/27 feat: separate EXO safety constraints from Media3 ABR
+26/07/27 feat: adapt EXO buffering to memory pressure
+26/07/27 feat: split EXO automatic load control modes
+26/07/27 feat: size EXO target buffer from demand
+26/07/26 feat: unify playback decision telemetry
+26/07/26 feat: publish playback track and decoder facts
+26/07/26 feat: publish playback system condition facts
+26/07/26 feat: publish playback memory pressure facts
+26/07/26 feat: classify playback resources and paths
+26/07/25 feat: add shared playback auto context
+26/07/25 fix: gate byte slope to continuous progressive streams
+26/07/25 fix: separate average and burst media bitrate estimates
+26/07/25 fix: protect MPV IJK HLS proxy disk cache
+26/07/25 fix: protect EXO disk cache capacity
+26/07/25 feat: add shared disk cache capacity policy
+26/07/25 fix: keep IJK input queues bounded
+26/07/25 fix: restore Media3 initial bandwidth estimates
+26/07/25 fix: apply EXO adaptive bitrate cap
+26/07/25 fix: preserve HLS master playlist variants
+26/07/25 docs: add automatic playback implementation checklist
+26/07/24 fix: preserve semantic compact episode titles
+26/07/24 fix: isolate CSP protobuf classes
+26/07/24 docs: deepen automatic playback performance review
+26/07/23 docs: document automatic playback performance strategy
+26/07/23 feat: consolidate appearance settings
+26/07/23 feat: improve proxy rule suggestions and editing
+26/07/23 refactor: remove duplicate mpv render setting
+26/07/23 fix: handle bracketed episode prefixes
+26/07/23 fix: preserve directional episode titles
+26/07/23 fix: expand compact episode title parsing
+26/07/23 fix: improve compact episode title matching
+26/07/23 feat: add persistent playback sync servers
+26/07/23 fix: sync playback history deletions
+26/07/22 fix: keep CNB as primary update source
+26/07/22 fix: restore EXO Dolby Vision HDR10 fallback
+26/07/22 fix: use browser identity for web sniffing
+26/07/22 revert: keep diagnostic sniffing webview configuration
+26/07/22 fix: restore stock sniffing webview behavior
+26/07/22 fix: keep media user agent out of web sniffing
+26/07/22 refactor: humanize network protection status
+26/07/22 fix: remove duplicate playback metrics
+26/07/22 fix: restore MPV playback diagnostics
+26/07/22 fix: simplify network guard toggle and hide karaoke control
+26/07/22 refactor: clarify playback panel sections
+26/07/22 fix: humanize panel and estimate HLS bitrate
+26/07/22 refactor: simplify playback diagnostics panel
+26/07/22 fix: expose actionable network guard metrics
+26/07/22 fix: recover adaptive speed before full buffer saturation
+26/07/22 fix: preserve network guard during ready-state reset
+26/07/22 debug: trace EXO network guard runtime decisions
+26/07/22 fix: use emergency speed rescue when buffer deadline is short
+26/07/22 fix: apply floor rescue during transient bandwidth deficits
+26/07/22 fix: preserve EXO network guard across rebuffering
+26/07/22 feat: add deadline-aware adaptive EXO network guard
+26/07/22 feat: finalize imperceptible dynamic EXO network guard
+26/07/22 feat: add adaptive exo network guard
+26/07/22 feat: add fixed exo network protection speeds
+26/07/21 fix: isolate exo frame timing across interruptions
+26/07/21 feat: add exo frame release timing diagnostics
+26/07/21 fix: prioritize time buffer in exo auto mode
+26/07/21 fix: circuit-break failed external preload
+26/07/21 fix: extend loopback preload coverage
+26/07/21 fix: keep loopback preload active behind playback
+26/07/21 feat: make exo auto buffering adapt during playback
+26/07/21 feat: expose exo frame timing diagnostics
+26/07/21 fix: show exo media bitrate estimates in osd
+26/07/21 fix: allow repeated HTTP EOF range recovery
+26/07/21 fix: recover truncated HTTP playback reads with range resume
+26/07/21 fix: improve playback metadata diagnostics and disable remote agent cleanly
+26/07/21 feat: expose EXO tunneling runtime diagnostics
+26/07/21 feat: detect EXO tunneling playback stalls
+26/07/21 feat: add EXO tunneling first-frame watchdog
+26/07/21 feat: remember EXO tunneling failures per codec
+26/07/21 feat: fallback from EXO tunneling once on decoder failure
+26/07/21 feat: gate EXO tunneling with eligibility policy
+26/07/21 feat: apply and restore EXO display modes
+26/07/21 feat: add television output mode policy
+26/07/21 perf: separate codec track bitrate from network target
+26/07/21 refactor: introduce playback capability report
+26/07/21 fix: remove unsafe Dolby Vision profile fallback
+26/07/21 perf: throttle playback diagnostic logs
+26/07/21 perf: stabilize EXO high-bitrate playback
+26/07/20 fix: serialize player source resolution
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-07-20 09:05
 - **原始版本**: 5.5.6
 - **编译版本**: 260720-16-webhtv_dev
