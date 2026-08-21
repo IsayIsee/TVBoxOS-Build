@@ -1,3 +1,77 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-08-21 03:44
+- **原始版本**: 5.6.0
+- **编译版本**: 260821-03-webhtv_dev
+- **提交哈希**: [2439d4e](https://github.com/IsayIsee/webhtv/commit/2439d4e960682eb7030727d6fe6bfa6615c4f409)
+
+**详细日志/Changelog**:
+
+```
+26/08/21 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/08/20 chore: remove docs directory
+26/08/20 merge fongmi-sync into main
+26/08/20 fix mpv preload network policy
+26/08/20 fix: restore direct preload and disk buffer progress
+26/08/20 fix: close failed CDN response before retry
+26/08/20 fix: recover Kuaishou HLS segments across CDN aliases
+26/08/20 fix: keep exo and mpv disk preload continuous
+26/08/20 fix: restore eager exo disk preload
+26/08/19 fix: restore continuous exo and mpv buffering
+26/08/19 fix: keep pause preload on cost-constrained networks
+26/08/19 fix: rebuild Exo pipeline on initial LUT apply
+26/08/19 fix: release MPV output shutter when fallback request is rejected
+26/08/19 fix: hide MPV direct probe frames before GPU fallback
+26/08/19 fix: preserve DV metadata after direct decode failure
+26/08/18 fix mpv auto output and lut adaptation
+26/08/18 fix: schedule MediaCodec frames before flip
+26/08/17 docs: sync dependency and native build documentation
+26/08/17 fix: use texture output for Exo LUT
+26/08/17 fix: stabilize MPV LUT preview
+26/08/17 Fix MPV MediaCodec frame release scheduling
+26/08/17 fix(mpv): avoid direct surface resize stalls
+26/08/17 fix(mpv): adapt MediaCodec output scheduling
+26/08/17 debug(mpv): expose MediaCodec output timing
+26/08/17 fix(mpv): schedule MediaCodec output by presentation time
+26/08/16 fix(mpv): remove synchronous queries from output hot path
+26/08/16 fix(mpv): cache runtime properties off hot state path
+26/08/16 fix mpv main thread ANR diagnostics
+26/08/16 fix(mpv): minimize TV startup reconfigurations
+26/08/16 fix(mpv): optimize TV direct audio and subtitles
+26/08/16 fix(mpv): restore TV direct subtitle performance
+26/08/16 fix(mpv): avoid TV startup output rebuild
+26/08/16 fix(mpv): stabilize DV7 HDR10 fallback and audio routing
+26/08/16 fix: keep MPV DV7 HDR10 fallback on direct output
+26/08/15 fix: restore stable MPV DV7 HDR10 fallback
+26/08/15 fix: preserve AC-3 multichannel PCM fallback
+26/08/15 fix: improve Exo audio output diagnostics
+26/08/15 fix: stabilize Dolby Vision and audio playback
+26/08/15 fix: stabilize DV7 to P8.1 playback
+26/08/15 feat: optimize DV7 playback labels and push play
+26/08/15 feat: improve Dolby Vision and playback performance controls
+26/08/14 feat: support per-option automatic playback overrides
+26/08/14 feat: update mpv audio and playback diagnostics
+26/08/14 feat: default Vulkan video path to direct
+26/08/14 fix: stabilize MPV render path selection
+26/08/13 fix: refresh bundled MPV libraries after app updates
+26/08/12 feat: add GPU render load diagnostics
+26/08/12 fix: optimize Android Vulkan HDR power usage
+26/08/11 fix: clarify Dolby Vision fallback and reduce Vulkan GPU load
+26/08/11 feat: add Exo AV3A software decoding
+26/08/11 fix: stabilize Android MPV playback and passthrough
+26/08/10 fix: stabilize Dolby Vision fallback and diagnostics
+26/08/10 feat: finalize FongMi 5.6.0 sync
+26/08/10 feat: sync FongMi playback stack and native dependencies
+26/08/09 fix: port upstream playback end-state handling
+26/08/07 Handle invalid DNS-over-HTTPS URLs
+26/08/07 Handle task backgrounding on legacy TV firmware
+26/08/05 Update Chrome user agent
+26/08/01 Defer DNS-over-HTTPS initialization
+26/07/26 Add cookie parsing for live playlists
+26/07/16 Fix Leanback QR server address
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-08-10 04:49
 - **原始版本**: 5.5.6
 - **编译版本**: 260810-12-webhtv_dev
