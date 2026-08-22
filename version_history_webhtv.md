@@ -1,3 +1,18 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-08-22 03:34
+- **原始版本**: 5.6.0
+- **编译版本**: 260822-03-webhtv_dev
+- **提交哈希**: [3893b83](https://github.com/IsayIsee/webhtv/commit/3893b83afb857d97cc4bd9276ee8a8807d464ba0)
+
+**详细日志/Changelog**:
+
+```
+26/08/22 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/08/21 fix(exo): align buffered diagnostics with disk preload
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-08-21 03:44
 - **原始版本**: 5.6.0
 - **编译版本**: 260821-03-webhtv_dev
