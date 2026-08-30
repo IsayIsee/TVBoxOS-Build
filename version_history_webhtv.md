@@ -1,3 +1,140 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-08-30 08:44
+- **原始版本**: 5.6.0
+- **编译版本**: 260830-08-webhtv_dev
+- **提交哈希**: [563baa9](https://github.com/IsayIsee/webhtv/commit/563baa9d2ff03bfcdf6ffd3e9260283a95e49ccd)
+
+**详细日志/Changelog**:
+
+```
+26/08/30 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/08/30 fix(mpv): preselect persisted subtitle before load
+26/08/30 fix(mpv): restore subtitles before autoplay
+26/08/30 fix(mpv): stabilize subtitle and transient surface lifecycle
+26/08/30 fix(mpv): restore direct subtitle controls and armv7 parity
+26/08/30 Merge fongmi-sync into main without temporary docs
+26/08/30 docs(governance): persist upstream assessment workflow
+26/08/30 docs(c2): record first-frame fix recovery point
+26/08/30 fix(mpv): reveal direct video at playback restart
+26/08/30 fix(mpv): separate DV source labels from playback profile
+26/08/30 fix(mpv): drop stale DV7 enhancement configuration
+26/08/30 docs: record C2 Dolby decoder release evidence
+26/08/30 docs: close C2 chapter startup stall fix
+26/08/30 fix(mpv): defer startup chapter metadata for DV7 P8.1
+26/08/29 fix(mpv): fallback converted DV7 P8.1 on startup timeout
+26/08/29 fix(mpv): avoid blocking disabled subtitle track queries
+26/08/29 docs: record C2 implementation checkpoint
+26/08/29 mpv: complete DV7 to P8.1 fallback integration
+26/08/29 docs: streamline explicit task closure
+26/08/29 docs(mpv): close P4-4 autoplay pause race
+26/08/29 fix(mpv): preserve autoplay intent across pause callbacks
+26/08/29 docs: close P4-3 Surface teardown
+26/08/29 mpv: avoid terminal Surface reconfiguration
+26/08/29 docs(mpv): assess terminal Surface teardown race
+26/08/29 docs(mpv): close C0-M implementation record
+26/08/29 build(mpv): align FFmpeg with 9.0.1
+26/08/29 docs(mpv): close P4-1 shutdown task
+26/08/29 fix(mpv): serialize JNI shutdown requests
+26/08/29 docs(mpv): record P3 AudioTrack closure
+26/08/29 feat(mpv): support DTS-HD MA AudioTrack carriers
+26/08/29 docs: close P2-2 verification record
+26/08/29 mpv: complete DV7 HDR10 fallback codec metadata sync
+26/08/29 mpv: auto-route unsupported DV5 through Vulkan
+26/08/29 fix(mobile): refresh subtitle action visibility
+26/08/29 merge: integrate verified player fixes into fongmi-sync
+26/08/29 fix(mobile): dim inactive playback diagnostics icon
+26/08/29 fix(exo): resolve deferred cues through chained seekheads
+26/08/29 docs: close P2-1 implementation record
+26/08/29 mpv: precompute generic Vulkan UV transforms
+26/08/28 chore: simplify agent governance constraints
+26/08/28 Merge verified Exo DV5 renderer into fongmi-sync
+26/08/28 docs: close P1 MPV correctness stage
+26/08/28 mpv: add P1 format and shader correctness fixes
+26/08/28 Merge Exo DV5 renderer into P0 MPV baseline
+26/08/28 fix(exo): release DV5 surface before DV7 fallback
+26/08/28 fix(exo): decode Dolby Vision RPU pivot deltas
+26/08/28 docs: add MPV P1 format and shader decision packet
+26/08/28 docs: close P0 MPV native baseline assessment
+26/08/28 Fix Exo DV5 renderer output color contract
+26/08/28 fix(exo): retain DV5 RPU metadata through codec pre-roll
+26/08/28 exo: signal DV5 Vulkan output as HDR10 PQ
+26/08/28 fix: preserve ordered DV5 RPU metadata for Exo renderer
+26/08/27 Merge branch 'fongmi-sync-bugfix' into fongmi-sync
+26/08/27 docs: record E-SP3 merge into fongmi-sync
+26/08/27 media3: merge HLS pre-cache safety with fongmi-sync artifacts
+26/08/27 docs: record E9-3 DV5 device render failure
+26/08/27 exo: merge E-SP3 seek recovery fixes
+26/08/27 Docs: record E7-2 C3 completion
+26/08/27 Exo: support ISO UDF multi-extent files
+26/08/27 docs: record Android resource cache recovery
+26/08/27 Wire experimental Exo DV5 Vulkan renderer
+26/08/27 exo: isolate user seek from rebuffer telemetry
+26/08/27 Prepare Exo DV5 Vulkan renderer admission telemetry
+26/08/27 Implement Exo DV5 Vulkan/libplacebo renderer path
+26/08/27 exo: use seek-specific playback recovery threshold
+26/08/27 exo: add seek recovery timing diagnostics
+26/08/27 exo: vendor libplacebo renderer headers batch two
+26/08/27 exo: vendor libplacebo renderer headers batch one
+26/08/27 exo: route DV5 RPU metadata into native renderer
+26/08/27 exo: vendor libdovi parser closure for DV5 renderer
+26/08/27 docs: record DV5 libdovi renderer gate
+26/08/27 Docs: record E7-1 completion
+26/08/27 Exo: harden ISO reader boundaries
+26/08/27 exo: vendor DV5 libplacebo native closure
+26/08/27 Docs: record E6-1 completion
+26/08/27 Exo: bound cache writer requests
+26/08/27 feat(exo): add DV5 AImageReader diagnostic bridge
+26/08/27 docs: record unresolved Exo seek pause
+26/08/27 Docs: close E4-J1 integration record
+26/08/27 Exo: add Cue data contract
+26/08/27 feat(exo): add DV5 GPU mapping route policy
+26/08/27 docs: define Exo DV5 Vulkan renderer plan
+26/08/27 docs(E-SP3): record implementation and device validation blocker
+26/08/27 publish(media3): ship HLS pre-cache request safety artifact
+26/08/27 fix(media3): contain preload request lifecycle race
+26/08/27 fix(exo): isolate preload across seeks
+26/08/27 docs: remove unrequested DV5 conversion assessment
+26/08/27 docs: record approved E-SP3 implementation plan
+26/08/27 Docs: assess Exo DV5 output policy
+26/08/27 Docs: close Exo subtitle byte safety record
+26/08/27 Exo: harden subtitle byte and charset handling
+26/08/26 docs: standardize JDK 21 requirements
+26/08/26 Docs: require standalone JDK 21 toolchain
+26/08/26 Docs: close E3-1b reproducibility record
+26/08/26 Exo: correct DTS 14-bit frame sizes
+26/08/26 Docs: mark E3-1a fully closed
+26/08/26 Docs: close E3-1a integration record
+26/08/26 Exo: guard Pixel E-AC3 JOC codec fallback
+26/08/26 docs: close E2-1 implementation record
+26/08/26 exo: harden HDR and Dolby Vision parser safety
+26/08/23 docs: establish stable upstream task records
+26/08/23 fix(exo): preserve DV7 access units for HDR10 fallback
+26/08/23 docs: decouple build instructions from Android Studio
+26/08/23 fix(exo): retain DV7 P8.1 fallback evidence
+26/08/23 fix(exo): retry failed DV7 P8.1 as HDR10
+26/08/23 fix(exo): choose HDR10 when DV7 P8.1 is unsupported
+26/08/23 exo: scope deferred Cues to remote Matroska inputs; Preserve local files and DV RPU behavior while enabling deferred Cues only for HTTP/HTTPS URIs; Assessment: docs/exo-startup-performance-assessment-2026-08-22.md#checkpoint-6
+26/08/23 exo: install deferred Cues extractor artifact; Media3 artifact: androidx.media3:media3-extractor:1.11.0-alpha01-fongmi; AAR-SHA256: ec3ac41088e496bdfe63925ca0751234e0178a9d92e8deedf8734dfe36fab8fe; Sources-SHA256: a9a813622f10b4735f71ba3c8e535981adca4941bd0f6d832efe31e80b033295; Assessment: docs/exo-startup-performance-assessment-2026-08-22.md#checkpoint-6
+26/08/23 exo: stage deferred Matroska Cues extractor patch; Upstream-Source: androidx/media@859f7b3b5388378698ff23a667d3e2db5ac41aed; Assessment: docs/exo-startup-performance-assessment-2026-08-22.md#checkpoint-5
+26/08/22 docs: finalize Exo deferred Cues assessment
+26/08/22 fix(exo): reveal video after first rendered frame
+26/08/22 docs: clarify Exo assessment provenance
+26/08/22 docs: assess Exo startup performance options
+26/08/22 fix(exo): stop startup timeout after first video frame
+26/08/22 fix(exo): fallback to HDR10 after DV7 first-frame timeout
+26/08/22 fix(exo): preserve DV7 HDR10 fallback across rebuild
+26/08/22 Record Exo DV CSD compatibility recovery point
+26/08/22 Fix Exo DV7 to P8.1 CSD compatibility
+26/08/22 fix(exo): feed pure HDR10 data after DV7 runtime failure
+26/08/22 fix(mpv): keep direct output for DV7 HDR10 fallback
+26/08/22 docs(exo): record DV7 to P8.1 CSD recovery point\n\nRecord the verified implementation commit and immediate recovery tag for the Exo Dolby Vision CSD adaptation.\n\nImplementation: docs/upstream-player-dependency-a1-2-implementation-2026-08-22.md
+26/08/22 fix(exo): keep DV7 to P8.1 codec and CSD aligned\n\nSynchronize the Dolby Vision configuration record with the existing Exo DV7 to P8.1 sample conversion. Preserve non-DV initialization data and keep the current converter policy unchanged.\n\nUpstream-Source: FFmpeg@177f090e0503b7e013922ca903bde14b1c375f18\nAssessment: docs/upstream-player-dependency-merge-assessment-2026-08-20.md#43.4\nImplementation: docs/upstream-player-dependency-a1-2-implementation-2026-08-22.md
+26/08/22 docs(exo): record FFmpeg 9.0.1 completion anchor
+26/08/22 build(exo): upgrade nextlib FFmpeg to 9.0.1
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-08-22 03:34
 - **原始版本**: 5.6.0
 - **编译版本**: 260822-03-webhtv_dev
