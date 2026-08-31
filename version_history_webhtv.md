@@ -1,3 +1,25 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-08-31 10:05
+- **原始版本**: 5.6.0
+- **编译版本**: 260831-17-webhtv_dev
+- **提交哈希**: [2972fd4](https://github.com/IsayIsee/webhtv/commit/2972fd43267565108738a463541025549e57db26)
+
+**详细日志/Changelog**:
+
+```
+26/08/31 fix: add missing string resources for update settings and APK push
+26/08/31 merge: integrate package validation from main while preserving webhtv_dev upgrade path
+26/08/31 chore: ignore local docs directory
+26/08/31 feat: simplify update download settings
+26/08/31 docs: record verified OCI beta publication
+26/08/31 fix: pin ORAS release asset in workflow
+26/08/31 docs: record Docker Hub OCI publishing setup
+26/08/31 feat: add OCI APK update source
+26/08/30 feat: merge APK URL push into main
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-08-30 08:44
 - **原始版本**: 5.6.0
 - **编译版本**: 260830-08-webhtv_dev
