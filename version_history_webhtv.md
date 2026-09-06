@@ -1,3 +1,66 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-09-06 07:28
+- **原始版本**: 5.6.0
+- **编译版本**: 260906-07-webhtv_dev
+- **提交哈希**: [7f45988](https://github.com/IsayIsee/webhtv/commit/7f45988cadd86e25f1ca8f76a9590045d1d6aafc)
+
+**详细日志/Changelog**:
+
+```
+26/09/06 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/09/06 fix(tv): intercept search result focus entry
+26/09/06 fix(tv): reset search result focus on CSP switch
+26/09/06 fix: omit generated script suffix from button title
+26/09/06 fix: toggle custom script button feedback
+26/09/06 fix: show custom script button click feedback
+26/09/06 fix: unify mpv scripts settings flow
+26/09/06 fix: open script text editor and refresh list
+26/09/06 docs: close MPV configuration sync record
+26/09/06 sync: clear stale MPV profile preferences on restore
+26/09/06 sync: add optional MPV configuration transfer
+26/09/05 fix(mpv): align right script buttons
+26/09/05 fix(mpv): reposition custom script buttons
+26/09/05 fix(mpv): keep script creation in one dialog
+26/09/05 feat(mpv): add script custom button management UI
+26/09/05 fix(mpv): use scripts new button for custom controls
+26/09/05 feat: add MPV script custom buttons
+26/09/05 docs: record MPV script button design
+26/09/05 fix(mpv): gate compressed audio by passthrough route
+26/09/05 MPV: disable automatic software video fallback
+26/09/05 Fix audio diagnostics Android API compatibility
+26/09/05 Fix MPV P8.1 HDR10 hardware fallback
+26/09/04 fix(exo): support APE demux and FFmpeg playback
+26/09/04 docs: close C4 implementation record
+26/09/04 common: unify audio diagnostics contract
+26/09/04 docs: close C4 audio policy assessment record
+26/09/04 docs: define common audio policy contract
+26/09/04 fix(exo): extract ALAC cookie from QuickTime wave atoms
+26/09/04 fix(exo): route ALAC away from stalled vendor decoder
+26/09/04 docs: add audio and multichannel strategy assessment
+26/09/04 fix(exo): support AV3A 5.1 mixed-content channel downmix
+26/09/04 fix(exo): parse AVS3A DASH channel configuration
+26/09/03 fix(mpv): downmix unknown AV3A channels to stereo
+26/09/03 fix(mpv): recover AAC playback through PCM fallback
+26/09/03 Fix MPV compressed audio output fallback
+26/09/02 fix Exo compressed audio PCM channel fallback
+26/09/02 fix Exo audio output configuration recovery
+26/09/02 mpv: expose AV3A audio tracks with canonical MIME
+26/09/02 exo: route MP4 AV3A tracks to compatible decoder
+26/09/02 docs: record Exo audio codec compatibility investigation
+26/09/02 mpv: repair compressed AudioTrack fallback patch hunks
+26/09/02 exo: gate network protection on actual audio output
+26/09/02 mpv: report actual hardware audio decoder state
+26/09/02 mpv: add compressed AudioTrack output path
+26/09/02 player: align audio decode labels with video diagnostics
+26/09/02 exo: recover compressed audio output failures with PCM fallback
+26/09/01 mpv: prefer hardware audio MediaCodec with fallback
+26/09/01 feat(exo): prioritize hardware audio decoders
+26/08/31 Show runtime audio playback diagnostics
+26/08/31 feat(mpv): add multichannel audio fallback policy
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-08-31 10:05
 - **原始版本**: 5.6.0
 - **编译版本**: 260831-17-webhtv_dev
