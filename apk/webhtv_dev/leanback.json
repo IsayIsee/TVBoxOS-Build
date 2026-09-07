@@ -1,9 +1,17 @@
 {
-  "code": 26090607,
-  "name": "260906-07-webhtv_dev",
-  "desc": "* 版本: 5.6.0 → 260906-07-webhtv_dev\n* 26/09/06 Merge remote-tracking branch 'origin/main' into webhtv_dev\n* 26/09/06 fix(tv): intercept search result focus entry\n* 26/09/06 fix(tv): reset search result focus on CSP switch\n* 26/09/06 fix: omit generated script suffix from button title\n* 26/09/06 fix: toggle custom script button feedback\n* 26/09/06 fix: show custom script button click feedback\n* 26/09/06 fix: unify mpv scripts settings flow\n* 26/09/06 fix: open script text editor and refresh list\n* 26/09/06 docs: close MPV configuration sync record\n* 26/09/06 sync: clear stale MPV profile preferences on restore\n* 26/09/06 sync: add optional MPV configuration transfer\n* 26/09/05 fix(mpv): align right script buttons\n* 26/09/05 fix(mpv): reposition custom script buttons\n* 26/09/05 fix(mpv): keep script creation in one dialog\n* 26/09/05 feat(mpv): add script custom button management UI\n* 26/09/05 fix(mpv): use scripts new button for custom controls\n* 26/09/05 feat: add MPV script custom buttons\n* 26/09/05 docs: record MPV script button design\n* 26/09/05 fix(mpv): gate compressed audio by passthrough route\n* 26/09/05 MPV: disable automatic software video fallback\n* 26/09/05 Fix audio diagnostics Android API compatibility\n* 26/09/05 Fix MPV P8.1 HDR10 hardware fallback\n* 26/09/04 fix(exo): support APE demux and FFmpeg playback\n* 26/09/04 docs: close C4 implementation record\n* 26/09/04 common: unify audio diagnostics contract\n* 26/09/04 docs: close C4 audio policy assessment record\n* 26/09/04 docs: define common audio policy contract\n* 26/09/04 fix(exo): extract ALAC cookie from QuickTime wave atoms\n* 26/09/04 fix(exo): route ALAC away from stalled vendor decoder\n* 26/09/04 docs: add audio and multichannel strategy assessment\n* 26/09/04 fix(exo): support AV3A 5.1 mixed-content channel downmix\n* 26/09/04 fix(exo): parse AVS3A DASH channel configuration\n* 26/09/03 fix(mpv): downmix unknown AV3A channels to stereo\n* 26/09/03 fix(mpv): recover AAC playback through PCM fallback\n* 26/09/03 Fix MPV compressed audio output fallback\n* 26/09/02 fix Exo compressed audio PCM channel fallback\n* 26/09/02 fix Exo audio output configuration recovery\n* 26/09/02 mpv: expose AV3A audio tracks with canonical MIME\n* 26/09/02 exo: route MP4 AV3A tracks to compatible decoder\n* 26/09/02 docs: record Exo audio codec compatibility investigation\n* 26/09/02 mpv: repair compressed AudioTrack fallback patch hunks\n* 26/09/02 exo: gate network protection on actual audio output\n* 26/09/02 mpv: report actual hardware audio decoder state\n* 26/09/02 mpv: add compressed AudioTrack output path\n* 26/09/02 player: align audio decode labels with video diagnostics\n* 26/09/02 exo: recover compressed audio output failures with PCM fallback\n* 26/09/01 mpv: prefer hardware audio MediaCodec with fallback\n* 26/09/01 feat(exo): prioritize hardware audio decoders\n* 26/08/31 Show runtime audio playback diagnostics\n* 26/08/31 feat(mpv): add multichannel audio fallback policy",
+  "code": 26090708,
+  "name": "260907-08-webhtv_dev",
+  "desc": "* 版本: 5.6.0 → 260907-08-webhtv_dev\n* 26/09/07 feat(update): pick per-ABI size/sha256 from update manifest",
   "urls": {
-    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260906-07/TVBox_fish2018_260906-07_leanback-arm64_v8a.apk",
-    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260906-07/TVBox_fish2018_260906-07_leanback-armeabi_v7a.apk"
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260907-08/TVBox_fish2018_260907-08_leanback-arm64_v8a.apk",
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260907-08/TVBox_fish2018_260907-08_leanback-armeabi_v7a.apk"
+  },
+  "sizes": {
+    "arm64_v8a": 54778306,
+    "armeabi_v7a": 47454940
+  },
+  "sha256s": {
+    "arm64_v8a": "3c1543c40f0759bdafbc5adf39e69f330cf232ba374b7170f9be18e90952076c",
+    "armeabi_v7a": "e67b37210eeee58e74fc36ce78d4cd1542bbc082b09eb04c45b4a88dd3b80b4d"
   }
 }

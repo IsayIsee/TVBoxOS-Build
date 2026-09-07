@@ -1,3 +1,17 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-09-07 01:06
+- **原始版本**: 5.6.0
+- **编译版本**: 260907-08-webhtv_dev
+- **提交哈希**: [9af1263](https://github.com/IsayIsee/webhtv/commit/9af1263c74b22226be3086d2d714adb92426c19c)
+
+**详细日志/Changelog**:
+
+```
+26/09/07 feat(update): pick per-ABI size/sha256 from update manifest
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-09-06 07:28
 - **原始版本**: 5.6.0
 - **编译版本**: 260906-07-webhtv_dev
