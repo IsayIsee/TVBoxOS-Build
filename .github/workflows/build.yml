@@ -340,6 +340,15 @@ jobs:
           APK_DIR="${{ github.workspace }}/apk/${{ matrix.branchName }}"
           mkdir -p "$APK_DIR"
 
+          # 将本次构建产物同步到 json 输出目录并清理仓库遗留的旧 apk,
+          # 保证脚本计算的 size/sha256 与 release 实际上传的 apk 一致
+          rm -f "$APK_DIR"/*.apk
+          for apk_file in "${{ github.workspace }}"/TVBoxOSC/apk/TVBox_*_${{ env.tag }}_*.apk; do
+            [ -f "$apk_file" ] || continue
+            clean_name=$(basename "$apk_file" | sed "s/^TVBox_[^_]*_${{ env.tag }}_//")
+            cp -f "$apk_file" "$APK_DIR/$clean_name"
+          done
+
           CODE=$(echo "${{ env.tag }}" | tr -d '-')
 
           lastCommit=$(grep "${{ matrix.repoName }}\/${{ matrix.branchName }}" \
