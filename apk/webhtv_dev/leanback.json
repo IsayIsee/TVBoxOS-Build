@@ -1,17 +1,17 @@
 {
-  "code": 26090708,
-  "name": "260907-08-webhtv_dev",
-  "desc": "* 版本: 5.6.0 → 260907-08-webhtv_dev\n* 26/09/07 feat(update): pick per-ABI size/sha256 from update manifest",
+  "code": 26090707,
+  "name": "260907-07-webhtv_dev",
+  "desc": "* 版本: 5.6.0 → 260907-07-webhtv_dev\n* 26/09/07 Merge remote-tracking branch 'origin/main' into webhtv_dev\n* 26/09/06 chore: remove local docs from remote\n* 26/09/06 fix(mpv): prevent automatic script execution and remove button cap",
   "urls": {
-    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260907-08/TVBox_fish2018_260907-08_leanback-arm64_v8a.apk",
-    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260907-08/TVBox_fish2018_260907-08_leanback-armeabi_v7a.apk"
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260907-07/TVBox_fish2018_260907-07_leanback-arm64_v8a.apk",
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260907-07/TVBox_fish2018_260907-07_leanback-armeabi_v7a.apk"
   },
   "sizes": {
-    "arm64_v8a": 54778306,
-    "armeabi_v7a": 47454940
+    "arm64_v8a": 133860964,
+    "armeabi_v7a": 112970786
   },
   "sha256s": {
-    "arm64_v8a": "3c1543c40f0759bdafbc5adf39e69f330cf232ba374b7170f9be18e90952076c",
-    "armeabi_v7a": "e67b37210eeee58e74fc36ce78d4cd1542bbc082b09eb04c45b4a88dd3b80b4d"
+    "arm64_v8a": "938fe7da8d482adf0a755f00112a3a528c82284acc2e03b9086c44a9e1ff1fa9",
+    "armeabi_v7a": "1c2d10c6fa0fbf8673442ff582b5b3a20fe2c7e380f642bbd4e46da02248eef5"
   }
 }

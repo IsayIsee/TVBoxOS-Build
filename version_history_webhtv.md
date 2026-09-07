@@ -1,3 +1,19 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-09-07 07:44
+- **原始版本**: 5.6.0
+- **编译版本**: 260907-07-webhtv_dev
+- **提交哈希**: [48b748e](https://github.com/IsayIsee/webhtv/commit/48b748e98c684d41d6c98855cd99f5253916c9c1)
+
+**详细日志/Changelog**:
+
+```
+26/09/07 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/09/06 chore: remove local docs from remote
+26/09/06 fix(mpv): prevent automatic script execution and remove button cap
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-09-07 01:06
 - **原始版本**: 5.6.0
 - **编译版本**: 260907-08-webhtv_dev
