@@ -1,3 +1,4 @@
+import hashlib
 import json
 import os
 import glob
@@ -33,19 +34,34 @@ for keyword, json_name in (("mobile", "mobile.json"), ("leanback", "leanback.jso
 
     # 收集该类型下所有 ABI 的地址
     apk_urls = {}
+    sizes = {}
+    sha256s = {}
     for apk in matches:
         clean_name = os.path.basename(apk)
         release_name = f"TVBox_{developer}_{tag}_{clean_name}"
         url = f"{repo_url}/releases/download/{tag}/{release_name}"
+        # 计算每个 ABI 对应 APK 的 size/sha256,供客户端校验下载完整性
+        digest = hashlib.sha256()
+        with open(apk, "rb") as fh:
+            for chunk in iter(lambda: fh.read(1 << 16), b""):
+                digest.update(chunk)
+        file_size = os.path.getsize(apk)
+        file_sha256 = digest.hexdigest()
         # 从文件名提取 abi 标识
         if "arm64_v8a" in clean_name:
             apk_urls["arm64_v8a"] = url
+            sizes["arm64_v8a"] = file_size
+            sha256s["arm64_v8a"] = file_sha256
         elif "armeabi_v7a" in clean_name:
             apk_urls["armeabi_v7a"] = url
+            sizes["armeabi_v7a"] = file_size
+            sha256s["armeabi_v7a"] = file_sha256
         else:
             apk_urls["default"] = url
+            sizes["default"] = file_size
+            sha256s["default"] = file_sha256
 
-    payload = {"code": code, "name": name, "desc": desc, "urls": apk_urls}
+    payload = {"code": code, "name": name, "desc": desc, "urls": apk_urls, "sizes": sizes, "sha256s": sha256s}
 
     path = os.path.join(out_dir, json_name)
     with open(path, "w", encoding="utf-8") as f:
