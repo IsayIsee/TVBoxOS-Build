@@ -1,3 +1,38 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-09-12 07:30
+- **原始版本**: 5.6.0
+- **编译版本**: 260912-07-webhtv_dev
+- **提交哈希**: [4a0447c](https://github.com/IsayIsee/webhtv/commit/4a0447ce7b836dc79b15d540a536e0bb5f4b049c)
+
+**详细日志/Changelog**:
+
+```
+26/09/12 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/09/12 fix(drive): prioritize 115 expired share status over metadata
+26/09/12 fix(exo): enable DV5 GPU mapping by default
+26/09/11 fix(player): wire source switch button into mobile video controls
+26/09/11 feat(mpv): add independent script enable switch and list status
+26/09/11 fix(mpv): align script button visibility with execution timing
+26/09/11 fix(mpv): route child-menu touch misses through observed parent menus
+26/09/10 fix(history): swap watched time and filename labels
+26/09/10 fix(history): place watched time directly above filename
+26/09/10 fix(history): move watched time to the top of cover cards
+26/09/10 feat(history): show last watched time on cover cards
+26/09/10 fix(mpv): keep disc menus responsive and stabilize TV output fallback
+26/09/10 mpv: stream ISO cache pages progressively for disc navigation
+26/09/09 fix(mpv): route merged Blu-ray menu backgrounds through authored returns
+26/09/09 chore(git): allow normal tracking of task documentation
+26/09/09 fix(mpv): follow authored HDMV menu return routes
+26/09/08 fix(mpv): preserve disc visits and track ISO starvation
+26/09/08 fix(mpv): stabilize Blu-ray navigation buffering and audio underruns
+26/09/07 build(mpv): package HDMV menu native assets
+26/09/07 fix(mpv): make Blu-ray menu patch apply cleanly
+26/09/07 mpv: add HDMV Blu-ray menu navigation
+26/09/06 docs: assess Blu-ray HDMV and BD-J menu support
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-09-07 07:44
 - **原始版本**: 5.6.0
 - **编译版本**: 260907-07-webhtv_dev

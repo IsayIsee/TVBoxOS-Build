@@ -1,17 +1,17 @@
 {
-  "code": 26090707,
-  "name": "260907-07-webhtv_dev",
-  "desc": "* 版本: 5.6.0 → 260907-07-webhtv_dev\n* 26/09/07 Merge remote-tracking branch 'origin/main' into webhtv_dev\n* 26/09/06 chore: remove local docs from remote\n* 26/09/06 fix(mpv): prevent automatic script execution and remove button cap",
+  "code": 26091207,
+  "name": "260912-07-webhtv_dev",
+  "desc": "* 版本: 5.6.0 → 260912-07-webhtv_dev\n* 26/09/12 Merge remote-tracking branch 'origin/main' into webhtv_dev\n* 26/09/12 fix(drive): prioritize 115 expired share status over metadata\n* 26/09/12 fix(exo): enable DV5 GPU mapping by default\n* 26/09/11 fix(player): wire source switch button into mobile video controls\n* 26/09/11 feat(mpv): add independent script enable switch and list status\n* 26/09/11 fix(mpv): align script button visibility with execution timing\n* 26/09/11 fix(mpv): route child-menu touch misses through observed parent menus\n* 26/09/10 fix(history): swap watched time and filename labels\n* 26/09/10 fix(history): place watched time directly above filename\n* 26/09/10 fix(history): move watched time to the top of cover cards\n* 26/09/10 feat(history): show last watched time on cover cards\n* 26/09/10 fix(mpv): keep disc menus responsive and stabilize TV output fallback\n* 26/09/10 mpv: stream ISO cache pages progressively for disc navigation\n* 26/09/09 fix(mpv): route merged Blu-ray menu backgrounds through authored returns\n* 26/09/09 chore(git): allow normal tracking of task documentation\n* 26/09/09 fix(mpv): follow authored HDMV menu return routes\n* 26/09/08 fix(mpv): preserve disc visits and track ISO starvation\n* 26/09/08 fix(mpv): stabilize Blu-ray navigation buffering and audio underruns\n* 26/09/07 build(mpv): package HDMV menu native assets\n* 26/09/07 fix(mpv): make Blu-ray menu patch apply cleanly\n* 26/09/07 mpv: add HDMV Blu-ray menu navigation\n* 26/09/06 docs: assess Blu-ray HDMV and BD-J menu support",
   "urls": {
-    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260907-07/TVBox_fish2018_260907-07_mobile-arm64_v8a.apk",
-    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260907-07/TVBox_fish2018_260907-07_mobile-armeabi_v7a.apk"
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260912-07/TVBox_fish2018_260912-07_mobile-arm64_v8a.apk",
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260912-07/TVBox_fish2018_260912-07_mobile-armeabi_v7a.apk"
   },
   "sizes": {
-    "arm64_v8a": 133717186,
-    "armeabi_v7a": 112827008
+    "arm64_v8a": 133777930,
+    "armeabi_v7a": 112887944
   },
   "sha256s": {
-    "arm64_v8a": "20ff111b02300d47d8af685c1dcacb3d77fa352d7159562e6c71610db63900c6",
-    "armeabi_v7a": "fc5fad42d67ddc18969cf921ba53ae790cccb291944cab9947c8c8f985272091"
+    "arm64_v8a": "b175ed52b2bd12496e50d52846b42d50b674a4fdb5c555ab5de9a855007f7556",
+    "armeabi_v7a": "d93872037584550cb68b9c5e929438b3f1b5fca3957d066bbbef6c84b604bfad"
   }
 }
