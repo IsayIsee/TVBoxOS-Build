@@ -1,3 +1,68 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-09-18 07:49
+- **原始版本**: 5.6.0
+- **编译版本**: 260918-07-webhtv_dev
+- **提交哈希**: [b9f9db4](https://github.com/IsayIsee/webhtv/commit/b9f9db4a9753224a85c31f27ff96e94ab3f9bc56)
+
+**详细日志/Changelog**:
+
+```
+26/09/18 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/09/18 fix(exo): preserve audio output ownership and tunneling after seek
+26/09/18 feat(exo): support independently selected dual subtitles
+26/09/18 perf(exo): skip fixed-track constraint reselection and reuse codec diagnostics
+26/09/18 fix(diagnostics): base audio conclusions on observed output state
+26/09/18 fix(mpv): honor HLS media roles for playlist-named live segments
+26/09/17 fix(live): expose playback parameters on mobile and TV controls
+26/09/17 fix(mpv): clip smart ads before rendering and restore reused surfaces
+26/09/17 fix(mpv): preserve programme blocks in HLS ad skip timelines
+26/09/17 feat(mpv): add hardware-only AVS3 MediaCodec decoding
+26/09/17 fix(mpv): defer resume seek until file loading completes
+26/09/17 feat(player): decode AVS3 High 10-bit with isolated HPM backend
+26/09/17 feat(mpv): honor global smart ad skipping for HLS
+26/09/17 fix(mpv): apply P8 HDR10 compatibility in explicit output modes
+26/09/17 fix(mpv): preserve ownership of FEL context options
+26/09/17 fix(exo): enforce manual video decode mode for AVS3
+26/09/17 feat(player): add baseline AVS3 decoding and fix Exo to MPV surface handoff
+26/09/16 feat(mpv): add bounded FEL descriptor binding diagnostics
+26/09/16 fix(mpv): select DV7 FEL before video chain initialization
+26/09/16 docs(mpv): refine FEL diagnosis with cross-project source and binary evidence
+26/09/16 docs(mpv): assess log33 FEL startup and persistent GPU stalls
+26/09/16 fix(debug): remove pairing and promote log actions
+26/09/16 perf(mpv): reuse unchanged FEL descriptor contents with fresh commands
+26/09/16 docs: assess FEL Vulkan descriptor stalls across projects
+26/09/16 mpv: add bounded FEL wait diagnostics for TV logs
+26/09/15 fix(exo): include ASS rendering in normal builds
+26/09/15 feat(debug): capture crawler consoles and organize web logs into responsive tools
+26/09/15 feat(diagnostics): complete native evidence and categorized playback logging
+26/09/15 feat(diagnostics): add categorized capture controls, incident reports and bounded probes
+26/09/15 fix(diagnostics): preserve MPV native attempt ownership across media changes
+26/09/15 feat(diagnostics): add IJK evidence and bounded process recovery journal
+26/09/15 feat(diagnostics): retain MPV native events and cached pipeline health
+26/09/15 feat(diagnostics): observe Exo decoder, surface and audio output evidence
+26/09/15 fix(mpv): show player rebuffer statistics in playback panel
+26/09/15 fix(mpv): synchronize script button activation with Lua execution
+26/09/15 fix(git-cloud): support token storage without AndroidKeyStore
+26/09/15 fix(exo): render container ASS packets with original fonts
+26/09/15 feat(exo): add gated libass rendering with attached fonts
+26/09/14 fix(mpv): preserve ASS script fonts and explicit style overrides
+26/09/14 docs: refine E4-LIBASS integration and validation plan
+26/09/14 docs: assess Exo libass integration and MPV subtitle surface reuse
+26/09/14 fix(settings): correct update dialog theme and sizing on TV
+26/09/14 fix(settings): preserve playback performance focus after edits
+26/09/14 feat(diagnostics): add bounded playback log foundation
+26/09/14 fix(mpv): bound FEL renderer warmup and gate push descriptors
+26/09/13 fix(mpv): refresh FEL frame commands and trace frame ordering
+26/09/13 mpv: isolate FEL performance logs and add nonblocking stage timings
+26/09/13 mpv: separate FEL cold initialization from cancellable frame handoff
+26/09/13 mpv: checkpoint FEL producer handoff with unresolved playback stalls
+26/09/12 fix(mpv): checkpoint pure-BL FEL reliability candidate
+26/09/12 mpv: avoid synchronous audio probes in unrelated log callbacks
+26/09/12 mpv: checkpoint opt-in DV7 FEL reconstruction (known bugs)
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-09-12 07:30
 - **原始版本**: 5.6.0
 - **编译版本**: 260912-07-webhtv_dev
