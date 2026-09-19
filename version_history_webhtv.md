@@ -1,3 +1,20 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-09-19 07:45
+- **原始版本**: 5.6.0
+- **编译版本**: 260919-07-webhtv_dev
+- **提交哈希**: [5039fb0](https://github.com/IsayIsee/webhtv/commit/5039fb0ca6327da456b66b9c5bdd01422124e4e4)
+
+**详细日志/Changelog**:
+
+```
+26/09/19 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/09/19 fix(exo): preserve ASS styling over HDR video
+26/09/19 docs(exo): diagnose HDR SSA style fallback and bound the fix
+26/09/18 fix(ci): skip obsolete Android SDK tools package
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-09-18 07:49
 - **原始版本**: 5.6.0
 - **编译版本**: 260918-07-webhtv_dev
