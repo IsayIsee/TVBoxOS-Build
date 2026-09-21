@@ -1,3 +1,20 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-09-21 08:23
+- **原始版本**: 5.6.0
+- **编译版本**: 260921-07-webhtv_dev
+- **提交哈希**: [60235d9](https://github.com/IsayIsee/webhtv/commit/60235d9069853137360ef6b2c484befe06a9aafa)
+
+**详细日志/Changelog**:
+
+```
+26/09/21 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/09/20 fix: defer leanback cloud route selection until layout completes
+26/09/20 fix(exo): fall back to PCM when compressed audio stalls
+26/09/20 fix(update): unblock legacy devices in APK identity precheck
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-09-19 07:45
 - **原始版本**: 5.6.0
 - **编译版本**: 260919-07-webhtv_dev

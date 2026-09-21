@@ -1,17 +1,17 @@
 {
-  "code": 26091907,
-  "name": "260919-07-webhtv_dev",
-  "desc": "* 版本: 5.6.0 → 260919-07-webhtv_dev\n* 26/09/19 Merge remote-tracking branch 'origin/main' into webhtv_dev\n* 26/09/19 fix(exo): preserve ASS styling over HDR video\n* 26/09/19 docs(exo): diagnose HDR SSA style fallback and bound the fix\n* 26/09/18 fix(ci): skip obsolete Android SDK tools package",
+  "code": 26092107,
+  "name": "260921-07-webhtv_dev",
+  "desc": "* 版本: 5.6.0 → 260921-07-webhtv_dev\n* 26/09/21 Merge remote-tracking branch 'origin/main' into webhtv_dev\n* 26/09/20 fix: defer leanback cloud route selection until layout completes\n* 26/09/20 fix(exo): fall back to PCM when compressed audio stalls\n* 26/09/20 fix(update): unblock legacy devices in APK identity precheck",
   "urls": {
-    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260919-07/TVBox_fish2018_260919-07_mobile-arm64_v8a.apk",
-    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260919-07/TVBox_fish2018_260919-07_mobile-armeabi_v7a.apk"
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260921-07/TVBox_fish2018_260921-07_mobile-arm64_v8a.apk",
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260921-07/TVBox_fish2018_260921-07_mobile-armeabi_v7a.apk"
   },
   "sizes": {
-    "arm64_v8a": 139176323,
-    "armeabi_v7a": 115074480
+    "arm64_v8a": 139326841,
+    "armeabi_v7a": 115225177
   },
   "sha256s": {
-    "arm64_v8a": "99fc415d2aca30cb5696cde2a1f8d99e18be1011ee4f9f46646dae7ebff1e3d0",
-    "armeabi_v7a": "a288052f6e0251d7e69d53448b1ff165c9a70b2f886e2fbb7ec8cd21425b9906"
+    "arm64_v8a": "f3d2fad0a694edd19c916fc7ed02584c36061ebc707d9a33a5e67a76852e6fa7",
+    "armeabi_v7a": "863bdcf09d0f1c4fbca45a2132a5b10545ae4e34c6f8fa1adf7746b4dc1dd988"
   }
 }
