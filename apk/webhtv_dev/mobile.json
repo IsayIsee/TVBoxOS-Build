@@ -1,17 +1,17 @@
 {
-  "code": 26092107,
-  "name": "260921-07-webhtv_dev",
-  "desc": "* 版本: 5.6.0 → 260921-07-webhtv_dev\n* 26/09/21 Merge remote-tracking branch 'origin/main' into webhtv_dev\n* 26/09/20 fix: defer leanback cloud route selection until layout completes\n* 26/09/20 fix(exo): fall back to PCM when compressed audio stalls\n* 26/09/20 fix(update): unblock legacy devices in APK identity precheck",
+  "code": 26092207,
+  "name": "260922-07-webhtv_dev",
+  "desc": "* 版本: 5.6.0 → 260922-07-webhtv_dev\n* 26/09/22 Merge remote-tracking branch 'origin/main' into webhtv_dev\n* 26/09/21 perf(exo): recover stalled audio startup within buffered media\n* 26/09/21 fix(exo): honor disabled audio passthrough for all encoded outputs\n* 26/09/21 docs(exo): define complete first-playback recovery plan\n* 26/09/21 fix(exo): remember confirmed direct audio failures per media and route\n* 26/09/21 docs(exo): record E11 audio startup design and implementation approval",
   "urls": {
-    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260921-07/TVBox_fish2018_260921-07_mobile-arm64_v8a.apk",
-    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260921-07/TVBox_fish2018_260921-07_mobile-armeabi_v7a.apk"
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260922-07/TVBox_fish2018_260922-07_mobile-arm64_v8a.apk",
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260922-07/TVBox_fish2018_260922-07_mobile-armeabi_v7a.apk"
   },
   "sizes": {
-    "arm64_v8a": 139326841,
-    "armeabi_v7a": 115225177
+    "arm64_v8a": 139326843,
+    "armeabi_v7a": 115225159
   },
   "sha256s": {
-    "arm64_v8a": "f3d2fad0a694edd19c916fc7ed02584c36061ebc707d9a33a5e67a76852e6fa7",
-    "armeabi_v7a": "863bdcf09d0f1c4fbca45a2132a5b10545ae4e34c6f8fa1adf7746b4dc1dd988"
+    "arm64_v8a": "e0b4c14647bded6151ae2d33eb8e0dc85f866648a7a39705e14c08c3e99f893e",
+    "armeabi_v7a": "b23372466ab0a1906f7698489feb542a82744d05c128f2efdd4a590ab6cd7afb"
   }
 }

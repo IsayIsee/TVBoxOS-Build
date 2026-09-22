@@ -1,3 +1,22 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-09-22 08:08
+- **原始版本**: 5.6.0
+- **编译版本**: 260922-07-webhtv_dev
+- **提交哈希**: [fce4e71](https://github.com/IsayIsee/webhtv/commit/fce4e716419f49dc95e77735d8094d1aea7cd3a6)
+
+**详细日志/Changelog**:
+
+```
+26/09/22 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/09/21 perf(exo): recover stalled audio startup within buffered media
+26/09/21 fix(exo): honor disabled audio passthrough for all encoded outputs
+26/09/21 docs(exo): define complete first-playback recovery plan
+26/09/21 fix(exo): remember confirmed direct audio failures per media and route
+26/09/21 docs(exo): record E11 audio startup design and implementation approval
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-09-21 08:23
 - **原始版本**: 5.6.0
 - **编译版本**: 260921-07-webhtv_dev
