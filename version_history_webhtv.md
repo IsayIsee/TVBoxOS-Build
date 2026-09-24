@@ -1,3 +1,18 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-09-24 07:58
+- **原始版本**: 5.6.0
+- **编译版本**: 260924-07-webhtv_dev
+- **提交哈希**: [eb5fcbb](https://github.com/IsayIsee/webhtv/commit/eb5fcbb60a878f09b661fd8f198cd54ec4c2d927)
+
+**详细日志/Changelog**:
+
+```
+26/09/24 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/09/24 test(exo): avoid package-private recoverable access
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-09-22 08:08
 - **原始版本**: 5.6.0
 - **编译版本**: 260922-07-webhtv_dev
