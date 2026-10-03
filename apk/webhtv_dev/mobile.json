@@ -1,17 +1,17 @@
 {
-  "code": 26092407,
-  "name": "260924-07-webhtv_dev",
-  "desc": "* 版本: 5.6.0 → 260924-07-webhtv_dev\n* 26/09/24 Merge remote-tracking branch 'origin/main' into webhtv_dev\n* 26/09/24 test(exo): avoid package-private recoverable access",
+  "code": 26100307,
+  "name": "261003-07-webhtv_dev",
+  "desc": "* 版本: 5.6.0 → 261003-07-webhtv_dev\n* 26/10/03 Merge remote-tracking branch 'origin/main' into webhtv_dev\n* 26/10/03 chore: keep local task docs out of the repository\n* 26/10/03 feat(exo): ship ARMv7 libass and dual-ABI ASS verification\n* 26/09/28 docs: audit Exo ASS device compatibility and plan ARMv7 support\n* 26/09/28 docs: prioritize lightweight offline voice conversion candidates\n* 26/09/28 docs: research fully offline Android character voice replacement\n* 26/09/27 fix: release download resources for the affected Pan proxy jar",
   "urls": {
-    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260924-07/TVBox_fish2018_260924-07_mobile-armeabi_v7a.apk",
-    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/260924-07/TVBox_fish2018_260924-07_mobile-arm64_v8a.apk"
+    "armeabi_v7a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/261003-07/TVBox_fish2018_261003-07_mobile-armeabi_v7a.apk",
+    "arm64_v8a": "https://github.com/IsayIsee/TVBoxOS-Build/releases/download/261003-07/TVBox_fish2018_261003-07_mobile-arm64_v8a.apk"
   },
   "sizes": {
-    "armeabi_v7a": 115225168,
-    "arm64_v8a": 139326851
+    "armeabi_v7a": 117142244,
+    "arm64_v8a": 139326853
   },
   "sha256s": {
-    "armeabi_v7a": "92bc0866893764f7bfe7df741787c9ad0ec4f8b6a615798c3a6b49acae2d9180",
-    "arm64_v8a": "424f5b6d561c98aba5ea4dccf2b849129f5dc7c27d13c58171f3eb58b071302e"
+    "armeabi_v7a": "963eebb9343abfe1560596c604144c52004486bb65d5b3c4fbccd317339acf81",
+    "arm64_v8a": "c67ea7e93b028313a23d83c93d7fd42d900bfd4654bec3da7933e35c2e2be02a"
   }
 }

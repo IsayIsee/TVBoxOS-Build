@@ -1,3 +1,23 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-10-03 08:38
+- **原始版本**: 5.6.0
+- **编译版本**: 261003-07-webhtv_dev
+- **提交哈希**: [b282257](https://github.com/IsayIsee/webhtv/commit/b2822570f75a19e5aba5071d33fbbee6078c39f8)
+
+**详细日志/Changelog**:
+
+```
+26/10/03 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/10/03 chore: keep local task docs out of the repository
+26/10/03 feat(exo): ship ARMv7 libass and dual-ABI ASS verification
+26/09/28 docs: audit Exo ASS device compatibility and plan ARMv7 support
+26/09/28 docs: prioritize lightweight offline voice conversion candidates
+26/09/28 docs: research fully offline Android character voice replacement
+26/09/27 fix: release download resources for the affected Pan proxy jar
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-09-24 07:58
 - **原始版本**: 5.6.0
 - **编译版本**: 260924-07-webhtv_dev
