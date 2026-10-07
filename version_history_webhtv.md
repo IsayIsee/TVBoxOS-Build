@@ -1,3 +1,18 @@
+### WebHomeTV [webhtv_dev] - 更新于 2026-10-07 09:21
+- **原始版本**: 5.6.0
+- **编译版本**: 261007-08-webhtv_dev
+- **提交哈希**: [819ad52](https://github.com/IsayIsee/webhtv/commit/819ad5269963ef89678fbf5d3ffe052914b749a5)
+
+**详细日志/Changelog**:
+
+```
+26/10/07 Merge remote-tracking branch 'origin/main' into webhtv_dev
+26/10/07 fix(mobile): inset live player below the status bar
+
+```
+
+---
+
 ### WebHomeTV [webhtv_dev] - 更新于 2026-10-03 08:38
 - **原始版本**: 5.6.0
 - **编译版本**: 261003-07-webhtv_dev
